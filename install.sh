@@ -8,3 +8,8 @@ tic -x -o $HOME/.terminfo $HOME/dotfiles/config/terminfo/xterm-kitty &>/dev/null
 #   git clone https://github.com/zdharma-continuum/fast-syntax-highlighting
 # but they're added to this repo as a submodule
 git --git-dir "$HOME/dotfiles/.git/" submodule update --init --recursive
+
+# Wire up the zsh config. Just symlink the whole folder for now but really
+# it should be just the key files: .zprofile, .zshrc, .zshenv and ideally
+# those aren't 'dotted' so that they're easier to see and edit.
+ln -s "$HOME/dotfiles/config/zsh" "$HOME/.config/zsh"
