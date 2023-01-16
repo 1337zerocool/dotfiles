@@ -13,3 +13,8 @@ git --git-dir "$HOME/dotfiles/.git/" submodule update --init --recursive
 # it should be just the key files: .zprofile, .zshrc, .zshenv and ideally
 # those aren't 'dotted' so that they're easier to see and edit.
 ln -s "$HOME/dotfiles/config/zsh" "$HOME/.config/zsh"
+
+# $XDG_CONFIG_HOME isn't set so we symlink in a minimal .zshrc in $HOME so that
+# it will source config.
+mv "$HOME/.zshrc" "$HOME/.zshrc.old"
+ln -s "$HOME/dotfiles/config/zsh/zshrc.stub.zsh" "$HOME/.zshrc"
