@@ -49,7 +49,7 @@ $fpath=(
 # A path to find local binaries in additional to the usual places. This is so that you can
 # write your own scripts/programs and have them work here.
 $path=(
-	path
+	$path
 )
 # Add paths to Auto CD. These let you change into code directories without specifying the
 # full path. `cd bar` instead of `cd ~/src/github.com/foo/bar`
@@ -78,3 +78,49 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey -v
 
+# Make referencing up directories easier.   type `cd ..` and then the next `.` will expand to `../..`
+# you can keep typing `.` to continue the expansion.
+function expand_dots() {
+	[[ $LBUFFER = *.. ]] && LBUFFER+=/.. || LBUFFER+=.
+}
+zle -N expand_dots
+bindkey . expand_dots
+
+# This is a custom prompt. It computes the shortest unique representation of the current path and
+# then puts a "> " at the end of it. Green if the last command was okay otherwise red.
+autoload -Uz add-zsh-hook
+function compute_short_pwd() {
+	local shortened_path full_path part current_path_part first_part
+	local -a split
+	split=(${(s:/:)${(Q)${(D)1:-$PWD}}})
+	if [[ $split == "" ]]; then
+		SHORT_PWD=/
+		return 0
+	fi
+	if [[ $split[1] = \~* ]]; then
+		first_part=$split[1]
+		full_path=$~split[1]
+		shift split
+	fi
+		if (( $#split > 0 )); then
+		part=/
+	fi
+	for current_path_part ($split[1,-2]) {
+	while {
+		part+=$current_path_part[1]
+		current_path_part=$cur[2,-1]
+		local -a glob
+		glob=( $full_path/$part*(-/N) )
+			(( $#glob > 1 )) || [[ $part == (.|..) ]] && (( $#current_path_part > 0 ))
+		} { }
+		full_path+=$part$current_path_part
+		shortened_path+=$part
+		part=/
+	}
+	SHORT_PWD=$first_part$shortened_path$part$split[-1]
+	return 0
+}
+compute_short_pwd
+add-zsh-hook -Uz chpwd compute_short_pwd
+setopt prompt_subst
+export PROMPT='%F{%(?.green.red)}${SHORT_PWD}❯%f '
