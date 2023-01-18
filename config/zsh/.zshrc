@@ -120,3 +120,37 @@ compute_short_pwd
 add-zsh-hook -Uz chpwd compute_short_pwd
 setopt prompt_subst
 export PROMPT='%F{%(?.green.red)}${SHORT_PWD}❯%f '
+
+# Add pretty syntax highlighting for our command lines
+source "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+
+# Setup auto-completion, using info from the history and shift+tab to accept and run a completion
+source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# shift+tab = execute it the current suggeston
+bindkey '^[[Z' autosuggest-execute
+
+# Some configuration for the completion engine
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:descriptions' format %{$fg[yellow]%}%d%f    # Draw group descriptions in yellow
+zstyle ':completion:*:messages' format %{$fg[cyan]%d%f            # Draw messages in cyan
+zstyle ':completion:*:warnings' format %{$fg[red]%}No matches%f   # Draw no matches warning in red
+zstyle ':completion:*' accept-exact '*(N)'                        # Ignore partial globs to make completion faster
+zstyle ':completion:*' accept-exact-dirs true                     # demand exact dir paths
+zstyle ':completion:*' use-cache on                               # Use completion caching to improve performance
+zstyle ':completion:*' verbose true                               # Prefer the most verbose completion
+zstyle ':completion:*:options' description yes                    # Describe options.
+zstyle ':completion:*:default' menu select                        # Want to have menu complete for ambiguous matches
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}     # Use dircolors when completing directories
+zstyle ':completion:*:matches' group yes                          # Group matches (e.g. files vs directories)
+zstyle ':completion:*' group-name ''                              # for any group
+zstyle ':completion:::::' completer _complete _ignored _approximate
+zstyle ':completion:*'    completer _complete _ignored _approximate
+zstyle ':completion:*:complete:(cd|pushd):*' tag-order 'local-directories named-directories'  # sort order
+zstyle ':completion:*:cd:*' ignore-parents parent pwd                                         # don't show . or ..
+zstyle ':completion:*' list-dirs-first true                                                   # Separate directories from files.
+zstyle ':completion:*:(rm|mv|cp):*' ignore-line yes    # Don't use words on the line as possible completions
+
+
+# Now we'll use Nord colors for dircolors

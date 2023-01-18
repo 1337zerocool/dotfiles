@@ -18,3 +18,9 @@ ln -s "$HOME/dotfiles/config/zsh" "$HOME/.config/zsh"
 # it will source config.
 mv "$HOME/.zshrc" "$HOME/.zshrc.old"
 ln -s "$HOME/dotfiles/config/zsh/zshrc.stub.zsh" "$HOME/.zshrc"
+
+# Setup the ZSH fast syntax highlighting plugin
+git clone --depth 1 https://github.com/zdharma-continuum/fast-syntax-highlighting "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting" 
+
+# Add the ZSH auto-suggestion plugin
+git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
