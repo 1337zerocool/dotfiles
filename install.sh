@@ -24,3 +24,7 @@ git clone --depth 1 https://github.com/zdharma-continuum/fast-syntax-highlightin
 
 # Add the ZSH auto-suggestion plugin
 git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
+
+# Setup Dircolors to use Nord scheme
+git clone --depth 1 https://github.com/arcticicestudio/nord-dircolors "$HOME/.local/share/dircolors"
+ln -sr "$HOME/.local/share/dircolors/src/dir_colors" "$HOME/.dircolors"

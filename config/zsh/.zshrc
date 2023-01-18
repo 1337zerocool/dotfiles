@@ -151,5 +151,5 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd                           
 zstyle ':completion:*' list-dirs-first true                                                   # Separate directories from files.
 zstyle ':completion:*:(rm|mv|cp):*' ignore-line yes    # Don't use words on the line as possible completions
 
-
 # Now we'll use Nord colors for dircolors
+test -r "$HOME/.dircolors" && eval $(dircolors "$HOME/.dircolors")
