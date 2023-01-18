@@ -127,7 +127,6 @@ source "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-high
 # Setup auto-completion, using info from the history and shift+tab to accept and run a completion
 source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # shift+tab = execute it the current suggeston
 bindkey '^[[Z' autosuggest-execute
 
