@@ -37,3 +37,5 @@ ln -s "$HOME/dotfiles/config/nvim" "$HOME/.config/nvim"
 mkdir -p "$HOME/.local/share/nvim/backup"
 mkdir -p "$HOME/.local/share/nvim/swap"
 mkdir -p "$HOME/.local/share/nvim/undo"
+
+sh -c 'curl -fLo "${HOME}/.config/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'

@@ -1,4 +1,7 @@
-" Need some kind of file grep plugin. FZF is pretty good but 
+call plug#begin()
+  Plug 'arcticicestudio/nord-vim'
+call plug#end()
+
 filetype plugin indent on                  " Enable automatic file type detection & indentation
 set autoread                               " Enable automatic reloading of open files edited outside Vim
 set backspace=eol,start,indent             " Enable backspace past end of line, start of edit, etc.
@@ -54,8 +57,8 @@ set nohlsearch                             " Disable highlighting previous searc
 set nosmartcase                            " Type what you want to find with capitalization
 
 " Color and appearance
-" colorscheme nord                           " Use the nord colour scheme
-" let g:nord_italic=1                        " Enable italics for comments and args
+colorscheme nord                           " Use the nord colour scheme
+let g:nord_italic=1                        " Enable italics for comments and args
 set termguicolors                          " enable 'true color' mode. Note you have to use `gui=italic` or `guibg=italic` with this on
 set background=dark                        " Enable Vim's 'use colours that look good on dark background' mode
 set laststatus=2                           " Enable always showing the status line
