@@ -43,7 +43,7 @@ set spelllang=en_ca                        " Enable the Canadian English spellin
 set spell                                  " Enable spell checking
 
 " Indentation / cursor behaviour
-set cursorline                             " Highlight the line with the cursor
+" set cursorline                             " Highlight the line with the cursor
 set autoindent                             " Enable Copy the current line's indent when making a new line
 set nojoinspaces                           " Disable inserting two spaces after punctuation when you use a Join
 set smartindent                            " Enable 'smarter' auto-indenting watching Syntax for hints
