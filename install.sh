@@ -31,3 +31,9 @@ ln -sr "$HOME/.local/share/dircolors/src/dir_colors" "$HOME/.dircolors"
 
 # Configure git
 ln -s "$HOME/dotfiles/config/git" "$HOME/.config/git"
+
+# Configure Neovim
+ln -s "$HOME/dotfiles/config/nvim" "$HOME/.config/nvim"
+mkdir -p "$HOME/.local/share/nvim/backup"
+mkdir -p "$HOME/.local/share/nvim/swap"
+mkdir -p "$HOME/.local/share/nvim/undo"
