@@ -28,3 +28,6 @@ git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$HOME/.loc
 # Setup Dircolors to use Nord scheme
 git clone --depth 1 https://github.com/arcticicestudio/nord-dircolors "$HOME/.local/share/dircolors"
 ln -sr "$HOME/.local/share/dircolors/src/dir_colors" "$HOME/.dircolors"
+
+# Configure git
+ln -s "$HOME/dotfiles/config/git" "$HOME/.config/git"
