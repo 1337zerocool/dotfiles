@@ -137,6 +137,21 @@ function! VisualDown() abort range
   call s:Move("'>+1", l:at_bottom)
 endfunction
 
+" Configure Telescope
+lua << TELESCOPE
+  require('telescope').setup {
+    extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+      },
+    },
+  }
+  require('telescope').load_extension('fzf')
+TELESCOPE
+
 " some key bindings for window and buffer management
 let mapleader="\<Space>"
 nnoremap <silent> <leader>\| :vsplit<cr>
@@ -159,16 +174,15 @@ xnoremap <silent> J :call VisualDown()<cr>
 xnoremap <silent> K :call VisualUp()<cr>
 nnoremap <silent> <leader>z :ZoomToggle<cr>
 
-" Plugin bindings
-" nnoremap <silent> <leader>t :Telescope find_files<cr>
-" nnoremap <silent> <leader>f :Telescope live_grep<cr>
-" nnoremap <silent> <leader>F :Telescope grep_string<cr>
-" nnoremap <silent> <leader>b :Telescope buffers<cr>
+" Plugin bindings for telescope
+nnoremap <silent> z= :Telescope spell_suggest<cr>
+nnoremap <silent> <leader>t :Telescope find_files<cr>
+nnoremap <silent> <leader>f :Telescope live_grep<cr>
+nnoremap <silent> <leader>F :Telescope grep_string<cr>
+nnoremap <silent> <leader>b :Telescope buffers<cr>
 " nnoremap <silent> <leader>m :Telescope treesitter<cr>
 " nnoremap <silent> <leader>M :Telescope lsp_workspace_symbols<cr>
 " nnoremap <silent> gd :Telescope lsp_definitions<cr>
 " nnoremap <silent> <leader>= :lua vim.lsp.buf.formatting_sync()<cr>
 " nnoremap <silent> <leader>r :Telescope lsp_references<cr>
 " nnoremap <silent> <leader>R :lua vim.lsp.buf.references()<cr>
-" nnoremap <silent> z= :Telescope spell_suggest<cr>
-
