@@ -97,3 +97,36 @@ set statusline+=%4v                                      " Row of cursor
 set statusline+=,                                        " Literal comma
 set statusline+=%-4l                                     " Column of cursor
 set statusline+=%3p%%                                    " Percentage through the file
+
+" Toggle 'zooming' a split to fill the screen and restore to it's previous size
+function! s:ZoomToggle() abort
+  if exists('t:zoomed') && t:zoomed
+    execute t:zoom_winrestcmd
+    let t:zoomed = 0
+  else
+    let t:zoom_winrestcmd = winrestcmd()
+    resize
+    vertical resize
+    let t:zoomed = 1
+  endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+
+" Move a visual selection up and down as a group
+function! s:Move(address, at_limit)
+  if visualmode() == 'V' && !a:at_limit
+    execute "'<,'>move " . a:address
+    call feedkeys('gv=', 'n')
+  endif
+  call feedkeys('gv', 'n')
+endfunction
+function! VisualUp() abort range
+  let l:at_top=a:firstline == 1
+  call s:Move("'<-2", l:at_top)
+endfunction
+function! VisualDown() abort range
+  let l:at_bottom=a:lastline == line('$')
+  call s:Move("'>+1", l:at_bottom)
+endfunction
+command! VisualUp call s:VisualUp()
+command! VisualDown call s:VisualDown()
