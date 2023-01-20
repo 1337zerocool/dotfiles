@@ -2,6 +2,12 @@ call plug#begin()
   Plug 'arcticicestudio/nord-vim'          " A pretty set of colors
   Plug 'machakann/vim-sandwich'            " Manage 'surrounding' things like tags, brackets, and quotes
   Plug 'tpope/vim-commentary'              " Quickly toggle a line, block, etc. as comments
+
+  " These are some dependencies for the file picker
+  Plug 'nvim-lua/plenary.nvim'             " Shared function library
+  Plug 'nvim-telescope/telescope.nvim'     " Telescope, a nice file chooser
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } "improves performance by using native FZF
+  
 call plug#end()
 
 filetype plugin indent on                  " Enable automatic file type detection & indentation
