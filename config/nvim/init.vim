@@ -128,5 +128,38 @@ function! VisualDown() abort range
   let l:at_bottom=a:lastline == line('$')
   call s:Move("'>+1", l:at_bottom)
 endfunction
-command! VisualUp call s:VisualUp()
-command! VisualDown call s:VisualDown()
+
+" some key bindings for window and buffer management
+let mapleader="\<Space>"
+nnoremap <silent> <leader>\| :vsplit<cr>
+nnoremap <silent> <leader>- :split<cr>
+nnoremap <silent> <leader>] :bnext<cr>
+nnoremap <silent> <leader>[ :bprev<cr>
+nnoremap <silent> <leader>\ :b<bar>bd#<cr>
+nnoremap <silent> <leader><BS> :bdelete!<cr>
+nnoremap <silent> <C-h> :wincmd h<cr>
+nnoremap <silent> <C-j> :wincmd j<cr>
+nnoremap <silent> <C-k> :wincmd k<cr>
+nnoremap <silent> <C-l> :wincmd l<cr>
+
+" expand %% do the path of current document when entering a command
+cnoremap %% <C-R>=expand("%:h").'/'<cr>
+
+" Bindings for my custom functions
+xnoremap <silent> J :call VisualDown()<cr>
+xnoremap <silent> K :call VisualUp()<cr>
+nnoremap <silent> <leader>z :ZoomToggle<cr>
+
+" Plugin bindings
+" nnoremap <silent> <leader>t :Telescope find_files<cr>
+" nnoremap <silent> <leader>f :Telescope live_grep<cr>
+" nnoremap <silent> <leader>F :Telescope grep_string<cr>
+" nnoremap <silent> <leader>b :Telescope buffers<cr>
+" nnoremap <silent> <leader>m :Telescope treesitter<cr>
+" nnoremap <silent> <leader>M :Telescope lsp_workspace_symbols<cr>
+" nnoremap <silent> gd :Telescope lsp_definitions<cr>
+" nnoremap <silent> <leader>= :lua vim.lsp.buf.formatting_sync()<cr>
+" nnoremap <silent> <leader>r :Telescope lsp_references<cr>
+" nnoremap <silent> <leader>R :lua vim.lsp.buf.references()<cr>
+" nnoremap <silent> z= :Telescope spell_suggest<cr>
+
