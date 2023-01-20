@@ -1,5 +1,7 @@
 call plug#begin()
-  Plug 'arcticicestudio/nord-vim'
+  Plug 'arcticicestudio/nord-vim'          " A pretty set of colors
+  Plug 'machakann/vim-sandwich'            " Manage 'surrounding' things like tags, brackets, and quotes
+  Plug 'tpope/vim-commentary'              " Quickly toggle a line, block, etc. as comments
 call plug#end()
 
 filetype plugin indent on                  " Enable automatic file type detection & indentation
