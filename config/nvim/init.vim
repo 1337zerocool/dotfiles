@@ -164,7 +164,7 @@ nnoremap <silent> <C-h> :wincmd h<cr>
 nnoremap <silent> <C-j> :wincmd j<cr>
 nnoremap <silent> <C-k> :wincmd k<cr>
 nnoremap <silent> <C-l> :wincmd l<cr>
-nnoremap <silent> zz :qall<cr>
+nnoremap <silent> ZZ :qall<cr>
 
 " expand %% do the path of current document when entering a command
 cnoremap %% <C-R>=expand("%:h").'/'<cr>
