@@ -8,6 +8,10 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim'     " Telescope, a nice file chooser
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } "improves performance by using native FZF
   
+  " Make indentations a bit easier to follow with some guidelines, help make folds prettier too
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'anuvyklack/pretty-fold.nvim'
+  
 call plug#end()
 
 filetype plugin indent on                  " Enable automatic file type detection & indentation
@@ -152,14 +156,40 @@ lua << TELESCOPE
   require('telescope').load_extension('fzf')
 TELESCOPE
 
+lua << INDENTBLANKLINE
+  vim.opt.termguicolors = true
+  vim.opt.termguicolors = true
+  vim.cmd [[highlight IndentBlanklineIndent1 guifg=#373E4D gui=nocombine]]
+  require("indent_blankline").setup {
+    char_highlight_list = {
+      "IndentBlanklineIndent1",
+    },
+    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = false,
+  }
+INDENTBLANKLINE
+
+lua << PRETTYFOLD
+require('pretty-fold').ft_setup('lua', {
+   matchup_patterns = {
+      { '^%s*do$', 'end' }, -- do ... end blocks
+      { '^%s*if', 'end' },  -- if ... end
+      { '^%s*for', 'end' }, -- for
+      { '^%s*def$', 'end' }, -- def ... end blocks
+      {  '{', '}' },
+   },
+}
+end
+
 " some key bindings for window and buffer management
 let mapleader="\<Space>"
 nnoremap <silent> <leader>\| :vsplit<cr>
 nnoremap <silent> <leader>- :split<cr>
 nnoremap <silent> <leader>] :bnext<cr>
 nnoremap <silent> <leader>[ :bprev<cr>
-nnoremap <silent> <leader>\ :b<bar>bd#<cr>
-nnoremap <silent> <leader><BS> :bdelete!<cr>
+nnoremap <silent> <leader>\ :bdelete!<cr>
+nnoremap <silent> <leader><BS> :close<cr>
 nnoremap <silent> <C-h> :wincmd h<cr>
 nnoremap <silent> <C-j> :wincmd j<cr>
 nnoremap <silent> <C-k> :wincmd k<cr>
