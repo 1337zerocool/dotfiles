@@ -171,24 +171,15 @@ lua << INDENTBLANKLINE
 INDENTBLANKLINE
 
 lua << PRETTYFOLD
-  require('pretty-fold').ft_setup('lua', {
-  sections = {
-    left = {
-      'content',
-    },
-    right = {
-      ' ', 'number_of_folded_lines',
-      function(config) return config.fill_char:rep(3) end
+  require('pretty-fold').setup {
+    custom_function_arg = 'Hello from inside custom function!',
+    sections = {
+      left = {
+        function(config)
+          return config.custom_function_arg
+        end
+      },
     }
-  },
-  fill_char = '-',
-    matchup_patterns = {
-      { '^%s*do$', 'end' }, -- do ... end blocks
-      { '^%s*if', 'end' },  -- if ... end
-      { '^%s*for', 'end' }, -- for
-      { '^%s*def$', 'end' }, -- def ... end blocks
-      {  '{', '}' },
-    },
   }
 PRETTYFOLD
 
