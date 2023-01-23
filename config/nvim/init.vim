@@ -164,6 +164,11 @@ lua << TELESCOPE
   require('telescope').load_extension('fzf')
 TELESCOPE
 
+" Configure the LSP
+lua << LSPSAGA
+  require('lspsaga').setup({})
+LSPSAGA
+
 " Configure the completion system
 lua << NVIMCMP
   local cmp = require'cmp'
