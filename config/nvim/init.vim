@@ -165,6 +165,19 @@ lua << TELESCOPE
   require('telescope').load_extension('fzf')
 TELESCOPE
 
+" Configure treesitter
+lua << TREESITTER
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = "all",
+    auto_install = true,
+    sync_install = false,
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false,
+    }
+  }
+TREESITTER
+
 " Configure the LSP
 lua << LSPCONFIG
   require'lspconfig'.sorbet.setup{}
