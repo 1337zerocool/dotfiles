@@ -12,6 +12,7 @@ call plug#begin()
   Plug 'neovim/nvim-lspconfig'              " The ability to use language servers, needed elsewhere too
   Plug 'hrsh7th/cmp-nvim-lsp'               " Use the LSP for completion
   Plug 'hrsh7th/nvim-cmp'                   " The menu completion system
+  Plug 'glepnir/lspsaga.nvim'               " A nice light-weight interface to the LSP
 
   " Help make languages work better
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}    " Improve syntax highlighting
@@ -164,14 +165,15 @@ lua << TELESCOPE
   require('telescope').load_extension('fzf')
 TELESCOPE
 
+" Configure the completion system
 lua << NVIMCMP
   local cmp = require'cmp'
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- expand = function(args)
+      --  vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
     window = {
@@ -192,34 +194,6 @@ lua << NVIMCMP
       { name = 'buffer' },
     })
   })
-
-  -- Set configuration for specific filetype.
-  cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-    }, {
-      { name = 'buffer' },
-    })
-  })
-
-  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-      { name = 'buffer' }
-    }
-  })
-
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
-    })
-  })
-  
 
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
