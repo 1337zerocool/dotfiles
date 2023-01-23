@@ -10,6 +10,7 @@ call plug#begin()
 
   " Completion via LSP
   Plug 'neovim/nvim-lspconfig'              " The ability to use language servers, needed elsewhere too
+  Plug 'glepnir/lspsaga.nvim'               " A nice set of interfaces for LSP
   Plug 'hrsh7th/cmp-nvim-lsp'               " Use the LSP for completion
   Plug 'hrsh7th/nvim-cmp'                   " The menu completion system
 
