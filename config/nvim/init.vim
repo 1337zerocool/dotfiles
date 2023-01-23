@@ -8,10 +8,11 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim'     " Telescope, a nice file chooser
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } "improves performance by using native FZF
   
-  " Make indentations a bit easier to follow with some guidelines, help make folds prettier too
-  Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'anuvyklack/pretty-fold.nvim'
-  
+  " Help make languages work better
+  Plug "tpope/vim-rails"
+  Plug "vim-ruby/vim-ruby" 
+
+  " consider prettyfold, indentblankline, formatter, dap, lsp, treesitter, testrunner
 call plug#end()
 
 filetype plugin indent on                  " Enable automatic file type detection & indentation
@@ -155,34 +156,6 @@ lua << TELESCOPE
   }
   require('telescope').load_extension('fzf')
 TELESCOPE
-
-lua << INDENTBLANKLINE
-  vim.opt.termguicolors = true
-  vim.opt.termguicolors = true
-  vim.cmd [[highlight IndentBlanklineIndent1 guifg=#373E4D gui=nocombine]]
-  require("indent_blankline").setup {
-    char_highlight_list = {
-      "IndentBlanklineIndent1",
-    },
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = false,
-  }
-INDENTBLANKLINE
-
-lua << PRETTYFOLD
-  require('pretty-fold').setup {
-    custom_function_arg = 'Hello from inside custom function!',
-    sections = {
-      left = {
-        '━━┫ ', 'content', ' ┣',
-      },
-      right = {
-      '┫ ', 'number_of_folded_lines', ' ┣━━',
-      },
-    }
-  }
-PRETTYFOLD
 
 " some key bindings for window and buffer management
 let mapleader="\<Space>"
