@@ -9,8 +9,8 @@ call plug#begin()
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } "improves performance by using native FZF
   
   " Help make languages work better
-  Plug "tpope/vim-rails"
-  Plug "vim-ruby/vim-ruby" 
+  Plug 'tpope/vim-rails'
+  Plug 'vim-ruby/vim-ruby'
 
   " consider prettyfold, indentblankline, formatter, dap, lsp, treesitter, testrunner
 call plug#end()
