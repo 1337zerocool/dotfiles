@@ -166,7 +166,8 @@ TELESCOPE
 
 " Configure the LSP
 lua << LSPSAGA
-  require('lspsaga').setup({})
+  local saga = require 'lspsaga'
+  saga.init_lsp_saga()
 LSPSAGA
 
 " Configure the completion system
