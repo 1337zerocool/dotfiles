@@ -7,13 +7,19 @@ call plug#begin()
   Plug 'nvim-lua/plenary.nvim'             " Shared function library
   Plug 'nvim-telescope/telescope.nvim'     " Telescope, a nice file chooser
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } "improves performance by using native FZF
-  
+
+  " Completion via LSP
+  Plug 'neovim/nvim-lspconfig'              " The ability to use language servers, needed elsewhere too
+  Plug 'hrsh7th/cmp-nvim-lsp'               " Use the LSP for completion
+  Plug 'hrsh7th/nvim-cmp'                   " The menu completion system
+
   " Help make languages work better
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}    " Improve syntax highlighting
   Plug 'vim-ruby/vim-ruby'                                       " Features for Ruby
   Plug 'tpope/vim-rails'                                         " Features for Rails
 
-  " consider prettyfold, indentblankline, formatter, dap, lsp, treesitter, testrunner
+  " consider prettyfold, indentblankline, formatter, dap, lsp, treesitter, testrunner, refactoring, diffview
+  " highlightedyank, bufdelete, autopairs
 call plug#end()
 
 filetype plugin indent on                  " Enable automatic file type detection & indentation
