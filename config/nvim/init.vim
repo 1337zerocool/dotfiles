@@ -166,6 +166,11 @@ lua << TELESCOPE
 TELESCOPE
 
 " Configure the LSP
+lua << LSPCONFIG
+  require'lspconfig'.sorbet.setup{}
+LSPCONFIG
+
+" Configure LSP Saga
 lua << LSPSAGA
   require'lspsaga'.setup({})
 LSPSAGA
