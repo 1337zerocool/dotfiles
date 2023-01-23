@@ -171,16 +171,26 @@ lua << INDENTBLANKLINE
 INDENTBLANKLINE
 
 lua << PRETTYFOLD
-require('pretty-fold').ft_setup('lua', {
-   matchup_patterns = {
+  require('pretty-fold').ft_setup('lua', {
+  sections = {
+    left = {
+      'content',
+    },
+    right = {
+      ' ', 'number_of_folded_lines',
+      function(config) return config.fill_char:rep(3) end
+    }
+  },
+  fill_char = '-',
+    matchup_patterns = {
       { '^%s*do$', 'end' }, -- do ... end blocks
       { '^%s*if', 'end' },  -- if ... end
       { '^%s*for', 'end' }, -- for
       { '^%s*def$', 'end' }, -- def ... end blocks
       {  '{', '}' },
-   },
-}
-end
+    },
+  }
+PRETTYFOLD
 
 " some key bindings for window and buffer management
 let mapleader="\<Space>"
