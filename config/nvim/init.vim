@@ -1,5 +1,3 @@
-call plug#begin()
-  Plug 'arcticicestudio/nord-vim'          " A pretty set of colors
   Plug 'machakann/vim-sandwich'            " Manage 'surrounding' things like tags, brackets, and quotes
   Plug 'tpope/vim-commentary'              " Quickly toggle a line, block, etc. as comments
 
@@ -174,7 +172,7 @@ lua << NVIMCMP
       -- expand = function(args)
       --  vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
       -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      end,
+      -- end,
     },
     window = {
       completion = cmp.config.window.bordered(),
