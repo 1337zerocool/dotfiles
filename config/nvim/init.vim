@@ -21,6 +21,8 @@ call plug#begin()
 
   " consider prettyfold, indentblankline, formatter, dap, lsp, treesitter, testrunner, refactoring, diffview
   " highlightedyank, bufdelete, autopairs
+  Plug 'folke/zen-mode.nvim'               " A replacement for my 'zoom to focus' function
+
 call plug#end()
 
 filetype plugin indent on                  " Enable automatic file type detection & indentation
@@ -168,7 +170,7 @@ TELESCOPE
 " Configure treesitter
 lua << TREESITTER
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = "all",
+    ensure_installed = { "ruby", "javascript", "python", "lua", "c", "rust", "go", "html", "css", "typescript", "sh" },
     auto_install = true,
     sync_install = false,
     highlight = {
@@ -180,7 +182,26 @@ TREESITTER
 
 " Configure the LSP
 lua << LSPCONFIG
-  require'lspconfig'.sorbet.setup{}
+  local lspconfig = require('lspconfig')
+
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  lspconfig.sorbet.setup({
+    capabilities = capabilities,
+  })
+
+  lspconfig.cssls.setup({
+    capabilities = capabilities,
+  })
+
+  lspconfig.html.setup({
+    capabilities = capabilities,
+  })
+
+  lspconfig..graphql.setup({
+    capabilities = capabilities,
+  })
 LSPCONFIG
 
 " Configure LSP Saga

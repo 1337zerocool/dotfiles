@@ -41,3 +41,6 @@ mkdir -p "$HOME/.local/share/nvim/site/autoload"
 # Setup a vim plugin manager, and then auto install all the nvim plugins in init.vim
 sh -c 'curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim --headless +PlugInstall +qall
+
+# Setup language servers for common languages (html, css, javascript)
+npm i -g vscode-langservers-extracted
