@@ -185,7 +185,39 @@ LSPCONFIG
 
 " Configure LSP Saga
 lua << LSPSAGA
-  require'lspsaga'.setup({})
+  require'lspsaga'.setup({
+    symbol_in_winbar = {
+      enable = false,
+    },
+    ui = {
+      theme = 'round',
+      title = false,
+      border = 'solid',
+      winblend = 0,
+      diagnostic = '!',
+      code_action = 'a',
+      incoming = 'i',
+      outgoing = 'o',
+      preview = 'p',
+      colapse = 'c',
+      expand = 'e',
+      colors = {
+        normal_bg = '#000000',
+        title_bg = '#333333',
+        red = '#FF0000',
+        magenta = '#FF00FF',
+        orange = '#FF8700',
+        yellow = '#f7bb3b',
+        green = '#00FF00',
+        cyan = '#36d0e0',
+        blue = '#0000FF',
+        purple = '#CBA6F7',
+        white = '#FFFFFF',
+        black = '#000000',
+      },
+      kind = {},
+    }
+  })
 LSPSAGA
 
 " Configure the completion system
