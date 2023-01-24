@@ -199,7 +199,7 @@ lua << LSPCONFIG
     capabilities = capabilities,
   })
 
-  lspconfig..graphql.setup({
+  lspconfig.graphql.setup({
     capabilities = capabilities,
   })
 LSPCONFIG
