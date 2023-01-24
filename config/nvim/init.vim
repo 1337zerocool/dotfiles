@@ -170,7 +170,7 @@ TELESCOPE
 " Configure treesitter
 lua << TREESITTER
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "ruby", "javascript", "python", "lua", "c", "rust", "go", "html", "css", "typescript", "sh" },
+    ensure_installed = { "ruby", "javascript", "python", "lua", "c", "rust", "go", "html", "css", "typescript", },
     auto_install = true,
     sync_install = false,
     highlight = {
