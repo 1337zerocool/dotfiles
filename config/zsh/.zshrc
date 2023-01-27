@@ -46,7 +46,10 @@ alias vimdiff="nvim -d"
 # $fpath=( $fpath )
 # A path to find local binaries in additional to the usual places. This is so that you can
 # write your own scripts/programs and have them work here.
-# $path=( $path )
+path=(
+		$path
+		$HOME/.nvm/versions/node/v16.19.0/bin
+)
 # Add paths to Auto CD. These let you change into code directories without specifying the
 # full path. `cd bar` instead of `cd ~/src/github.com/foo/bar`
 cdpath=(

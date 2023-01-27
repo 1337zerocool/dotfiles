@@ -152,6 +152,16 @@ function! VisualDown() abort range
   call s:Move("'>+1", l:at_bottom)
 endfunction
 
+" Configure telescope
+let g:sandwich#recipes += [
+\   {
+\     'external': ['it', 'at'],
+\     'noremap' : 1,
+\     'filetype': ['html'],
+\     'input'   : ['t'],
+\   },
+\ ]
+
 " Configure Telescope
 lua << TELESCOPE
   require('telescope').setup {
@@ -170,12 +180,12 @@ TELESCOPE
 " Configure treesitter
 lua << TREESITTER
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "ruby", "javascript", "python", "lua", "c", "rust", "go", "html", "css", "typescript", },
+    ensure_installed = { "ruby", "typescript", "python", "lua", "c", "rust", "go", "html", "css", "typescript", },
     auto_install = true,
     sync_install = false,
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting = false,
+      additional_vim_regex_highlighting = true,
     }
   }
 TREESITTER
@@ -196,6 +206,10 @@ lua << LSPCONFIG
   })
 
   lspconfig.html.setup({
+    capabilities = capabilities,
+  })
+  
+  lspconfig.typescript.setup({
     capabilities = capabilities,
   })
 
