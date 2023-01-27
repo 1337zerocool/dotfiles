@@ -32,6 +32,9 @@ ln -sr "$HOME/.local/share/dircolors/src/dir_colors" "$HOME/.dircolors"
 # Configure git
 ln -s "$HOME/dotfiles/config/git" "$HOME/.config/git"
 
+# Setup language servers for common languages (html, css, javascript)
+npm i -g vscode-langservers-extracted
+
 # Configure Neovim
 ln -s "$HOME/dotfiles/config/nvim" "$HOME/.config/nvim"
 mkdir -p "$HOME/.local/share/nvim/backup"
@@ -41,6 +44,4 @@ mkdir -p "$HOME/.local/share/nvim/site/autoload"
 # Setup a vim plugin manager, and then auto install all the nvim plugins in init.vim
 sh -c 'curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim --headless +PlugInstall +qall
-
-# Setup language servers for common languages (html, css, javascript)
-npm i -g vscode-langservers-extracted
+nvim --headless +TSUpdate +qall

@@ -152,16 +152,6 @@ function! VisualDown() abort range
   call s:Move("'>+1", l:at_bottom)
 endfunction
 
-" Configure telescope
-let g:sandwich#recipes += [
-\   {
-\     'external': ['it', 'at'],
-\     'noremap' : 1,
-\     'filetype': ['html'],
-\     'input'   : ['t'],
-\   },
-\ ]
-
 " Configure Telescope
 lua << TELESCOPE
   require('telescope').setup {
