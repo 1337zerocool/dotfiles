@@ -34,6 +34,7 @@ ln -s "$HOME/dotfiles/config/git" "$HOME/.config/git"
 
 # Setup language servers for common languages (html, css, javascript)
 npm i -g vscode-langservers-extracted
+npm install -g typescript typescript-language-server
 
 # Configure Neovim
 ln -s "$HOME/dotfiles/config/nvim" "$HOME/.config/nvim"

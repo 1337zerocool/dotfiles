@@ -170,7 +170,7 @@ TELESCOPE
 " Configure treesitter
 lua << TREESITTER
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "ruby", "typescript", "python", "lua", "c", "rust", "go", "html", "css", "typescript", },
+    ensure_installed = { "ruby", "typescript", "json", "markdown", python", "lua", "c", "rust", "go", "html", "css", },
     auto_install = true,
     sync_install = false,
     highlight = {
@@ -199,7 +199,7 @@ lua << LSPCONFIG
     capabilities = capabilities,
   })
   
-  lspconfig.typescript.setup({
+  lspconfig.tsserver.setup({
     capabilities = capabilities,
   })
 
