@@ -170,7 +170,7 @@ TELESCOPE
 " Configure treesitter
 lua << TREESITTER
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "ruby", "eslint", "typescript", "json", "markdown", "python", "lua", "c", "rust", "go", "html", "css", },
+    ensure_installed = { "ruby", "typescript", "json", "markdown", "python", "lua", "c", "rust", "go", "html", "css", },
     auto_install = true,
     sync_install = false,
     highlight = {
@@ -187,7 +187,6 @@ lua << LSPCONFIG
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-  # also ruby-lsp, #solargraph
   lspconfig.sorbet.setup({
     capabilities = capabilities,
   })
