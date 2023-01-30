@@ -37,6 +37,7 @@ npm i -g vscode-langservers-extracted
 npm install -g typescript typescript-language-server
 
 # Configure Neovim
+sudo apt-get upgrade neovim
 ln -s "$HOME/dotfiles/config/nvim" "$HOME/.config/nvim"
 mkdir -p "$HOME/.local/share/nvim/backup"
 mkdir -p "$HOME/.local/share/nvim/swap"
