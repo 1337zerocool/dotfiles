@@ -8,11 +8,16 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim'     " Telescope, a nice file chooser
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } "improves performance by using native FZF
 
+  " Some helpful auto complete sources"
+  Plug 'dcampos/nvim-snippy'                " Snippets for every language, like textmate
+  Plug 'mattn/emmet-vim'                    " Clever ways to create HTML by writing CSS selectors
+
   " Completion via LSP
   Plug 'neovim/nvim-lspconfig'              " The ability to use language servers, needed elsewhere too
   Plug 'glepnir/lspsaga.nvim'               " A nice set of interfaces for LSP
   Plug 'hrsh7th/cmp-nvim-lsp'               " Use the LSP for completion
   Plug 'hrsh7th/nvim-cmp'                   " The menu completion system
+  Plug 'dcampos/cmp-snippy'                 " Autocompletion from Snippet sources
 
   " Help make languages work better
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}    " Improve syntax highlighting
@@ -252,6 +257,26 @@ LSPSAGA
 " Configure the completion system
 lua << NVIMCMP
   local cmp = require'cmp'
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        require('snippy').expand_snippet(args.body)
+      end,
+    },
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      -- insert keybindings here
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'snippy' },
+    }, {
+      { name = 'buffer' },
+    })
+  })
 NVIMCMP
 
 " some key bindings for window and buffer management
