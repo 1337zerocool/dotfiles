@@ -264,8 +264,8 @@ lua << NVIMCMP
       end,
     },
     window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
       -- insert keybindings here
@@ -291,7 +291,7 @@ nnoremap <silent> <C-h> :wincmd h<cr>
 nnoremap <silent> <C-j> :wincmd j<cr>
 nnoremap <silent> <C-k> :wincmd k<cr>
 nnoremap <silent> <C-l> :wincmd l<cr>
-nnoremap <silent> ZZ :qall<cr>
+nnoremap <silent> ZZ ZQ
 
 " expand %% do the path of current document when entering a command
 cnoremap %% <C-R>=expand("%:h").'/'<cr>
@@ -310,6 +310,8 @@ nnoremap <silent> <leader>b :Telescope buffers<cr>
 " nnoremap <silent> <leader>m :Telescope treesitter<cr>
 " nnoremap <silent> <leader>M :Telescope lsp_workspace_symbols<cr>
 " nnoremap <silent> gd :Telescope lsp_definitions<cr>
-" nnoremap <silent> <leader>= :lua vim.lsp.buf.formatting_sync()<cr>
-" nnoremap <silent> <leader>r :Telescope lsp_references<cr>
-" nnoremap <silent> <leader>R :lua vim.lsp.buf.references()<cr>
+
+" LSP Saga bindings
+nnoremap <silent> K :Lspsaga hover_doc<cr>
+nnoremap <silent> <leader>p :Lspsaga peek_definition<cr>
+nnoremap <silent> <leader>r :Lspsaga lsp_finder<cr>
