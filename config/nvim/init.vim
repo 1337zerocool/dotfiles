@@ -18,6 +18,7 @@ call plug#begin()
   Plug 'hrsh7th/cmp-nvim-lsp'               " Use the LSP for completion
   Plug 'hrsh7th/nvim-cmp'                   " The menu completion system
   Plug 'dcampos/cmp-snippy'                 " Autocompletion from Snippet sources
+  Plug 'dcampos/cmp-emmet-vim'              " Use Emmet (CCS to HTML) with completion
 
   " Help make languages work better
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}    " Improve syntax highlighting
@@ -269,10 +270,27 @@ lua << NVIMCMP
     },
     mapping = cmp.mapping.preset.insert({
       -- insert keybindings here
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+     ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }), 
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'snippy' },
+      { name = 'emmet_vim' },
     }, {
       { name = 'buffer' },
     })
@@ -313,3 +331,5 @@ nnoremap <silent> <leader>s :Telescope lsp_document_symbols<cr>
 nnoremap <silent> K :Lspsaga hover_doc<cr>
 nnoremap <silent> <leader>p :Lspsaga peek_definition<cr>
 nnoremap <silent> <leader>r :Lspsaga lsp_finder<cr>
+
+" Completion bindings
