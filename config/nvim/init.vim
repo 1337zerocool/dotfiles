@@ -258,6 +258,13 @@ LSPSAGA
 " Configure the completion system
 lua << NVIMCMP
   local cmp = require'cmp'
+  vim.opt.completeopt= "menu,menuone,noselect"
+
+  local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  end
+
   cmp.setup({
     snippet = {
       expand = function(args)
@@ -268,8 +275,7 @@ lua << NVIMCMP
       -- completion = cmp.config.window.bordered(),
       -- documentation = cmp.config.window.bordered(),
     },
-    mapping = cmp.mapping.preset.insert({
-      -- insert keybindings here
+    mapping = {
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -279,14 +285,22 @@ lua << NVIMCMP
           fallback()
         end
       end, { "i", "s" }),
-     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end, { "i", "s" }), 
-    }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+      ['<C-y>'] = cmp.config.disable,
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'snippy' },
