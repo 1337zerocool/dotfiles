@@ -307,9 +307,7 @@ nnoremap <silent> <leader>t :Telescope find_files<cr>
 nnoremap <silent> <leader>f :Telescope live_grep<cr>
 nnoremap <silent> <leader>F :Telescope grep_string<cr>
 nnoremap <silent> <leader>b :Telescope buffers<cr>
-" nnoremap <silent> <leader>m :Telescope treesitter<cr>
-" nnoremap <silent> <leader>M :Telescope lsp_workspace_symbols<cr>
-" nnoremap <silent> gd :Telescope lsp_definitions<cr>
+nnoremap <silent> <leader>s :Telescope lsp_document_symbols<cr>
 
 " LSP Saga bindings
 nnoremap <silent> K :Lspsaga hover_doc<cr>
