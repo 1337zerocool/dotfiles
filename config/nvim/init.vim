@@ -10,7 +10,7 @@ call plug#begin()
 
   " Some helpful auto complete sources"
   Plug 'dcampos/nvim-snippy'                " Snippets for every language, like textmate
-  Plug 'mattn/emmet-vim'                    " Clever ways to create HTML by writing CSS selectors
+  Plug 'mattn/emmet-vim'                    " Clever ways to create HTML by writing CSS selectors, consider emmet-ls
 
   " Completion via LSP
   Plug 'neovim/nvim-lspconfig'              " The ability to use language servers, needed elsewhere too
