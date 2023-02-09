@@ -347,3 +347,6 @@ nnoremap <silent> <leader>p :Lspsaga peek_definition<cr>
 nnoremap <silent> <leader>r :Lspsaga lsp_finder<cr>
 
 " Completion bindings
+" we want automatic menu suggestions from the LSP
+" ctrl+n for next item, ctrl+p for previous
+" tab to accept escape to undo

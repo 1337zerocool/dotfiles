@@ -49,6 +49,7 @@ alias vimdiff="nvim -d"
 path=(
 		$path
 		$HOME/.nvm/versions/node/v16.19.0/bin
+		$HOME/.local/share/gem/ruby/3.1.0/bin
 )
 # Add paths to Auto CD. These let you change into code directories without specifying the
 # full path. `cd bar` instead of `cd ~/src/github.com/foo/bar`

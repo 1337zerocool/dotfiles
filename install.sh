@@ -36,6 +36,11 @@ ln -s "$HOME/dotfiles/config/git" "$HOME/.config/git"
 npm i -g vscode-langservers-extracted
 npm install -g typescript typescript-language-server
 
+# setup ruby lsp
+gem install --user debug
+gem install --user ruby-lsp
+gem install --user ruby-debug-ide
+
 # Configure Neovim
 sudo apt-get upgrade neovim
 ln -s "$HOME/dotfiles/config/nvim" "$HOME/.config/nvim"
