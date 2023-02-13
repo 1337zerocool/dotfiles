@@ -2,6 +2,14 @@ call plug#begin()
   Plug 'arcticicestudio/nord-vim'          " A pretty set of colors
   Plug 'machakann/vim-sandwich'            " Manage 'surrounding' things like tags, brackets, and quotes
   Plug 'tpope/vim-commentary'              " Quickly toggle a line, block, etc. as comments
+  
+  " General stuff to make remote editing nicer
+  Plug 'ojroques/vim-oscyank', {'branch': 'main'} " Copy-paste across SSH sessions
+
+  " File explorer
+  Plug 'nvim-tree/nvim-web-devicons'       " Icons (also required for LSP Saga)
+  Plug 'nvim-tree/nvim-tree.lua'           " A side-bar file explorer like NetRW
+  Plug 'telescope-ui-select.nvim'          " Lets core stuff populate telescope
 
   " These are some dependencies for the file picker
   Plug 'nvim-lua/plenary.nvim'             " Shared function library
@@ -160,8 +168,14 @@ endfunction
 
 " Configure Telescope
 lua << TELESCOPE
-  require('telescope').setup {
+local telescope = require('telescope')
+  telescope.setup {
     extensions = {
+      ['ui-select'] = {
+        require('telescope.themes').get_dropdown {
+        --- Options go here
+        },
+      },
       fzf = {
         fuzzy = true,
         override_generic_sorter = true,
@@ -170,13 +184,14 @@ lua << TELESCOPE
       },
     },
   }
-  require('telescope').load_extension('fzf')
+  telescope.load_extension('fzf')
+  telescope.load_extension('ui-select')
 TELESCOPE
 
 " Configure treesitter
 lua << TREESITTER
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "ruby", "typescript", "json", "markdown", "python", "lua", "c", "rust", "go", "html", "css", },
+    ensure_installed = { "ruby", "typescript", "json", "markdown_inline" "markdown", "python", "lua", "c", "rust", "go", "html", "css", },
     auto_install = true,
     sync_install = false,
     highlight = {
@@ -221,13 +236,14 @@ LSPCONFIG
 " Configure LSP Saga
 lua << LSPSAGA
   require'lspsaga'.setup({
+    dependencies = { {"nvim-tree/nvim-web-devicons"} }
     symbol_in_winbar = {
       enable = false,
     },
     ui = {
       theme = 'round',
       title = false,
-      border = 'solid',
+      border = 'single',
       winblend = 0,
       diagnostic = '!',
       code_action = 'a',
@@ -311,6 +327,17 @@ lua << NVIMCMP
   })
 NVIMCMP
 
+" Side bar tree NetRW replacement
+lua << TREE
+  -- disable netrw at the very start of your init.lua (strongly advised)
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+  -- set termguicolors to enable highlight groups
+  vim.opt.termguicolors = true
+  -- empty setup using defaults
+  require("nvim-tree").setup()
+TREE
+
 " some key bindings for window and buffer management
 let mapleader="\<Space>"
 nnoremap <silent> <leader>\| :vsplit<cr>
@@ -341,10 +368,17 @@ nnoremap <silent> <leader>F :Telescope grep_string<cr>
 nnoremap <silent> <leader>b :Telescope buffers<cr>
 nnoremap <silent> <leader>s :Telescope lsp_document_symbols<cr>
 
+" Toggle Sidebar
+nnoremap <silent> <leader>S :NvimTreeToggle<cr>
+
 " LSP Saga bindings
+nnoremap <silent> gd :Lspsaga goto_definition<cr>
 nnoremap <silent> K :Lspsaga hover_doc<cr>
 nnoremap <silent> <leader>p :Lspsaga peek_definition<cr>
 nnoremap <silent> <leader>r :Lspsaga lsp_finder<cr>
+
+" Copy/Paste bindings
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankReg "' | endif
 
 " Completion bindings
 " we want automatic menu suggestions from the LSP
