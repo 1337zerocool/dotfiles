@@ -7,6 +7,18 @@ AllCops:
   NewCops: disable
   SuggestExtensions: false
 
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+
 Style/Documentation:
   Enabled: false
 
@@ -18,8 +30,5 @@ Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
 
-Layout/FirstArrayElementIndentation:
-  EnforcedStyle: consistent
-
-Layout/LineLength:
-  Max: 120
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
