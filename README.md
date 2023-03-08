@@ -80,4 +80,3 @@ Browser plugins are also expected:
 
   * Bitwarden
   * Ublock Origin
-
