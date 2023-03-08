@@ -1,0 +1,19 @@
+-- Disable standard plugins
+vim.g.loaded_netrw = 1 -- Directory/File explorer
+vim.g.loaded_netrwPlugin = 1 -- Sidebar, etc. `:e .` disable
+vim.g.loaded_netrwSettings = 1 -- Netrw settings
+vim.g.loaded_netrwFileHandlers = 1 -- Netrw handlers for 'x' button
+vim.g.loaded_perl_provider    = 0 -- disable python
+vim.g.loaded_rrhelper = 1 -- Remote wait helper
+vim.g.loaded_spellfile_plugin = 1 -- Downloads missing spellfiles
+vim.g.loaded_tarPlugin = 1 -- Editing data in tar files
+vim.g.loaded_vimballPlugin = 1 -- Editing data in vimball
+vim.g.loaded_zipPlugin = 1 -- Editing data in zipfiles
+vim.g.loaded_gzip = 1 -- Editing data in gzip files
+vim.g.loaded_matchparen = 1 -- Highlights matching parentheses
+vim.g.loaded_matchit = 1  -- Extends matching with %
+vim.g.loaded_2html_plugin = 1 -- Converts syntax highlighted file to HTML
+vim.g.loaded_getscriptPlugin = 1
+vim.g.loaded_logipat = 1 -- A worse version of search with 'boolean logic'
+vim.g.loaded_xmlformat = 1 -- XML formatting, done better by LSP
+vim.g.loaded_shada_autoload = 1 -- Restoring views for C files
