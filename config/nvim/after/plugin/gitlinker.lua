@@ -5,7 +5,8 @@ end
 gitlinker.setup({
   mappings = nil
 })
--- yank to clipboard
--- lua require('gitlinker').get_buf_range_url()
--- lua require('gitlinker').get_buf_range_url()
--- lua package.loaded.gitlinker.get_buf_range_url()
+
+vim.api.nvim_set_keymap('n', '<leader>gl', '<cmd>lua require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").copy_to_clipboard})<cr>', { silent = true })
+vim.api.nvim_set_keymap('v', '<leader>gl', '<cmd>lua require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").copy_to_clipboard})<cr>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gL', '<cmd>lua require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").open_in_browser})<cr>', { silent = true })
+vim.api.nvim_set_keymap('v', '<leader>gL', '<cmd>lua require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").open_in_browser})<cr>', { silent = true })
