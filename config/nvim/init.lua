@@ -1,4 +1,5 @@
 require('settings')
 require('disable')
 require('plugins')
+require('filetypes')
 require('keymaps')
