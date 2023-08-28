@@ -5,7 +5,7 @@
 local opts = { silent = true }
 vim.g.mapleader = ' '
 
--- XX quit wihout saving, ZZ save current buffer and close window
+-- XX quit without saving, ZZ save current buffer and close window
 vim.keymap.set('n', 'XX', '<cmd>qall!<cr>', opts)
 vim.keymap.set('n', 'ZZ', '<cmd>x<cr>', opts)
 

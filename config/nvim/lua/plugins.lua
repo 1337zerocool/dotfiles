@@ -53,7 +53,7 @@ if ok then
     use('jay-babu/mason-null-ls.nvim')                 -- Connects Mason to Null-LS
     use('folke/trouble.nvim')                          -- Navigates diagnostic messages from the language server
     use('glepnir/lspsaga.nvim')                        -- UI for langauge server features like goto and peek definition, hoverdoc, etc.
-    use('j-hui/fidget.nvim')                           -- Updates on LSP status in the lower right corner of windows
+    -- use('j-hui/fidget.nvim')                           -- Updates on LSP status in the lower right corner of windows
 
     -- Autocompletion
     use('hrsh7th/nvim-cmp')                            -- Completion engine
