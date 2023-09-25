@@ -50,5 +50,5 @@ mkdir -p "$HOME/.local/share/nvim/undo"
 mkdir -p "$HOME/.local/share/nvim/site/autoload"
 # Setup a vim plugin manager, and then auto install all the nvim plugins in init.vim
 sh -c 'curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-nvim --headless +PlugInstall +qall
+nvim --headless +PackerInstall +qall
 nvim --headless +TSUpdate +qall
