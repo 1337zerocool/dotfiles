@@ -4,10 +4,9 @@ if not ok then
 end
 lsp.preset('recommended')
 
-lsp.nvim_workspace({
-  library = vim.api.nvim_get_runtime_file('', true)
-})
-
+-- lsp.nvim_workspace({
+--   library = vim.api.nvim_get_runtime_file('', true)
+-- })
 
 lsp.on_attach(function(_, bufnr)
   local opts = { buffer = bufnr, remap = false, silent = true }
