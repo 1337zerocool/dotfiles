@@ -49,8 +49,8 @@ if ok then
     use('neovim/nvim-lspconfig')                       -- Common configurations for LSPs
     use('williamboman/mason.nvim')                     -- Manager for installing Language Servers and Debuggers
     use('williamboman/mason-lspconfig.nvim')           -- Connects Mason to LSP-config
-    use('jose-elias-alvarez/null-ls.nvim')             -- Framework for connecting non-LSP sources to hook into the LSP
-    use('jay-babu/mason-null-ls.nvim')                 -- Connects Mason to Null-LS
+    -- use('jose-elias-alvarez/null-ls.nvim')             -- Framework for connecting non-LSP sources to hook into the LSP
+    -- use('jay-babu/mason-null-ls.nvim')                 -- Connects Mason to Null-LS
     use('folke/trouble.nvim')                          -- Navigates diagnostic messages from the language server
     use('glepnir/lspsaga.nvim')                        -- UI for langauge server features like goto and peek definition, hoverdoc, etc.
     -- use('j-hui/fidget.nvim')                           -- Updates on LSP status in the lower right corner of windows
