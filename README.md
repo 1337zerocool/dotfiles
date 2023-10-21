@@ -79,3 +79,12 @@ Browser plugins are also expected:
 
   * Bitwarden
   * Ublock Origin
+
+Install some nice fonts:
+
+  * Cartograph
+  * Firacode
+  * Operator
+  * Source Code Pro
+
+Swap out the mac user icon
