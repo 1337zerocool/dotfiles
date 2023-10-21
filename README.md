@@ -51,30 +51,29 @@ available globally.
 
 Not all software is installed by homebrew. Those additional packages include:
 
-  * Affinity Suite 2 (Designer Photo, and Publisher)
+  * Affinity Designer 2
+  * Affinity Photo 2
+  * Affinity Publisher 2
   * Alfred 5
   * Bitwarden
-  * Black Magic ATEM Control
-  * Brave Browser
-  * DiffusionBee
-  * Goodnotes
+  * Blackmagic ATEM
+  * Kitty Terminal
   * Little Snitch
-  * Magic Lasso
   * Microsoft Excel
-  * Microsoft Word
-  * OmniGraffle
-  * Paw
+  * Microsoft PowerPoint
+  * Microsot Word
+  * Omnigraffle
   * qFlipper
-  * Querious
+  * RapidAPI
   * Screenflick
   * Slack
   * Spotify
   * The Unarchiver
   * UTM
+  * Visual Studio Code
   * VLC
   * Wipr
   * Xcode
-  * Visual Studio Code
 
 Browser plugins are also expected:
 
