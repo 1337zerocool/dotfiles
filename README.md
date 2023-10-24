@@ -1,25 +1,42 @@
 # Dotfiles
 
-These are Dotfiles intended for use on a Macbook running macOS 12 or later.
+These are Dotfiles intended for use on a Macbook running macOS 14 or later.
 
 ## Prequisits
 
-  * [Homebrew](https://brew.sh/) package manager
-
-  ```sh
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  ```
-  
   * [Kitty](https://github.com/kovidgoyal/kitty) terminal emulator
   * [Github](https://github.com/cutehax0r) account
-  * [Nerd Fonts](https://www.nerdfonts.com/) patched version of Source Code Pro font
 
-## Setup SSH
+# Setup SSH
 
 Setup SSH to access remote systems by placing SSH keys into an appropriate directory
 and then adding them to keychain access.
 
-### Generating new keys
+1. Create a director to store ssh keys `mkdir -p ~/.ssh/`
+2. Set permissions for the ssh folder to owner read/write/list with `chmod 0700 ~/.ssh`
+
+## Setting up existing keys
+
+Starting with the assumption that the name of the key is `SSH Keys: Foo` in Keychain or
+Bitwarden you should copy the contents of the keys to disk.
+
+Copy the ssh keys from either:
+  1. Keychain: Use the iCloud Keychain and look under "Secure Notes" for "SSH Keys"
+  2. Bitwarden: Look under "Secure Notes" for "SSH Keys"
+
+Copy the private key from Bitwarden or Keychain into `~/.ssh/id_foo`. Change the private
+key permissions to owner read/write only with `chmod 0600 ~/.ssh/id_foo`.
+
+Copy the public key from Bitwarden or Keychain into `~/.ssh/id_foo.pub`. Change the public
+key permissions to owner read/write and group/world to read only with
+`chmod 0644 ~/.ssh/id_foo.pub`.
+
+Then for each key that has been copied to the ssh folder add it to ssh-agent with
+`ssh-add --apple-use-keychain ~/.ssh/id_foo`. You will need the password for the key
+from Keychain or Bitwarden only once. After that it will be stored in Keychain and
+unlocked at login.
+
+## Generating new keys
 
 To cycle keys
 
@@ -39,39 +56,30 @@ To cycle keys
    ssh-add --apple-use-keychain ~/.ssh/id_foo
    ```
 
+# Homebrew
+
+Setup [Homebrew](https://brew.sh/) and use it to install software. The installation process is
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Temporarily enable Homebrew to install some additional packages start by sourcing the shell script
+`eval "$(/opt/homebrew/bin/brew shellenv)"`. This will only last through the current terminal
+session. The ZSH configuration will automatically do this once it's setup.
+
 ## Homebrew packages
 
-A number of Homebrew packages are expected to be installed. These add to or
-update the default macOS command line interface.
+A number of Homebrew packages are expected to be installed. These add to or update the default
+macOS command line interface. The quickest way to install these is with a single command:
 
-Those packages include
-
-  * Chruby
-  * Coreutils
-  * Deno
-  * Fzf
-  * Gawk
-  * Gh
-  * Git
-  * Grep
-  * Gsed
-  * Go
-  * Jq
-  * Neovim
-  * Node
-  * OpenSSH
-  * OpenSSL
-  * Pup
-  * Python3
-  * Ripgrep
-  * Ruby-install
-  * Rustup
-  * Sqlite
-  * Treesitter
-  * Wget
-  * zsh
-  * zsh-autosuggestions
-  * zsh-fast-syntax-highlighting
+```sh
+brew install coreutils fzf gawk gh git grep gsed jq neovim openssh openssl pup ripgrep sqlite tree-sitter wget zsh zsh-autosuggestions zsh-fast-syntax-highlighting
+```
+Then add some programming language specific packages:
+  * Ruby: `brew install chruby ruby-install`
+  * Python: `brew install python3`
+  * Node: `brew install node deno`
 
 Once those packages are installed some additional work may be required. For
 example, Neovim expects Packer to be available. Ruby should have gems like Pry
