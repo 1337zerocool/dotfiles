@@ -77,13 +77,51 @@ macOS command line interface. The quickest way to install these is with a single
 brew install coreutils fzf gawk gh git grep gsed jq neovim openssh openssl pup ripgrep sqlite tree-sitter wget zsh zsh-autosuggestions zsh-fast-syntax-highlighting
 ```
 Then add some programming language specific packages:
-  * Ruby: `brew install chruby ruby-install`
-  * Python: `brew install python3`
-  * Node: `brew install node deno`
 
-Once those packages are installed some additional work may be required. For
-example, Neovim expects Packer to be available. Ruby should have gems like Pry
-available globally.
+# Setup Ruby
+* Setup ruby version manager `brew install churby ruby-install`
+* Source Chruby to continue with the next steps `source /opt/homebrew/opt/chruby/share/chruby/chruby.sh`
+* install a current ruby version: `ruby-install 3.2`
+* set a default ruby version: `echo "3.2" > ~/.rubyversion`
+* switch ruby for the current session: `chruby 3.2`
+* Setup common gems `gem install rake pry sorbet minitest rspec rubocop rails mocha factorybot neovim solargraph tapioca byebug`
+
+# Setup Python
+* Python: `brew install python3`
+
+# Setup Javascript
+* Node: `brew install node deno nvm typescript`
+* Setup NVM working directory `mkdir ~/.nvm`
+* export NVM environment variable `export NVM_DIR="$HOME/.nvm"`
+* Source NVM: `source /opt/homebrew/opt/nvm/nvm.sh`
+
+Add the following to your shell profile e.g. ~/.profile or ~/.zshrc:
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+You can set $NVM_DIR to any location, but leaving it unchanged from
+/opt/homebrew/Cellar/nvm/0.39.5 will destroy any nvm-installed Node installations
+upon upgrade/reinstall.
+
+# Setup Rust
+* Rust: `brew install rustup`
+
+# Setup Go
+* Go: `brew install go`
+
+# Setup Arduino
+* Arduino: `brew install arduino-cli`
+
+# Setup 6502
+* Install a 6502 compiler: `brew install cc65`
+* Install a EPROM Programmer `brew install minipro`
+
+# Setup Git
+
+# Setup Zsh
+
+# Setup Neovim
 
 ## MacOS Software
 
