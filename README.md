@@ -81,9 +81,8 @@ Then add some programming language specific packages:
 # Setup Ruby
 * Setup ruby version manager `brew install churby ruby-install`
 * Source Chruby to continue with the next steps `source /opt/homebrew/opt/chruby/share/chruby/chruby.sh`
-* install a current ruby version: `ruby-install 3.2`
-* set a default ruby version: `echo "3.2" > ~/.rubyversion`
-* switch ruby for the current session: `chruby 3.2`
+* install a current ruby version: `ruby-install 3.2.2`
+* switch ruby for the current session: `chruby 3.2.2`
 * Setup common gems `gem install rake pry sorbet minitest rspec rubocop rails mocha factorybot neovim solargraph tapioca byebug`
 
 # Setup Python
@@ -95,17 +94,9 @@ Then add some programming language specific packages:
 * export NVM environment variable `export NVM_DIR="$HOME/.nvm"`
 * Source NVM: `source /opt/homebrew/opt/nvm/nvm.sh`
 
-Add the following to your shell profile e.g. ~/.profile or ~/.zshrc:
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-You can set $NVM_DIR to any location, but leaving it unchanged from
-/opt/homebrew/Cellar/nvm/0.39.5 will destroy any nvm-installed Node installations
-upon upgrade/reinstall.
-
 # Setup Rust
-* Rust: `brew install rustup`
+* setup rustup: `brew install rustup`
+* install rust `rustup-init -y -q`
 
 # Setup Go
 * Go: `brew install go`
@@ -117,11 +108,46 @@ upon upgrade/reinstall.
 * Install a 6502 compiler: `brew install cc65`
 * Install a EPROM Programmer `brew install minipro`
 
-# Setup Git
+# Setup global config
+* Ensure the config directory exists `mkdir -p "$HOME/.config"`
+* Ensure the local directory exists `mkdir -p "$HOME/.local/share"`
+* Symlink items from config
+* Link the config directory
 
-# Setup Zsh
+# Kitty
+* remove the old kitty directory `rm -rf "$HOME/.config/kitty"`
+* symlink in the dotfiles version `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/kitty" "$HOME/.config/kitty"`
 
-# Setup Neovim
+## Git
+* remove default git config `rm "$HOME/.gitconfig"`
+* remove the old neovim directory `rm -rf "$HOME/.config/git"`
+* symlink in the dotfiles version `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/git" "$HOME/.config/git"`
+
+## Github
+## Rubocop
+* symlink dircolors config dir `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/rubocop" "$HOME/.config/rubocop"`
+
+## Dircolors
+* symlink dircolors config dir `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/dircolors" "$HOME/.config/dircolors"`
+
+## Zsh
+* remove default zsh history `rm "$HOME/.zsh_history"`
+* remove default zsh session info `rm -rf "$HOME/.zsh_sessions"`
+* remove default zsh autocomplete cache `rm "$HOME/.zcompdump"`
+* create zsh local director `mkdir -p "$HOME/.local/share/zsh"`
+* symlink zsh config dir `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/zsh" "$HOME/.config/zsh"`
+
+## Neovim
+* setup the default local directory `mkdir -p $HOME/.local/nvim`
+* setup the path for backup files `mkdir -p $HOME/.local/nvim/backup`
+* setup the path for swap files `mkdir -p $HOME/.local/nvim/swap`
+* setup the undo history `mkdir -p $HOME/.local/nvim/undo`
+* remove the old neovim directory `rm -rf "$HOME/.config/nvim"`
+* symlink in the dotfiles version `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/nvim" "$HOME/.config/nvim"`
+
+# Setup MacOS
+## Install keyboard launch agent
+## Set global performance things
 
 ## MacOS Software
 

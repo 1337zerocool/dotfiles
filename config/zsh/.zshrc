@@ -169,16 +169,19 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd                           
 zstyle ':completion:*' list-dirs-first true                                                   # Separate directories from files.
 zstyle ':completion:*:(rm|mv|cp):*' ignore-line yes    # Don't use words on the line as possible completions
 
+# Setup home brew
+test -r "/opt/homebrew/bin/brew" && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Now we'll use Nord colors for dircolors
 test -r "$HOME/.config/dircolors/nord.dircolors" && eval $(gdircolors "$HOME/.config/dircolors/nord.dircolors")
 
 # And Chruby
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby 3.2.1
-
-# Setup home brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+test -r "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh" && source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
+test -r "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh" && source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
+chruby $(chruby |head -n1|cut -d'-' -f2)
 
 # Add Rust
-source "$HOME/.cargo/env"
+test -r "$HOME/.cargo/env" && source "$HOME/.cargo/env"
+
+# Add NVM
+test -r "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" && source "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
