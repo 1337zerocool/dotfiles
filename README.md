@@ -81,8 +81,8 @@ Then add some programming language specific packages:
 # Setup Ruby
 * Setup ruby version manager `brew install churby ruby-install`
 * Source Chruby to continue with the next steps `source /opt/homebrew/opt/chruby/share/chruby/chruby.sh`
-* install a current ruby version: `ruby-install 3.2.2`
-* switch ruby for the current session: `chruby 3.2.2`
+* install a current ruby version: `ruby-install 3.3.0`
+* switch ruby for the current session: `chruby 3.3.0`
 * Setup common gems `gem install rake pry sorbet minitest rspec rubocop rails mocha factorybot neovim solargraph tapioca byebug`
 
 # Setup Python
