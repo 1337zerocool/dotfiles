@@ -178,7 +178,7 @@ test -r "$HOME/.config/dircolors/nord.dircolors" && eval $(gdircolors "$HOME/.co
 # And Chruby
 test -r "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh" && source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
 test -r "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh" && source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
-chruby $(chruby |head -n1|cut -d'-' -f2)
+chruby $(chruby | tail -n1 | cut -d'-' -f2)
 
 # Add Rust
 test -r "$HOME/.cargo/env" && source "$HOME/.cargo/env"
