@@ -18,8 +18,6 @@ treesitter.setup({
     'graphql',
     'html',
     'javascript',
-    'javascript',
-    'json',
     'json',
     'lua',
     'markdown',

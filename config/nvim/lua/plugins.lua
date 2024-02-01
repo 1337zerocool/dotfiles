@@ -1,102 +1,98 @@
-local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-local is_setup = false
+-- Define plugins managed by lazy
+local plugins = {
+  -- Shared Utilities
+  'nvim-lua/plenary.nvim',                       -- Utility library used by several plugins
+  'MunifTanjim/nui.nvim',                        -- A UI component library used by several plugins
+  'nvim-tree/nvim-web-devicons',                 -- Icon library used by several plugins to show icons by files/types
+  '3rd/image.nvim',                              -- Images in preview window
 
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  is_setup = true
-  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-  vim.cmd [[packadd packer.nvim]]
+  -- User interface improvements
+  'nvim-telescope/telescope.nvim',               -- Fuzzy finder UI for several features
+  'nvim-telescope/telescope-ui-select.nvim',     -- Use Telescope as selection UI for standard vim features
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',  -- Improved fuzzy finder performance with FZF
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  },
+  'debugloop/telescope-undo.nvim',               -- Use Telescope to search the undo history for current file
+  'nvim-neo-tree/neo-tree.nvim',                 -- A 'tree' file explorer for the sidebar
+  'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
+  'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
+  'lukas-reineke/indent-blankline.nvim',         -- Visual guidelines for level of indentation
+  'nvim-lualine/lualine.nvim',                   -- Status line at bottom of windows
+
+  'folke/zen-mode.nvim',                         -- Zooms and focuses a single window
+  'folke/twilight.nvim',                         -- Dims text outside of some small context around the current scope
+
+  'machakann/vim-sandwich',                      -- Wrap text objects in brackets, quotes, tags, etc.
+  'terrortylor/nvim-comment',                    -- Comment and un-comment lines blocks lines of code
+  'windwp/nvim-autopairs',                       -- Automatically insert matching pairs of quotes and brackets
+
+  'lewis6991/gitsigns.nvim',                     -- Show git additions, changes, and deletions in the signcolumn and inline
+  'ruifm/gitlinker.nvim',                        -- Create links to text in buffers hosted on Github and other locations
+  'sindrets/diffview.nvim',                      -- A better way to navigate git changes
+  'pwntester/octo.nvim',                         -- Interact with Github
+
+  {
+    'nvim-treesitter/nvim-treesitter',           -- Builds ASTs from current document to power other plugins
+     build = ':TSUpdate' ,
+  },
+  'nvim-treesitter/nvim-treesitter-textobjects', -- Use treesitter to create new text objects
+  'RRethy/nvim-treesitter-endwise',              -- Automatically create `end` blocks in Lua, Ruby, Bash, and Elixir 
+
+  -- 'stevearc/overseer.nvim',                      -- Expose task files like Make, VSCode, Rake. On file save and one-off
+
+  -- 'neovim/nvim-lspconfig',                       -- Common configurations for LSPs
+  -- 'VonHeikemen/lsp-zero.nvim',                   -- Simple configuration for LSP and CMP
+
+  -- 'williamboman/mason.nvim',                     -- Manager for installing Language Servers and Debuggers
+  -- 'williamboman/mason-lspconfig.nvim',           -- Connects Mason to LSP-config
+
+  -- 'hrsh7th/nvim-cmp',                            -- Completion engine
+  -- 'onsails/lspkind.nvim',                        -- Icons instead of text in the completion suggestion window
+  -- 'hrsh7th/cmp-buffer',                          -- Suggestions from open buffers
+  -- 'hrsh7th/cmp-path',                            -- Suggestions from the file system
+  -- 'hrsh7th/cmp-nvim-lsp',                        -- Suggestions from the LSP
+  -- 'hrsh7th/cmp-nvim-lua')                        -- Suggestions form the Neovm lua interface (e.g. `vim.api.nvim_cmd`,
+  -- 'saadparwaiz1/cmp_luasnip',                    -- Suggestions from Luasnip
+
+  -- 'folke/trouble.nvim',                          -- Navigates diagnostic messages from the language server
+-- 'glepnir/lspsaga.nvim',                        -- UI for langauge server features like goto and peek definition, hoverdoc, etc.
+-- 'j-hui/fidget.nvim',                           -- Updates on LSP status in the lower right corner of windows
+-- 'jose-elias-alvarez/null-ls.nvim',             -- Framework for connecting non-LSP sources to hook into the LSP
+-- 'jay-babu/mason-null-ls.nvim',                 -- Connects Mason to Null-LS
+-- 'L3MON4D3/LuaSnip',                            -- Automatic snippets defined in Lua
+-- 'mfussenegger/nvim-dap',                       -- Common configurations for DAP
+-- 'rcarriga/nvim-dap-ui',                        -- A Debugger interface wrapped around DAP
+-- 'theHamsta/nvim-dap-virtual-text')             -- Show status (like variable values, from the debugger as virtual text
+-- 'nvim-neotest/neotest',
+-- 'antoinemadec/FixCursorHold.nvim',
+-- 'semanticart/ruby-code-actions.nvim',          -- Adds LSP code actions from Rubocop autosuggestions/diagnostics
+-- 'maxbane/vim-asm_ca65',                        -- Adds File type support for the ca65 6502 assembler
+-- 'github/copilot.vim',
+}
+
+-- Configure some standard global options for lazy
+local opts = {}
+
+-- Start by installing the Lazy package manager
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Ensure that it actually loaded and if not print a helpful error
+local ok, lazy = pcall(require, 'lazy')
+if not ok then
+  print 'Failed to load "Lazy" plugin manager'
 end
 
-local ok, packer = pcall(require, 'packer')
-if ok then
-  packer.startup(function(use)
-    -- Shared Utilities
-    use('wbthomason/packer.nvim')                      -- Packer manages plugins. By adding this here it can manage itself from within vim
-    use('nvim-lua/plenary.nvim')                       -- Utility library used by several plugins
-    use('MunifTanjim/nui.nvim')                        -- A UI component library used by several plugins
-    use('nvim-tree/nvim-web-devicons')                 -- Icon library used by several plugins to show icons by files/types
+lazy.setup(plugins, opts)
 
-    -- User interface improvements
-    use('nvim-neo-tree/neo-tree.nvim')                 -- A 'tree' file explorer for the sidebar
-    use('anuvyklack/pretty-fold.nvim')                 -- Customize the display of folded text
-    use('lukas-reineke/indent-blankline.nvim')         -- Visual guidelines for level of indentation
-
-    use('nvim-telescope/telescope.nvim')               -- Fuzzy finder UI for several features
-    use('debugloop/telescope-undo.nvim')               -- Use Telescope to search the undo history for current file
-    use('nvim-telescope/telescope-ui-select.nvim')     -- Use Telescope as selection UI for standard vim features
-    use({'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }) -- Plugin for telescope to use FZF. Better performance, more features
-
-    use('mbbill/undotree')                             -- Sidebar to explore vim's branching history
-
-    use('folke/zen-mode.nvim')                         -- Zooms and focuses a single window
-    use('folke/twilight.nvim')                         -- Dims text outside of some small context around the current scope
-
-    use('nvim-lualine/lualine.nvim')                   -- Status line at bottom of windows
-
-    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}) -- Builds ASTs from current document to power other plugins
-    use('nvim-treesitter/nvim-treesitter-textobjects') -- Use treesitter to create new text objects
-    use('RRethy/nvim-treesitter-endwise')              -- Automatically create `end` blocks in Lua, Ruby, Bash, and Elixir 
-
-    use('machakann/vim-sandwich')                      -- Wrap text objects in brackets, quotes, tags, etc.
-    use('terrortylor/nvim-comment')                    -- Comment and un-comment lines blocks lines of code
-    use('windwp/nvim-autopairs')                       -- Automatically insert matching pairs of quotes and brackets
-
-    -- Build Tasks
-    use('stevearc/overseer.nvim')                      -- Expose takes' files like Make, VSCode, Rake. On file save and one-off
-
-    -- Language Servers
-    use('VonHeikemen/lsp-zero.nvim')                   -- Simple configuration for LSP and CMP
-    use('neovim/nvim-lspconfig')                       -- Common configurations for LSPs
-    use('williamboman/mason.nvim')                     -- Manager for installing Language Servers and Debuggers
-    use('williamboman/mason-lspconfig.nvim')           -- Connects Mason to LSP-config
-    -- use('jose-elias-alvarez/null-ls.nvim')             -- Framework for connecting non-LSP sources to hook into the LSP
-    -- use('jay-babu/mason-null-ls.nvim')                 -- Connects Mason to Null-LS
-    use('folke/trouble.nvim')                          -- Navigates diagnostic messages from the language server
-    use('glepnir/lspsaga.nvim')                        -- UI for langauge server features like goto and peek definition, hoverdoc, etc.
-    -- use('j-hui/fidget.nvim')                           -- Updates on LSP status in the lower right corner of windows
-
-    -- Autocompletion
-    use('hrsh7th/nvim-cmp')                            -- Completion engine
-    use('hrsh7th/cmp-buffer')                          -- Suggestions from open buffers
-    use('hrsh7th/cmp-path')                            -- Suggestions from the file system
-    use('saadparwaiz1/cmp_luasnip')                    -- Suggestions from Luasnip
-    use('hrsh7th/cmp-nvim-lsp')                        -- Suggestions from the LSP
-    use('hrsh7th/cmp-nvim-lua')                        -- Suggestions form the Neovm lua interface (e.g. `vim.api.nvim_cmd`)
-    use('onsails/lspkind.nvim')                        -- Icons instead of text in the completion suggestion window
-
-    -- Snippets
-    use('L3MON4D3/LuaSnip')                            -- Automatic snippets defined in Lua
-
-    -- debug stuff
-    use('mfussenegger/nvim-dap')                       -- Common configurations for DAP
-    use('rcarriga/nvim-dap-ui')                        -- A Debugger interface wrapped around DAP
-    use('theHamsta/nvim-dap-virtual-text')             -- Show status (like variable values) from the debugger as virtual text
-    -- test stuff
-    -- use('nvim-neotest/neotest')
-    -- use('antoinemadec/FixCursorHold.nvim')
-
-    -- git stuff
-    use('lewis6991/gitsigns.nvim')                     -- Show git additions, changes, and deletions in the signcolumn and inline
-    use('ruifm/gitlinker.nvim')                        -- Create links to text in buffers hosted on Github and other locations
-    use('sindrets/diffview.nvim')                      -- A better way to navigate git changes
-    use('pwntester/octo.nvim')                         -- Interact with Github
-
-    use('andersevenrud/nordic.nvim')                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
-
-    -- ruby stuff
-    use('semanticart/ruby-code-actions.nvim')          -- Adds LSP code actions from Rubocop autosuggestions/diagnostics
-
-    -- 6502 assembly stuff
-    use('maxbane/vim-asm_ca65')                        -- Adds File type support for the ca65 6502 assembler
-  end)
-
-  if is_setup then
-    packer.sync()
-  end
-end
-
-if is_setup then
-  print 'Plugins are being installed'
-  print 'restart neovim once packer completes'
-  return
-end

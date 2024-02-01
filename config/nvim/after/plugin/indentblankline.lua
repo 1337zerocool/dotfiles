@@ -3,7 +3,15 @@ if not ok then
   return
 end
 
-indent.setup({ })
+local ok, ibl = pcall(require, 'ibl')
+if not ok then
+  return
+end
+
+
+ibl.setup({
+  scope = { enabled = false },
+})
 
 -- maybe this belongs in the nordic config. There is no harm in setting
 -- colours for HL groups that don't exist
