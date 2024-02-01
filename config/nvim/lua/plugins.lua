@@ -28,7 +28,6 @@ local plugins = {
   'lewis6991/gitsigns.nvim',                     -- Show git additions, changes, and deletions in the signcolumn and inline
   'ruifm/gitlinker.nvim',                        -- Create links to text in buffers hosted on Github and other locations
   'sindrets/diffview.nvim',                      -- A better way to navigate git changes
-  'pwntester/octo.nvim',                         -- Interact with Github
 
   {
     'nvim-treesitter/nvim-treesitter',           -- Builds ASTs from current document to power other plugins
