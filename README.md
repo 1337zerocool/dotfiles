@@ -32,8 +32,8 @@ key permissions to owner read/write and group/world to read only with
 `chmod 0644 ~/.ssh/id_foo.pub`.
 
 Then for each key that has been copied to the ssh folder add it to ssh-agent with
-`ssh-add --apple-use-keychain ~/.ssh/id_foo`. You will need the password for the key
-from Keychain or Bitwarden only once. After that it will be stored in Keychain and
+`/usr/bin/ssh-add --apple-use-keychain ~/.ssh/id_foo`. You will need the password for the
+key from Keychain or Bitwarden only once. After that it will be stored in Keychain and
 unlocked at login.
 
 ## Generating new keys
@@ -53,7 +53,7 @@ To cycle keys
 8. Add the updated keys to Bitwarden and MacOS Keychain
 9. Add the keys to SSH agent
    ```sh
-   ssh-add --apple-use-keychain ~/.ssh/id_foo
+   /usr/bin/ssh-add --apple-use-keychain ~/.ssh/id_foo
    ```
 
 # Homebrew
