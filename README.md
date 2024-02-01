@@ -74,7 +74,7 @@ A number of Homebrew packages are expected to be installed. These add to or upda
 macOS command line interface. The quickest way to install these is with a single command:
 
 ```sh
-brew install coreutils fzf gawk gh git grep gsed jq neovim openssh openssl pup ripgrep sqlite tree-sitter wget zsh zsh-autosuggestions zsh-fast-syntax-highlighting
+brew install cmake coreutils fzf gawk gh git grep gsed jq neovim openssh openssl pup ripgrep sqlite tree-sitter wget zsh zsh-autosuggestions zsh-fast-syntax-highlighting
 ```
 Then add some programming language specific packages:
 
