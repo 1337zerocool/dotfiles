@@ -8,7 +8,7 @@ local plugins = {
     'nvim-telescope/telescope-fzf-native.nvim',  -- Improved fuzzy finder performance with FZF
     build = 'make'
   },
-
+  
   'nvim-telescope/telescope-ui-select.nvim',     -- Use Telescope as selection UI for standard vim features
   'nvim-telescope/telescope.nvim',               -- Fuzzy finder UI for several features
   'debugloop/telescope-undo.nvim',               -- Use Telescope to search the undo history for current file
@@ -35,6 +35,34 @@ local plugins = {
   },
   'nvim-treesitter/nvim-treesitter-textobjects', -- Use treesitter to create new text objects
   'RRethy/nvim-treesitter-endwise',              -- Automatically create `end` blocks in Lua, Ruby, Bash, and Elixir 
+
+  -- autocomplete / lsp stuff
+  'onsails/lspkind.nvim',
+-- lspzero is also maybe a consideration
+  -- and finally lspsaga
+  -- and neo-tree-diagnostics.nvim
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      { 'williamboman/mason.nvim', config = true },
+      'williamboman/mason-lspconfig.nvim',
+      { 'j-hui/fidget.nvim', opts = {} },
+      'folke/neodev.nvim',
+    },
+  },
+
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      { 'L3MON4D3/LuaSnip', build = (function() return 'make install_jsregexp' end)(), },
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+
+    },
+  }
+
+
 }
 local opts = {}
 

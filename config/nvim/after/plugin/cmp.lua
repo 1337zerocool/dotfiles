@@ -8,25 +8,30 @@ if not ok_lspkind then
   return
 end
 
-local ok_lsp, lsp = pcall(require, 'lsp-zero')
-if not ok_lsp then
+local ok_luasnip, luasnip = pcall(require, 'luasnip')
+if not ok_luasnip then
   return
 end
 
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local ok_cmplsp, cmplsp = pcall(require, 'cmp_nvim_lsp')
+if not ok_cmplsp then
+  return
+end
 
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ['<C-Space>'] = cmp.mapping.complete(),
-  ['<C-e>'] = cmp.mapping.abort(),
-})
+local ok_lspconfig, lspconfig = pcall(require, 'lspconfig')
+if not ok_lspconfig then
+  return
+end
 
-
-local cmp_config = lsp.defaults.cmp_config({
-  mapping = cmp_mappings,
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end
+  },
   formatting = {
+    expandable_indicator = true,
+    fields = { 'abbr', 'kind', 'menu' },
     format = lspkind.cmp_format({
       mode = 'symbol',
       maxwidth = 50,
@@ -45,10 +50,26 @@ local cmp_config = lsp.defaults.cmp_config({
       winhighlight = 'Normal:Normal,FloatBorder:CmpMenuBorder,CursorLine:Pmenusel,Search:None',
     }),
   },
-  sources = {
-    { name = 'nvim_lua' },
+    mapping = cmp.mapping.preset.insert({
+      -- tab for next /shift-tab to complete?
+      ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+      ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-  }
+    { name = 'lausnip' },
+  }, {
+    { name = 'buffer' },
+  })
 })
 
-cmp.setup(cmp_config)
+-- should probalby pretty load these - see mason config
+local capabilities = cmplsp.default_capabilities()
+lspconfig['lua_ls'].setup { capabilities = capabilities }
+lspconfig['gopls'].setup { capabilities = capabilities }
+lspconfig['ruby_ls'].setup({})
+lspconfig['tsserver'].setup { capabilities = capabilities }
+

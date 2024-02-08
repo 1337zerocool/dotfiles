@@ -17,6 +17,8 @@ treesitter.setup({
     'go',
     'graphql',
     'html',
+    'javascript',
+    'json',
     'lua',
     'markdown',
     'markdown_inline',
