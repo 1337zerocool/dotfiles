@@ -17,7 +17,7 @@ local servers = {
   -- arduino_language_server = {}
   gopls = {},
   tsserver = {},
-  ruby_ls = {},
+  solargraph = {},
 
   lua_ls = {
     Lua = {

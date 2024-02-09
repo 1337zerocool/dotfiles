@@ -70,6 +70,6 @@ cmp.setup({
 local capabilities = cmplsp.default_capabilities()
 lspconfig['lua_ls'].setup { capabilities = capabilities }
 lspconfig['gopls'].setup { capabilities = capabilities }
-lspconfig['ruby_ls'].setup({})
+lspconfig['solargraph'].setup({})
 lspconfig['tsserver'].setup { capabilities = capabilities }
 
