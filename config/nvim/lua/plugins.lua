@@ -8,7 +8,7 @@ local plugins = {
     'nvim-telescope/telescope-fzf-native.nvim',  -- Improved fuzzy finder performance with FZF
     build = 'make'
   },
-  
+
   'nvim-telescope/telescope-ui-select.nvim',     -- Use Telescope as selection UI for standard vim features
   'nvim-telescope/telescope.nvim',               -- Fuzzy finder UI for several features
   'debugloop/telescope-undo.nvim',               -- Use Telescope to search the undo history for current file
