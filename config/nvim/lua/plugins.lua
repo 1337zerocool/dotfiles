@@ -1,9 +1,9 @@
 -- Define plugins managed by lazy
 local plugins = {
+
   'nvim-lua/plenary.nvim',                       -- Utility library used by several plugins
   'MunifTanjim/nui.nvim',                        -- A UI component library used by several plugins
   'nvim-tree/nvim-web-devicons',                 -- Icon library used by several plugins to show icons by files/types
-  '3rd/image.nvim',                              -- Images in preview window
   {
     'nvim-telescope/telescope-fzf-native.nvim',  -- Improved fuzzy finder performance with FZF
     build = 'make'
@@ -20,7 +20,7 @@ local plugins = {
 
   'folke/zen-mode.nvim',                         -- Zooms and focuses a single window
   'folke/twilight.nvim',                         -- Dims text outside of some small context around the current scope
-
+  'folke/trouble.nvim',                          -- Improved diagnostics
   'machakann/vim-sandwich',                      -- Wrap text objects in brackets, quotes, tags, etc.
   'terrortylor/nvim-comment',                    -- Comment and un-comment lines blocks lines of code
   'windwp/nvim-autopairs',                       -- Automatically insert matching pairs of quotes and brackets
@@ -38,24 +38,27 @@ local plugins = {
 
   -- autocomplete / lsp stuff
   'onsails/lspkind.nvim',
--- lspzero is also maybe a consideration
-  -- and finally lspsaga
-  -- and neo-tree-diagnostics.nvim
   {
-    'neovim/nvim-lspconfig',
+    'neovim/nvim-lspconfig',                      -- A basic configuration for LSP to start from
     dependencies = {
-      { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim', opts = {} },
-      'folke/neodev.nvim',
+      {
+        'williamboman/mason.nvim',                -- Manages the installation of LSPs, Linters, formatting, etc.
+        config = true
+      },
+      'williamboman/mason-lspconfig.nvim',        -- makes it easier to use mason with lspconfig
+      'folke/neodev.nvim',                        -- Add neovim power to the LSPs for lua
     },
   },
+
+  'nvimdev/lspsaga.nvim',
 
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
       { 'L3MON4D3/LuaSnip', build = (function() return 'make install_jsregexp' end)(), },
       'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
 

@@ -7,8 +7,6 @@ neotree.setup({
   sources = {
     "filesystem",
     "git_status",
-    "document_symbols",
-    -- neo-tree-diagnostics.nvim
   },
   sort_case_insensitive = true,
   enable_git_status = false,

@@ -6,10 +6,16 @@ if not ok then
   return
 end
 
-local ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
-if not ok then
+local lspconfigok, mason_lspconfig = pcall(require, 'mason-lspconfig')
+if not lspconfigok then
   return
 end
+
+local cmpok, cmp = pcall(require, 'cmp_nvim_lsp')
+if not cmpok then
+  return
+end
+
 
 local servers = {
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
@@ -30,11 +36,6 @@ mason.setup()
 mason_lspconfig.setup({
   ensure_installed = vim.tbl_keys(servers),
 })
-
-local ok, cmp = pcall(require, 'cmp_nvim_lsp')
-if not ok then
-  return
-end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp.default_capabilities(capabilities)
