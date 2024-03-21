@@ -74,3 +74,14 @@ vim.fn.sign_define("DiagnosticSignError" , { text = "", texthl="DiagnosticSig
 vim.fn.sign_define("DiagnosticSignWarn" , { text = "", texthl="DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo" , { text = "", texthl="DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint" , { text = "", texthl="DiagnosticSignHint" })
+
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg='#434C5E'})
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg='#434C5E' })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg='#434C5E' })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg='#434C5E' })
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '●',
+  },
+  severity_sort = true,
+})

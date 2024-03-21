@@ -24,6 +24,9 @@ if not ok_lspconfig then
 end
 
 cmp.setup({
+  experimental = {
+    ghost_text = true -- this feature conflict with copilot.vim's preview.
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)

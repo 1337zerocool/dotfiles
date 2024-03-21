@@ -16,7 +16,6 @@ if not cmpok then
   return
 end
 
-
 local servers = {
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
   -- jsonls = {}
