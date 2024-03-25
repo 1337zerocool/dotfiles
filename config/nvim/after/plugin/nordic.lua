@@ -16,5 +16,7 @@ vim.api.nvim_set_hl(0, 'NeoTreeTitleBar', { fg='#88c0d0', bg='#4c566a' })
 vim.api.nvim_set_hl(0, 'NeoTreeFloatNormal', { fg='#d8dee9', bg='#2e3440' })
 vim.api.nvim_set_hl(0, 'NeoTreeFloatBorder', { fg='#4c566a', bg='#2e3440' })
 
--- needs some virtualtext highlight group colors set
--- vim.diagnostic.config({ virtual_text = true })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg='#434C5E' })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg='#434C5E' })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg='#434C5E' })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg='#434C5E' })
