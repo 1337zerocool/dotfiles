@@ -40,7 +40,7 @@ local plugins = {
   'RRethy/nvim-treesitter-endwise',              -- Automatically create `end` blocks in Lua, Ruby, Bash, and Elixir 
 
   -- 'stevearc/overseer.nvim',                      -- Expose task files like Make, VSCode, Rake. On file save and one-off
-
+  -- 'vs-tasks.nvim'                                -- an alternative to overseer
   -- 'neovim/nvim-lspconfig',                       -- Common configurations for LSPs
   -- 'VonHeikemen/lsp-zero.nvim',                   -- Simple configuration for LSP and CMP
 
@@ -68,7 +68,7 @@ local plugins = {
 -- 'antoinemadec/FixCursorHold.nvim',
 -- 'semanticart/ruby-code-actions.nvim',          -- Adds LSP code actions from Rubocop autosuggestions/diagnostics
 -- 'maxbane/vim-asm_ca65',                        -- Adds File type support for the ca65 6502 assembler
--- 'github/copilot.vim',
+ 'zbirenbaum/copilot.lua',
 }
 
 -- Configure some standard global options for lazy
