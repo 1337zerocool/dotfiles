@@ -55,20 +55,27 @@ cmp.setup({
   },
     mapping = cmp.mapping.preset.insert({
       -- tab for next /shift-tab to complete?
-      ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-      ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+      ['<TAB>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<CR>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
+        elseif luasnip.expand_or_jumpable() then
+          vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+        else
+          fallback()
+        end
+      end),
+      --['<C-Y>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lsp_document_symbol' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'lausnip' },
-  }, {
-    -- { name = 'treesitter' },
-    -- { name = 'buffer' },
+    { name = 'path' },
+    { name = 'treesitter' }
   })
 })
 
@@ -78,4 +85,3 @@ lspconfig['lua_ls'].setup { capabilities = capabilities }
 lspconfig['gopls'].setup { capabilities = capabilities }
 lspconfig['solargraph'].setup({})
 lspconfig['tsserver'].setup { capabilities = capabilities }
-
