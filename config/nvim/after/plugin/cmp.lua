@@ -58,7 +58,7 @@ cmp.setup({
       ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
       ['<TAB>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping(function(fallback)
+      ['<C-CR>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
         elseif luasnip.expand_or_jumpable() then
