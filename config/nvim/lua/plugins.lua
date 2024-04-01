@@ -12,6 +12,7 @@ local plugins = {
   'debugloop/telescope-undo.nvim',               -- Use Telescope to search the undo history for current file
   -- telescope-sg - add astgrep to telescope
   -- tasks
+  -- projectionist
   -- copilot
   'nvim-neo-tree/neo-tree.nvim',                 -- A 'tree' file explorer for the sidebar
   'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
