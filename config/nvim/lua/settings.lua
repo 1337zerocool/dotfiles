@@ -79,9 +79,8 @@ vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg='#434C5E'})
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg='#434C5E' })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg='#434C5E' })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg='#434C5E' })
+
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = '●',
-  },
+  virtual_text = { prefix = '●', }, -- set to false to disable virtual text
   severity_sort = true,
 })
