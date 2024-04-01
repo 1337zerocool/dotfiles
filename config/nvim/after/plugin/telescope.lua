@@ -4,6 +4,16 @@ if not setup then
 end
 
 telescope.setup({
+  defaults = {
+    layout_strategy = "vertical",
+    sorting_strategy = "ascending",
+    layout_config = {
+      vertical = {
+        mirror = true,
+        prompt_position = "top",
+      }
+    }
+  },
   extensions = {
     fzf = {
       fuzzy = true,
@@ -27,3 +37,9 @@ vim.keymap.set('n', '<leader>/', '<cmd>Telescope live_grep<cr>', { silent = true
 vim.keymap.set('n', '<leader>b', '<cmd>Telescope buffers<cr>', { silent = true })
 vim.keymap.set('n', '<leader>?', '<cmd>Telescope current_buffer_fuzzy_find<cr>', { silent = true })
 vim.keymap.set('n', '<leader>u', '<cmd>Telescope undo<cr>', { silent = true })
+vim.keymap.set('n', '<leader>k', '<cmd>Telescope keymaps<cr>', { silent = true })
+vim.keymap.set('n', '<leader>gh', '<cmd>Telescope git_bcommits<cr>', { silent = true })
+
+-- Setup command line history
+-- setup grep history
+-- setup git_bcommits

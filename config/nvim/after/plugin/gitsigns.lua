@@ -9,3 +9,4 @@ gitsigns.setup({
 local opt = { silent = true }
 vim.keymap.set('n', '<leader>gs', '<cmd>Gitsigns toggle_signs<cr>', opt)
 vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns blame_line<cr>', opt)
+vim.keymap.set('n', '<leader>gf', '<cmd>Gitsigns diffthis<cr>', opt)
