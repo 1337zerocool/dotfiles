@@ -1,22 +1,23 @@
+-- TODO LIST
+-- ---------
+-- setup treesitter text objects
+-- nvim-dap-ruby or vimspector
+-- copilot or codeium
+-- Plugins worth doing some investigation into:
+-- --------------------------------------------
+-- https://github.com/rockerBOO/awesome-neovim         - general resource for things to check out
+-- https://github.com/otavioschwanck/mood-nvim         - somebody else's config. Another way of setting up files
+-- https://github.com/dhruvasagar/vim-table-mode       - support 'markdown' tables'
+-- https://github.com/RRethy/vim-illuminate            - highlight instances of word under cursor
+-- https://github.com/junegunn/vim-easy-align          - align code on symbols like = and ->
+-- https://github.com/ray-x/lsp_signature.nvim         - a more robust lsp signature display, maybe too robust
+-- https://github.com/AndrewRadev/sideways.vim         - rotating lists and params
+-- https://github.com/AndrewRadev/splitjoin.vim        - switching out one version of syntax for another
+-- https://github.com/otavioschwanck/ruby-toolkit.nvim - refactoring tools for ruby
+-- https://github.com/stevearc/dressing.nvim           - alternative to ui-select
 -- Define plugins managed by lazy
 local plugins = {
-  -- https://github.com/rockerBOO/awesome-neovim?tab=readme-ov-file#code-runner
-  -- tasks - stevearc/overseer.nvim  toggletasks
-  -- otavioschwanck/mood-nvim
-  -- copilot
-  -- codeium
-  -- RRethy/vim-illuminate
-  -- junegunn/vim-easy-align
-  -- new-file-template
-  -- vim-table-mode
-  -- vim-test
-  -- cool-substitute
-  -- ray-x/lsp_signature.nvim
-  -- AndrewRadev/splitjoin.vim
-  -- ruby-toolkit
-  --roobert/search-replace.nvim
-  --nvim-dap-ruby or vimspector
-  -- setup treesitter text objects
+  'stevearc/overseer.nvim',                      -- Task running library
   'nvim-lua/plenary.nvim',                       -- Utility library used by several plugins
   'MunifTanjim/nui.nvim',                        -- A UI component library used by several plugins
   'nvim-tree/nvim-web-devicons',                 -- Icon library used by several plugins to show icons by files/types
