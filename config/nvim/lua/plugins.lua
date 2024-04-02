@@ -11,6 +11,7 @@ local plugins = {
   'nvim-telescope/telescope.nvim',               -- Fuzzy finder UI for several features
   'debugloop/telescope-undo.nvim',               -- Use Telescope to search the undo history for current file
   'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
+  'Marskey/telescope-sg',                        -- AST Grep for telescope: search on code structure
   -- telescope-sg - add astgrep to telescope
   -- tasks
   -- copilot

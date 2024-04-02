@@ -15,6 +15,9 @@ telescope.setup({
     }
   },
   extensions = {
+    ast_grep = {
+
+    },
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
@@ -50,6 +53,8 @@ telescope.setup({
     },
   },
 })
+
+telescope.load_extension("ast_grep")
 telescope.load_extension("undo")
 telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
@@ -62,6 +67,7 @@ vim.keymap.set("n", "<leader>?", "<cmd>Telescope current_buffer_fuzzy_find<cr>",
 vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { silent = true })
 vim.keymap.set("n", "<leader>k", "<cmd>Telescope keymaps<cr>", { silent = true })
 vim.keymap.set("n", "<leader>a", "<cmd>Telescope telescope-alternate alternate_file<cr>", { silent = true })
+vim.keymap.set("n", "<leader>'", "<cmd>Telescope ast_grep<cr>", { silent = true })
 vim.keymap.set("n", "<leader>gd", "<cmd>Telescope git_bcommits<cr>", { silent = true })
 
 -- Setup command line history
