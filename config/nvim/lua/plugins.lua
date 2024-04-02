@@ -26,7 +26,7 @@ local plugins = {
   'terrortylor/nvim-comment',                    -- Comment and un-comment lines blocks lines of code
   'windwp/nvim-autopairs',                       -- Automatically insert matching pairs of quotes and brackets
   'lewis6991/gitsigns.nvim',                     -- Show git additions, changes, and deletions in the signcolumn and inline
-  'ruifm/gitlinker.nvim',                        -- Create links to text in buffers hosted on Github and other locations
+  'linrongbin16/gitlinker.nvim',                 -- Create links to text in buffers hosted on Github and other locations
   'sindrets/diffview.nvim',                      -- A better way to navigate git changes
   {
     'nvim-treesitter/nvim-treesitter',           -- Builds ASTs from current document to power other plugins
