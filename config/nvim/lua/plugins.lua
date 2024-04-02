@@ -1,5 +1,22 @@
 -- Define plugins managed by lazy
 local plugins = {
+  -- https://github.com/rockerBOO/awesome-neovim?tab=readme-ov-file#code-runner
+  -- tasks - stevearc/overseer.nvim  toggletasks
+  -- otavioschwanck/mood-nvim
+  -- copilot
+  -- codeium
+  -- RRethy/vim-illuminate
+  -- junegunn/vim-easy-align
+  -- new-file-template
+  -- vim-table-mode
+  -- vim-test
+  -- cool-substitute
+  -- ray-x/lsp_signature.nvim
+  -- AndrewRadev/splitjoin.vim
+  -- ruby-toolkit
+  --roobert/search-replace.nvim
+  --nvim-dap-ruby or vimspector
+  -- setup treesitter text objects
   'nvim-lua/plenary.nvim',                       -- Utility library used by several plugins
   'MunifTanjim/nui.nvim',                        -- A UI component library used by several plugins
   'nvim-tree/nvim-web-devicons',                 -- Icon library used by several plugins to show icons by files/types
@@ -12,9 +29,6 @@ local plugins = {
   'debugloop/telescope-undo.nvim',               -- Use Telescope to search the undo history for current file
   'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
   'Marskey/telescope-sg',                        -- AST Grep for telescope: search on code structure
-  -- telescope-sg - add astgrep to telescope
-  -- tasks
-  -- copilot
   'nvim-neo-tree/neo-tree.nvim',                 -- A 'tree' file explorer for the sidebar
   'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
   'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
