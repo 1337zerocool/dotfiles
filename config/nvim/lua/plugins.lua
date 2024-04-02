@@ -10,9 +10,9 @@ local plugins = {
   'nvim-telescope/telescope-ui-select.nvim',     -- Use Telescope as selection UI for standard vim features
   'nvim-telescope/telescope.nvim',               -- Fuzzy finder UI for several features
   'debugloop/telescope-undo.nvim',               -- Use Telescope to search the undo history for current file
+  'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
   -- telescope-sg - add astgrep to telescope
   -- tasks
-  -- projectionist
   -- copilot
   'nvim-neo-tree/neo-tree.nvim',                 -- A 'tree' file explorer for the sidebar
   'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
