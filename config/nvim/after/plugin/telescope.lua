@@ -46,18 +46,12 @@ telescope.setup({
       open_only_one_with = "current_pane",
       -- presets = { "rails" },
     },
-    ["ui-select"] = {
-      require("telescope.themes").get_dropdown({
-        -- Options go here
-      }),
-    },
   },
 })
 
 telescope.load_extension("ast_grep")
 telescope.load_extension("undo")
 telescope.load_extension("fzf")
-telescope.load_extension("ui-select")
 telescope.load_extension("telescope-alternate")
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", { silent = true })

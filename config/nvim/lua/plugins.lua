@@ -13,8 +13,8 @@
 -- https://github.com/ray-x/lsp_signature.nvim         - a more robust lsp signature display, maybe too robust
 -- https://github.com/AndrewRadev/sideways.vim         - rotating lists and params
 -- https://github.com/AndrewRadev/splitjoin.vim        - switching out one version of syntax for another
--- https://github.com/otavioschwanck/ruby-toolkit.nvim - refactoring tools for ruby
--- https://github.com/stevearc/dressing.nvim           - alternative to ui-select
+-- https://github.com/otavioschwanck/ruby-toolkit.nvim - refactoring tools for
+
 -- Define plugins managed by lazy
 local plugins = {
   'stevearc/overseer.nvim',                      -- Task running library
@@ -25,7 +25,7 @@ local plugins = {
     'nvim-telescope/telescope-fzf-native.nvim',  -- Improved fuzzy finder performance with FZF
     build = 'make'
   },
-  'nvim-telescope/telescope-ui-select.nvim',     -- Use Telescope as selection UI for standard vim features
+  'stevearc/dressing.nvim',                      -- Provides a nicer UI selection system for telescope et al.
   'nvim-telescope/telescope.nvim',               -- Fuzzy finder UI for several features
   'debugloop/telescope-undo.nvim',               -- Use Telescope to search the undo history for current file
   'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
