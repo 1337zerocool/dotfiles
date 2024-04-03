@@ -13,8 +13,6 @@
 -- https://github.com/jghauser/fold-cycle.nvim         - more intutitive fold management
 -- https://github.com/kevinhwang91/nvim-ufo            - improved fold display
 -- https://github.com/yaocccc/nvim-foldsign            - fold info in sign column
--- https://github.com/code-biscuits/nvim-biscuits      - show 'opening' context at end of block as virtual text
--- https://github.com/xiyaowong/virtcolumn.nvim        - simple virtual column marker
 
 -- Define plugins managed by lazy
 local plugins = {
@@ -37,6 +35,7 @@ local plugins = {
   'lukas-reineke/indent-blankline.nvim',         -- Visual guidelines for level of indentation
   'nvim-lualine/lualine.nvim',                   -- Status line at bottom of windows
   'xiyaowong/virtcolumn.nvim',                   -- Mark the end of lines using ascii in color column
+  'code-biscuits/nvim-biscuits',                 -- show 'opening' context at end of block as virtual text'
   'folke/zen-mode.nvim',                         -- Zooms and focuses a single window
   'folke/twilight.nvim',                         -- Dims text outside of some small context around the current scope
   'folke/trouble.nvim',                          -- Improved diagnostics
