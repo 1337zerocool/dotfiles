@@ -7,9 +7,7 @@
 -- --------------------------------------------
 -- https://github.com/rockerBOO/awesome-neovim         - general resource for things to check out
 -- https://github.com/otavioschwanck/mood-nvim         - somebody else's config. Another way of setting up files
--- https://github.com/ray-x/lsp_signature.nvim         - a more robust lsp signature display, maybe too robust
 -- https://github.com/vim-test/vim-test                - vim-test: use with overseer to run sane tests.
--- https://github.com/rktjmp/paperplanes.nvim          - make gists
 -- https://github.com/jghauser/fold-cycle.nvim         - more intutitive fold management
 -- https://github.com/kevinhwang91/nvim-ufo            - improved fold display
 -- https://github.com/yaocccc/nvim-foldsign            - fold info in sign column
@@ -44,6 +42,7 @@ local plugins = {
   'windwp/nvim-autopairs',                       -- Automatically insert matching pairs of quotes and brackets
   'lewis6991/gitsigns.nvim',                     -- Show git additions, changes, and deletions in the signcolumn and inline
   'linrongbin16/gitlinker.nvim',                 -- Create links to text in buffers hosted on Github and other locations
+  'rktjmp/paperplanes.nvim',                     -- Create gists from content of buffers
   'sindrets/diffview.nvim',                      -- A better way to navigate git changes
   {
     'nvim-treesitter/nvim-treesitter',           -- Builds ASTs from current document to power other plugins
