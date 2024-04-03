@@ -7,13 +7,14 @@
 -- --------------------------------------------
 -- https://github.com/rockerBOO/awesome-neovim         - general resource for things to check out
 -- https://github.com/otavioschwanck/mood-nvim         - somebody else's config. Another way of setting up files
--- https://github.com/dhruvasagar/vim-table-mode       - support 'markdown' tables'
--- https://github.com/RRethy/vim-illuminate            - highlight instances of word under cursor
--- https://github.com/junegunn/vim-easy-align          - align code on symbols like = and ->
 -- https://github.com/ray-x/lsp_signature.nvim         - a more robust lsp signature display, maybe too robust
--- https://github.com/AndrewRadev/sideways.vim         - rotating lists and params
--- https://github.com/AndrewRadev/splitjoin.vim        - switching out one version of syntax for another
--- https://github.com/otavioschwanck/ruby-toolkit.nvim - refactoring tools for
+-- https://github.com/vim-test/vim-test                - vim-test: use with overseer to run sane tests.
+-- https://github.com/rktjmp/paperplanes.nvim          - make gists
+-- https://github.com/jghauser/fold-cycle.nvim         - more intutitive fold management
+-- https://github.com/kevinhwang91/nvim-ufo            - improved fold display
+-- https://github.com/yaocccc/nvim-foldsign            - fold info in sign column
+-- https://github.com/code-biscuits/nvim-biscuits      - show 'opening' context at end of block as virtual text
+-- https://github.com/xiyaowong/virtcolumn.nvim        - simple virtual column marker
 
 -- Define plugins managed by lazy
 local plugins = {
@@ -35,6 +36,7 @@ local plugins = {
   'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
   'lukas-reineke/indent-blankline.nvim',         -- Visual guidelines for level of indentation
   'nvim-lualine/lualine.nvim',                   -- Status line at bottom of windows
+  'xiyaowong/virtcolumn.nvim',                   -- Mark the end of lines using ascii in color column
   'folke/zen-mode.nvim',                         -- Zooms and focuses a single window
   'folke/twilight.nvim',                         -- Dims text outside of some small context around the current scope
   'folke/trouble.nvim',                          -- Improved diagnostics
@@ -57,7 +59,7 @@ local plugins = {
       {
         'williamboman/mason.nvim',               -- Manages the installation of LSPs, Linters, formatting, etc.
         config = true
-      },
+        },
       'williamboman/mason-lspconfig.nvim',       -- makes it easier to use mason with lspconfig
       'folke/neodev.nvim',                       -- Add neovim power to the LSPs for lua
     },

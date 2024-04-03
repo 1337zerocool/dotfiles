@@ -70,6 +70,11 @@ vim.opt.listchars = {
   precedes = '↼'
 }
 
+vim.g.virtcolumn_char = '▕'
+vim.g.virtcolumn_priority = 10
+vim.api.nvim_set_hl(0, 'VirtColumn', { fg='#3B4252' })
+vim.opt.colorcolumn = "100"
+
 vim.fn.sign_define("DiagnosticSignError" , { text = "", texthl="DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn" , { text = "", texthl="DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo" , { text = "", texthl="DiagnosticSignInfo" })
