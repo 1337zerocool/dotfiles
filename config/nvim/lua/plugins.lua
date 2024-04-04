@@ -1,16 +1,19 @@
 -- TODO LIST
 -- ---------
 -- setup treesitter text objects
--- nvim-dap-ruby or vimspector
+-- vimspector?
+-- nvim-dap
+-- nvim-dap-ruby
+-- telescope-dap
+-- nvim-dap-ui
+-- nvim-dap-virtual-text
+-- https://www.youtube.com/watch?v=VoyENLM2uto-
 -- copilot or codeium
 -- Plugins worth doing some investigation into:
 -- --------------------------------------------
 -- https://github.com/rockerBOO/awesome-neovim         - general resource for things to check out
 -- https://github.com/otavioschwanck/mood-nvim         - somebody else's config. Another way of setting up files
 -- https://github.com/vim-test/vim-test                - vim-test: use with overseer to run sane tests.
--- https://github.com/jghauser/fold-cycle.nvim         - more intutitive fold management
--- https://github.com/kevinhwang91/nvim-ufo            - improved fold display
--- https://github.com/yaocccc/nvim-foldsign            - fold info in sign column
 
 -- Define plugins managed by lazy
 local plugins = {
