@@ -12,8 +12,9 @@
 -- figure out whats up with encodings in settings.lua
 -- consider changing keymaps - can you make them with '<cmd>'? Can they have descriptions?
 -- copilot or codeium
+-- https://github.com/zidhuss/neotest-minitest         - neotest - looks like a lua alternative to vim-test
 -- https://github.com/vim-test/vim-test                - vim-test: use with overseer to run sane tests.
-
+-- https://www.youtube.com/watch?v=cf72gMBrsI0         - maybe there's a good way to integrate test status with code
 -- Define plugins managed by lazy
 local plugins = {
   'stevearc/overseer.nvim',                      -- Task running library
