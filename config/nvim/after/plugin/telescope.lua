@@ -53,6 +53,7 @@ telescope.load_extension("ast_grep")
 telescope.load_extension("undo")
 telescope.load_extension("fzf")
 telescope.load_extension("telescope-alternate")
+telescope.load_extension('dap')
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", { silent = true })
 vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<cr>", { silent = true })

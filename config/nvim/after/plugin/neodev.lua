@@ -3,4 +3,15 @@ if not ok then
   return
 end
 
-neodev.setup({})
+neodev.setup({
+  library = {
+    enabled = true,
+    runtime = true,
+    types = true,
+    plugins = { "nvim-dap-ui" },
+  },
+  override = function(root_dir, options) end,
+  setup_jsonls = true,
+  lspconfig = true,
+  pathStrict = true,
+})
