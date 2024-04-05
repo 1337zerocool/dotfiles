@@ -28,17 +28,17 @@ telescope.setup({
       mappings = {
         -- Ruby command line app
         { pattern = "lib/(.*).rb", targets = {
-          { template =  "test/test_[1].rb", label = "Test", enable_new = true },
+          { template =  "test/[1]_test.rb", label = "Test", enable_new = true },
           { template =  "sig/[1].rbs", label = "Sig", enable_new = true },
         } },
 
-        { pattern = "test/test_(.*).rb", targets = {
+        { pattern = "test/(.*)_test.rb", targets = {
           { template =  "lib/[1].rb", label = "Code", enable_new = true },
           { template =  "sig/[1].rbs", label = "Sig", enable_new = true },
         } },
 
         { pattern = "sig/(.*).rbs", targets = {
-          { template =  "test/test_[1].rb", label = "Test", enable_new = true },
+          { template =  "test/[1]_test.rb", label = "Test", enable_new = true },
           { template =  "lib/[1].rb", label = "Code", enable_new = true },
         } },
 

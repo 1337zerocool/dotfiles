@@ -12,7 +12,7 @@ biscuits.setup({
   -- },
   cursor_line_only = true,
   default_config = {
-    max_length = 20,
+    max_length = 40,
     min_distance = 5,
     prefix_string = " ⬅ "
   },

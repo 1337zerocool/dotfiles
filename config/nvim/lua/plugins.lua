@@ -34,6 +34,25 @@ local plugins = {
   'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
   'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
 
+
+
+  {
+    "nvim-neotest/neotest",                      -- run related tests
+    lazy = true,
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "zidhuss/neotest-minitest",                -- make it work with minitest
+    },
+    config = function()
+      require("neotest").setup({
+        adapters = { require("neotest-minitest") },
+      })
+    end,
+  },
+
   {
     -- https://www.youtube.com/watch?v=VoyENLM2uto-
     'rcarriga/nvim-dap-ui',                      -- A UI for debugger access protocol

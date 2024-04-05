@@ -8,7 +8,7 @@ neodev.setup({
     enabled = true,
     runtime = true,
     types = true,
-    plugins = { "nvim-dap-ui" },
+    plugins = { "nvim-dap-ui", "neotest" },
   },
   override = function(root_dir, options) end,
   setup_jsonls = true,
