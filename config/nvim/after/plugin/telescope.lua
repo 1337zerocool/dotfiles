@@ -64,3 +64,7 @@ vim.keymap.set("n", "<leader>'", "<cmd>Telescope ast_grep<cr>", { silent = true 
 vim.keymap.set("n", "<leader>gd", "<cmd>Telescope git_bcommits<cr>", { silent = true })
 vim.keymap.set("n", "<leader>:", "<cmd>Telescope command_history<cr>", { silent = true })
 vim.keymap.set("n", "<leader>dl", "<cmd>Telescope dap list_breakpoints<cr>", { silent = true })
+vim.keymap.set("n", "<leader>s", "<cmd>Telescope lsp_document_symbols<cr>", { silent = true })
+vim.keymap.set("n", "<leader>S", "<cmd>Telescope lsp_workspace_symbols<cr>", { silent = true })
+vim.keymap.set("n", "<leader>e", "<cmd>Telescope diagnostics<cr>", { silent = true })
+

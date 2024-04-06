@@ -22,6 +22,13 @@ saga.setup({
   symbol_in_winbar = {
     enable = false,
   },
+  outline = {
+    win_position = 'right',
+    win_width = 30,
+    auto_preview = false,
+    layout = 'normal',
+    detail = false,
+  },
 })
 
 vim.keymap.set('n', 'gd', '<cmd>Lspsaga goto_definition<cr>', { silent = true })

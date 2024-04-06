@@ -7,7 +7,6 @@ trouble.setup({
   height = 8,
 })
 
-vim.keymap.set('n', '<leader>e', '<cmd>TroubleToggle document_diagnostics<cr>', { silent = true })
 vim.keymap.set('n', '<leader>E', '<cmd>TroubleToggle workspace_diagnostics<cr>', { silent = true })
 vim.keymap.set('n', '<leader>R', '<cmd>TroubleToggle lsp_references<cr>', { silent = true })
 
