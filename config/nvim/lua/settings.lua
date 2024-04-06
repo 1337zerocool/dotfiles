@@ -13,8 +13,8 @@ vim.opt.visualbell = false
 vim.opt.wildmenu = true
 vim.opt.updatetime = 500
 
---vim.opt.encoding = "utf-8"
---vim.opt.fileencoding = "utf-8 nobomb"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8 nobomb"
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
