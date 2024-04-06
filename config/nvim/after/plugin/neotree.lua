@@ -4,6 +4,9 @@ if not ok then
 end
 
 neotree.setup({
+  consumers = {
+    overseer = require("neotest.consumers.overseer"),
+  },
   sources = {
     "filesystem",
     "git_status",

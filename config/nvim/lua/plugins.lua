@@ -24,8 +24,6 @@ local plugins = {
   'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
   'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
 
-
-
   {
     "nvim-neotest/neotest",                      -- run related tests
     lazy = true,

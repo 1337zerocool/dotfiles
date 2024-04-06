@@ -7,16 +7,24 @@ local ok_minitest, neotest_minitest = pcall(require, 'neotest-minitest')
 if not ok_minitest then
   return
 end
---
--- neotest.setup({
---   adapters = {
---   },
--- })
 
-vim.keymap.set("n", "<leader>t", "<cmd>lua require('neotest').summary.toggle()<cr>", { silent = true})
-vim.keymap.set("n", "<leader>T", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", { silent = true})
-vim.keymap.set("v", "<leader>t", "<cmd>lua require('neotest').summary.toggle()<cr>", { silent = true})
-vim.keymap.set("v", "<leader>T", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", { silent = true})
+neotest.setup({
+  overseer = {
+    enabled = true,
+    force_default = true,
+  },
+  consumers = {
+    overseer = require("neotest.consumers.overseer"),
+  },
+  adapters = {
+    require("neotest-minitest")
+  },
+})
+
+vim.keymap.set("n", "<leader>T", "<cmd>lua require('neotest').summary.toggle()<cr>", { silent = true})
+vim.keymap.set("n", "<leader>t", "<cmd>lua require('neotest').overseer.run({})<cr>", { silent = true})
+
+-- lua require('neotest').overseer.run({})
 
 -- lua require("neotest").watch.toggle(vim.fn.expand("%"))
 -- lua require("neotest").output.open({ enter = true })
