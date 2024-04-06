@@ -4,7 +4,7 @@
 -- setup a 'local' ruby config for lsp instead of using nvim-ruby-lsp
 -- setup some snippets for luasnip
 -- setup some keybindings for overseer
--- figure out whats up with encodings in settings.lua
+-- look into parsing VSCode task/launch files
 -- copilot or codeium
 -- https://github.com/vim-test/vim-test                - vim-test: use with overseer to run sane tests.
 -- https://www.youtube.com/watch?v=cf72gMBrsI0         - maybe there's a good way to integrate test status with code
