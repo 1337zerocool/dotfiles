@@ -19,20 +19,16 @@ end
 
 -- configure your language servers here rather than in stand along files
 local servers = {
-  -- ast-grep
-  -- deno
-  -- cssls
+  ast_grep = {},
+  denols = {},
+  graphql = {},
+  cssls = {},
   -- docker
-  -- emmet
-  -- harper
-  -- html
-  -- jsonls = {}
-  -- arduino_language_server = {}
-  -- llm-ls
-  -- sqls
-  -- graphqllanguageservice
-  -- rust
-  -- markdown
+  emmet_ls = {},
+  html = {},
+  jsonls = {},
+  rust_analyzer = {},
+  arduino_language_server = {},
   gopls = {},
   tsserver = {},
   solargraph = {},

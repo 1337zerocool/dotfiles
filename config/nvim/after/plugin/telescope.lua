@@ -15,9 +15,7 @@ telescope.setup({
     }
   },
   extensions = {
-    ast_grep = {
-
-    },
+    ast_grep = {},
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
@@ -61,9 +59,8 @@ vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>", { silent = true }
 vim.keymap.set("n", "<leader>?", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { silent = true })
 vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { silent = true })
 vim.keymap.set("n", "<leader>k", "<cmd>Telescope keymaps<cr>", { silent = true })
-vim.keymap.set("n", "<leader>a", "<cmd>Telescope telescope-alternate alternate_file<cr>", { silent = true })
+vim.keymap.set("n", "<leader>m", "<cmd>Telescope telescope-alternate alternate_file<cr>", { silent = true })
 vim.keymap.set("n", "<leader>'", "<cmd>Telescope ast_grep<cr>", { silent = true })
 vim.keymap.set("n", "<leader>gd", "<cmd>Telescope git_bcommits<cr>", { silent = true })
-
--- Setup command line history
--- setup grep history
+vim.keymap.set("n", "<leader>:", "<cmd>Telescope command_history<cr>", { silent = true })
+vim.keymap.set("n", "<leader>dl", "<cmd>Telescope dap list_breakpoints<cr>", { silent = true })

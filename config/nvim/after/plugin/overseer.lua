@@ -10,6 +10,7 @@ overseer.setup({})
 -- o = open in window
 -- f = open in float
 -- p = open in preview pane
+-- d = dispose
 -- v = more detail
 -- V = less detail
 -- [ = smaller
@@ -18,7 +19,7 @@ overseer.setup({})
 -- } = next
 -- q = close
 -- ? = binding
-vim.keymap.set('n', '<leader>t', '<cmd>OverseerRun<cr>', { silent = true })
-vim.keymap.set('n', '<leader>T', '<cmd>OverseerToggle<cr>', { silent = true })
-vim.keymap.set('v', '<leader>t', '<cmd>OverseerRun<cr>', { silent = true })
-vim.keymap.set('v', '<leader>T', '<cmd>OverseerToggle<cr>', { silent = true })
+vim.keymap.set('n', '<leader>a', '<cmd>OverseerRun<cr>', { silent = true })
+vim.keymap.set('n', '<leader>A', '<cmd>OverseerToggle<cr>', { silent = true })
+vim.keymap.set('v', '<leader>a', '<cmd>OverseerRun<cr>', { silent = true })
+vim.keymap.set('v', '<leader>A', '<cmd>OverseerToggle<cr>', { silent = true })

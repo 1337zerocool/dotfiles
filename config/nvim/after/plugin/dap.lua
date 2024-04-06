@@ -21,10 +21,16 @@ if not ok_dap_vt then
   return
 end
 
-dap_ruby.setup()
+dap_ruby.setup(
+-- interesting part fo the youtube video at 22 mins
+-- https://www.youtube.com/watch?v=VoyENLM2uto
+-- https://github.com/ruby/vscode-rdbg  for launch.json
+-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#ruby
+)
 
 dapui.setup(
 -- https://github.com/rcarriga/nvim-dap-ui/blob/master/doc/nvim-dap-ui.txt
+-- https://github.com/rcarriga/nvim-dap-ui for setup of ui
 )
 
 dap_vt.setup({
@@ -50,23 +56,16 @@ dap_vt.setup({
   end,
 })
 
--- bind a bunch of stuff
--- toggle ui
--- continue
--- terminate
--- step into
--- step over
--- step out
--- repl
--- eval?
--- stepup?
--- stepdown?
--- hovervariables?
--- toggle breakpoint
--- conditional breakpoint
---
--- https://github.com/ruby/vscode-rdbg  for launch.json
--- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#ruby
--- interesting part fo the youtube video at 22 mins
--- https://www.youtube.com/watch?v=VoyENLM2uto
--- https://github.com/rcarriga/nvim-dap-ui for setup of ui
+vim.keymap.set("n", "<leader>D", dapui.toggle, { silent = true }) -- not using <leader d> because it gets lagged by everything
+vim.keymap.set("n", "<leader>dd", dap.continue, { silent = true })
+vim.keymap.set("n", "<leader>dc", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Condition: '))<cr>", { silent = true })
+vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { silent = true })
+vim.keymap.set("n", "<leader>do", dap.step_over, { silent = true })
+vim.keymap.set("n", "<leader>di", dap.step_into, { silent = true })
+vim.keymap.set("n", "<leader>dt", dap.step_out, { silent = true })
+vim.keymap.set("n", "<leader>dk", dap.up, { silent = true })
+vim.keymap.set("n", "<leader>dj", dap.down, { silent = true })
+vim.keymap.set("n", "<leader>dx", dap.terminate, { silent = true })
+vim.keymap.set("n", "<leader>dr", dap.repl.toggle, { silent = true })
+
+-- there is additional config in telescope to show breakpoints

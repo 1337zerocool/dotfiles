@@ -13,7 +13,10 @@ end
 --   },
 -- })
 
-vim.keymap.set("n", "<leader>y", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", { silent = true})
+vim.keymap.set("n", "<leader>t", "<cmd>lua require('neotest').summary.toggle()<cr>", { silent = true})
+vim.keymap.set("n", "<leader>T", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", { silent = true})
+vim.keymap.set("v", "<leader>t", "<cmd>lua require('neotest').summary.toggle()<cr>", { silent = true})
+vim.keymap.set("v", "<leader>T", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", { silent = true})
 
 -- lua require("neotest").watch.toggle(vim.fn.expand("%"))
 -- lua require("neotest").output.open({ enter = true })
