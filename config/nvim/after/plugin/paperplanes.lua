@@ -12,5 +12,6 @@ paperplanes.setup({
   notifier = vim.notify or print,
 })
 
+-- needs better bindings. Doesn't reliably use visual select
 vim.keymap.set('n', '<leader>gg', '<cmd>PP<cr>')
-vim.keymap.set('v', '<leader>gg', '<cmd>PP<cr>')
+vim.keymap.set('v', '<leader>gg', "<cmd>'<,'>PP<cr>")

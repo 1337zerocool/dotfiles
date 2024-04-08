@@ -4,7 +4,7 @@ if not ok then
 end
 
 overseer.setup({})
-
+-- https://github.com/stevearc/overseer.nvim/blob/master/doc/reference.md#setup-options
 -- CR = action menu
 -- e = edit task
 -- o = open in window
@@ -22,4 +22,4 @@ overseer.setup({})
 vim.keymap.set('n', '<leader>a', '<cmd>OverseerRun<cr>', { silent = true })
 vim.keymap.set('n', '<leader>A', '<cmd>OverseerToggle<cr>', { silent = true })
 vim.keymap.set('v', '<leader>a', '<cmd>OverseerRun<cr>', { silent = true })
-vim.keymap.set('v', '<leader>A', '<cmd>OverseerToggle<cr>', { silent = true })
+vim.keymap.set('v', '<leader>T', '<cmd>OverseerToggle<cr>', { silent = true })

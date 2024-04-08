@@ -1,7 +1,10 @@
 -- TODO LIST
 -- ---------
 -- https://youtu.be/-joJuscbM5w  -> no select plus enter for complete
--- setup a 'local' ruby config for lsp instead of using nvim-ruby-lsp
+-- folke/noice.nvim -- move around command line grep, etc. also notifications
+-- paperplanes - needs better binding for visual mode
+-- llama via gen.nvim
+-- numToStr/Comment.nvim -- an alternative to cmment
 -- setup some snippets for luasnip
 -- setup some keybindings for overseer
 -- copilot or codeium
