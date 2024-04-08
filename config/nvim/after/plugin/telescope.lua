@@ -57,7 +57,7 @@ vim.keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", { silen
 vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<cr>", { silent = true })
 vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>", { silent = true })
 vim.keymap.set("n", "<leader>?", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { silent = true })
-vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { silent = true })
+vim.keymap.set("n", "<leader>gu", "<cmd>Telescope undo<cr>", { silent = true })
 vim.keymap.set("n", "<leader>k", "<cmd>Telescope keymaps<cr>", { silent = true })
 vim.keymap.set("n", "<leader>m", "<cmd>Telescope telescope-alternate alternate_file<cr>", { silent = true })
 vim.keymap.set("n", "<leader>'", "<cmd>Telescope ast_grep<cr>", { silent = true })
