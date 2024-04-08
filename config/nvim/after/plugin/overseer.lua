@@ -3,22 +3,40 @@ if not ok then
   return
 end
 
-overseer.setup({})
--- https://github.com/stevearc/overseer.nvim/blob/master/doc/reference.md#setup-options
--- CR = action menu
--- e = edit task
--- o = open in window
--- f = open in float
--- p = open in preview pane
--- d = dispose
--- v = more detail
--- V = less detail
--- [ = smaller
--- ] = bigger
--- { = last
--- } = next
--- q = close
--- ? = binding
+overseer.setup({
+  strategy = "terminal",
+  templates = { "builtin" },
+  auto_detect_success_color = true,
+  dap = true,
+  task_list = {
+    default_detail = 1,
+    max_width = { 100, 0.2 },
+    min_width = { 40, 0.1 },
+    direction = "left",
+    bindings = {
+      ["?"] = "ShowHelp",
+      ["<CR>"] = "RunAction",
+      ["e"] = "Edit",
+      ["o"] = "Open",
+      ["-"] = "OpenVsplit",
+      ["|"] = "OpenSplit",
+      ["f"] = "OpenFloat",
+      ["p"] = "TogglePreview",
+      ["v"] = "IncreaseDetail",
+      ["V"] = "DecreaseDetail",
+      ["H"] = "IncreaseAllDetail",
+      ["L"] = "DecreaseAllDetail",
+      ["["] = "DecreaseWidth",
+      ["]"] = "IncreaseWidth",
+      ["{"] = "PrevTask",
+      ["}"] = "NextTask",
+      ["<C-k>"] = "ScrollOutputUp",
+      ["<C-j>"] = "ScrollOutputDown",
+      ["q"] = "Close",
+    },
+  },
+  actions = {},
+})
 vim.keymap.set('n', '<leader>a', '<cmd>OverseerRun<cr>', { silent = true })
 vim.keymap.set('n', '<leader>A', '<cmd>OverseerToggle<cr>', { silent = true })
 vim.keymap.set('v', '<leader>a', '<cmd>OverseerRun<cr>', { silent = true })
