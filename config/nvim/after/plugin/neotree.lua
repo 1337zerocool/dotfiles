@@ -4,6 +4,10 @@ if not ok then
 end
 
 neotree.setup({
+  window = {
+    position = "right",
+    width = 40,
+  },
   consumers = {
     overseer = require("neotest.consumers.overseer"),
   },

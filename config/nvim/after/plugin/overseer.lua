@@ -12,7 +12,7 @@ overseer.setup({
     default_detail = 1,
     max_width = { 100, 0.2 },
     min_width = { 40, 0.1 },
-    direction = "left",
+    direction = "right",
     bindings = {
       ["?"] = "ShowHelp",
       ["<CR>"] = "RunAction",

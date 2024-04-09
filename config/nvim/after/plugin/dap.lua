@@ -29,8 +29,8 @@ dap_ruby.setup(
 )
 
 dapui.setup(
--- https://github.com/rcarriga/nvim-dap-ui/blob/master/doc/nvim-dap-ui.txt
--- https://github.com/rcarriga/nvim-dap-ui for setup of ui
+  -- https://github.com/rcarriga/nvim-dap-ui/blob/aster/doc/nvim-dap-ui.txt
+  -- https://github.com/rcarriga/nvim-dap-ui for setup of ui
 )
 
 dap_vt.setup({

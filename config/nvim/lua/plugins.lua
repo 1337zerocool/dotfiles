@@ -2,6 +2,7 @@
 -- ---------
 -- https://youtu.be/-joJuscbM5w  -> no select plus enter for complete
 -- paperplanes - needs better binding for visual mode
+-- https://github.com/echasnovski/mini.nvim -> can you use smaller plugins
 -- setup some snippets for luasnip
 -- copilot or codeium
 -- llama via gen.nvim
