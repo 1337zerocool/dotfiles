@@ -2,9 +2,9 @@
 -- ---------
 -- https://youtu.be/-joJuscbM5w  -> no select plus enter for complete
 -- paperplanes - needs better binding for visual mode
--- llama via gen.nvim
 -- setup some snippets for luasnip
 -- copilot or codeium
+-- llama via gen.nvim
 local plugins = {
   'stevearc/overseer.nvim',                      -- Task running library
   'nvim-lua/plenary.nvim',                       -- Utility library used by several plugins
@@ -22,7 +22,6 @@ local plugins = {
   'nvim-neo-tree/neo-tree.nvim',                 -- A 'tree' file explorer for the sidebar
   'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
   'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
-
   {
     "nvim-neotest/neotest",                      -- run related tests
     lazy = true,
@@ -39,7 +38,6 @@ local plugins = {
       })
     end,
   },
-
   {
     -- https://www.youtube.com/watch?v=VoyENLM2uto-
     'rcarriga/nvim-dap-ui',                      -- A UI for debugger access protocol
@@ -51,7 +49,6 @@ local plugins = {
       'theHamsta/nvim-dap-virtual-text',         -- when using the debugger put variable values in virtual text in the source
     }
   },
-
   'lukas-reineke/indent-blankline.nvim',         -- Visual guidelines for level of indentation
   'nvim-lualine/lualine.nvim',                   -- Status line at bottom of windows
   'xiyaowong/virtcolumn.nvim',                   -- Mark the end of lines using ascii in color column
