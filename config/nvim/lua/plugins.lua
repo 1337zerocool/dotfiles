@@ -50,7 +50,7 @@ local plugins = {
       'theHamsta/nvim-dap-virtual-text',         -- when using the debugger put variable values in virtual text in the source
     }
   },
-  'lukas-reineke/indent-blankline.nvim',         -- Visual guidelines for level of indentation
+  'shellRaining/hlchunk.nvim',                  -- Visual guidelines for level of indentation
   'nvim-lualine/lualine.nvim',                   -- Status line at bottom of windows
   'xiyaowong/virtcolumn.nvim',                   -- Mark the end of lines using ascii in color column
   'code-biscuits/nvim-biscuits',                 -- show 'opening' context at end of block as virtual text'
