@@ -74,8 +74,9 @@ A number of Homebrew packages are expected to be installed. These add to or upda
 macOS command line interface. The quickest way to install these is with a single command:
 
 ```sh
-brew install cmake coreutils fzf gawk gh git grep gsed jq neovim openssh openssl pup ripgrep sqlite tree-sitter wget zsh zsh-autosuggestions zsh-fast-syntax-highlighting
+brew install cmake coreutils fzf gawk gh git grep gsed jq neovim openssh openssl pup watchman ripgrep sqlite tree-sitter wget zsh zsh-autosuggestions zsh-fast-syntax-highlighting
 ```
+
 Then add some programming language specific packages:
 
 # Setup Ruby
@@ -83,7 +84,7 @@ Then add some programming language specific packages:
 * Source Chruby to continue with the next steps `source /opt/homebrew/opt/chruby/share/chruby/chruby.sh`
 * install a current ruby version: `ruby-install 3.3.0`
 * switch ruby for the current session: `chruby 3.3.0`
-* Setup common gems `gem install rake pry sorbet minitest rspec rubocop rails mocha factorybot neovim solargraph tapioca byebug`
+* Setup common gems `gem install rake pry sorbet minitest rspec rubocop rails mocha factory_bot neovim solargraph tapioca byebug`
 
 # Setup Python
 * Python: `brew install python3`

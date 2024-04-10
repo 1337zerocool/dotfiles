@@ -70,12 +70,12 @@ cmp.setup({
       --['<C-Y>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'nvim_lsp_document_symbol' },
-    { name = 'nvim_lsp_signature_help' },
-    { name = 'lausnip' },
-    { name = 'path' },
-    { name = 'treesitter' }
+    { name = 'nvim_lsp', group_index = 2 },
+    { name = 'nvim_lsp_document_symbol', group_index = 2 },
+    { name = 'nvim_lsp_signature_help', group_index = 2 },
+    { name = 'lausnip', group_index = 1 },
+    { name = 'path', group_index = 2 },
+    { name = 'treesitter', group_index = 2 }
   })
 })
 

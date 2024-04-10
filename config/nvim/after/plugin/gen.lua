@@ -7,7 +7,7 @@ gen.setup({
   -- https://github.com/David-Kunz/gen.nvim
   -- https://github.com/ollama/ollama
   -- requires locally installed ollama and appropriate models
-  model = "dolphin-mixtral",
+  model = "phi",
   host = "localhost",
   port = "11434",
   quit_map = "q",
