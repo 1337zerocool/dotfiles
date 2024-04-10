@@ -1,6 +1,3 @@
--- TODO LIST
--- ---------
--- https://youtu.be/-joJuscbM5w  -> no select plus enter for complete around 45 mins in
 local plugins = {
   'stevearc/overseer.nvim',                      -- Task running library
   'nvim-lua/plenary.nvim',                       -- Utility library used by several plugins

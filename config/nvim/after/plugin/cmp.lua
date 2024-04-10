@@ -53,30 +53,29 @@ cmp.setup({
       winhighlight = 'Normal:Normal,FloatBorder:CmpMenuBorder,CursorLine:Pmenusel,Search:None',
     }),
   },
-    mapping = cmp.mapping.preset.insert({
-      -- tab for next /shift-tab to complete?
-      ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-      ['<TAB>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<C-CR>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
-        elseif luasnip.expand_or_jumpable() then
-          vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-        else
-          fallback()
-        end
-      end),
-      --['<C-Y>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
+  mapping = cmp.mapping.preset.insert({
+    -- tab for next /shift-tab to complete?
+    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.confirm({ select = true })
+      elseif luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp', group_index = 2 },
     { name = 'nvim_lsp_document_symbol', group_index = 2 },
     { name = 'nvim_lsp_signature_help', group_index = 2 },
     { name = 'lausnip', group_index = 1 },
     { name = 'path', group_index = 2 },
-    { name = 'treesitter', group_index = 2 }
-  })
+    { name = 'treesitter', group_index = 2 },
+  }),
 })
 
 -- should probalby pretty load these - see mason config
