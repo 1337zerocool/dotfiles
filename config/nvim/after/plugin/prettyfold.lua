@@ -13,3 +13,15 @@ prettyfold.setup({
     process_comment_signs = 'spaces',
   }
 })
+
+-- Some notes on folding
+-- zn fold nothing
+-- zN fold normally
+-- zi toggle folding nothing/normally
+-- za toggle fold at current level
+-- zo open (capital for recursive)
+-- zc close (capital for recursive)
+-- zr fold reduce
+-- zm fold more
+-- zM fold everything
+-- zR unfold everything

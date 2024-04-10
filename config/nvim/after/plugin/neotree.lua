@@ -4,6 +4,13 @@ if not ok then
 end
 
 neotree.setup({
+  window = {
+    position = "right",
+    width = 40,
+  },
+  consumers = {
+    overseer = require("neotest.consumers.overseer"),
+  },
   sources = {
     "filesystem",
     "git_status",
@@ -16,4 +23,5 @@ neotree.setup({
   }
 })
 
-vim.keymap.set('n', '<leader>l', '<cmd>Neotree toggle<cr>')
+vim.keymap.set('n', '<leader>E', '<cmd>TroubleToggle workspace_diagnostics<cr>', { silent = true })
+vim.keymap.set('n', '<leader>l', '<cmd>Neotree toggle<cr>', { silent = true })

@@ -1,6 +1,7 @@
 -- This makes weird unexpected imports
 -- expects that cmp_nvim LSP are there
 -- expects that lsp config is there
+-- take a look in cmp.lua as there's some config over there too
 local ok, mason = pcall(require, 'mason')
 if not ok then
   return
@@ -16,18 +17,30 @@ if not cmpok then
   return
 end
 
+-- configure your language servers here rather than in stand along files
 local servers = {
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-  -- jsonls = {}
-  -- arduino_language_server = {}
+  ast_grep = {},
+  denols = {},
+  graphql = {},
+  cssls = {},
+  -- docker
+  emmet_ls = {},
+  html = {},
+  jsonls = {},
+  rust_analyzer = {},
+  arduino_language_server = {},
   gopls = {},
   tsserver = {},
   solargraph = {},
-
+  -- ruby_ls = {},
   lua_ls = {
     Lua = {
-      workspace = { checkThirdParty = false },
+      workspace = {
+        checkThirdParty = false,
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
       telemetry = { enable = false },
+      diagnostics = { globals = { "vim" }, },
     },
   },
 }
