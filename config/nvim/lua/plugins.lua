@@ -91,6 +91,7 @@ local plugins = {
   },
   'David-Kunz/gen.nvim',                         -- Enable self hosted AI
   'zbirenbaum/copilot.lua',                      -- Enable github copilot
+  'dustinblackman/oatmeal.nvim',                 -- Experiment with interactive AI chat
 }
 local opts = {}
 
