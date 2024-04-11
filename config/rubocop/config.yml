@@ -3,9 +3,19 @@ require:
   - rubocop-sorbet
 
 AllCops:
-  TargetRubyVersion: 3.2
+  TargetRubyVersion: 3.3
   NewCops: disable
   SuggestExtensions: false
+
+inherit_mode:
+  merge:
+    - AllowedNames
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - x
+    - y
+    - z
 
 Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
@@ -18,7 +28,7 @@ Metrics/BlockLength:
     - array
     - hash
     - heredoc
-
+ 
 Style/Documentation:
   Enabled: false
 
@@ -32,3 +42,4 @@ Style/StringLiteralsInInterpolation:
 
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: consistent_comma
+
