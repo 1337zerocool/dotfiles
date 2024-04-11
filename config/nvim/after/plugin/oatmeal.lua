@@ -12,4 +12,4 @@ oatmeal.setup({
 vim.keymap.del('n', '<leader>om')
 vim.keymap.del('v', '<leader>om')
 
-vim.keymap.set({ 'n', 'v' }, '<leader>co', '<cmd>Oatmeal<cr>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>`', '<cmd>Oatmeal<cr>', { silent = true })

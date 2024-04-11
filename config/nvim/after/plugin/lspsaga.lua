@@ -37,6 +37,9 @@ vim.keymap.set('n', '<leader>o', '<cmd>Lspsaga outline<cr>', { silent = true })
 vim.keymap.set('n', '<leader>r', '<cmd>Lspsaga finder<cr>', { silent = true })
 vim.keymap.set('n', '<leader>p', '<cmd>Lspsaga peek_definition<cr>', { silent = true })
 
+-- I'm not really sure where to put this. But it's useful to have a button to run 'format' on the current buffer
+vim.keymap.set('n', '<leader>=', vim.lsp.buf.format, { silent = true })
+
 -- The default virtual text for errors is in settings.lua, it's a default vim feature
 -- enable if you disable showing virtual text, then go to trouble.lua and change the document
 -- workspace diagnostic bindings
