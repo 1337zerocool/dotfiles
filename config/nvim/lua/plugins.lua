@@ -91,6 +91,8 @@ local plugins = {
   },
   'zbirenbaum/copilot.lua',                      -- Enable github copilot
   'dustinblackman/oatmeal.nvim',                 -- Experiment with interactive AI chat
+  'rcarriga/nvim-notify',                        -- Notifications from language servers and stuff, out of the command line into windows
+--  'folke/noice.nvim',                            -- Move around command line, notifications, etc. Too much stuff
 }
 local opts = {}
 
