@@ -16,18 +16,18 @@ local plugins = {
   'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
   'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
   {
-    "nvim-neotest/neotest",                      -- run related tests
+    'nvim-neotest/neotest',                      -- run related tests
     lazy = true,
     dependencies = {
-      "nvim-neotest/nvim-nio",
-      "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "zidhuss/neotest-minitest",                -- make it work with minitest
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'zidhuss/neotest-minitest',                -- make it work with minitest
     },
     config = function()
-      require("neotest").setup({
-        adapters = { require("neotest-minitest") },
+      require('neotest').setup({
+        adapters = { require('neotest-minitest') },
       })
     end,
   },
@@ -89,19 +89,20 @@ local plugins = {
       'hrsh7th/cmp-path',                        -- use filesystem as completion source
     },
   },
-  "David-Kunz/gen.nvim",                         -- Enable self hosted AI
+  'David-Kunz/gen.nvim',                         -- Enable self hosted AI
+  'zbirenbaum/copilot.lua',                      -- Enable github copilot
 }
 local opts = {}
 
 -- Start by installing the Lazy package manager
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
     lazypath,
   })
 end

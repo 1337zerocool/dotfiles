@@ -25,7 +25,7 @@ end
 
 cmp.setup({
   experimental = {
-    ghost_text = true -- this feature conflict with copilot.vim's preview.
+    ghost_text = false -- this feature conflict with copilot.vim's preview.
   },
   snippet = {
     expand = function(args)
@@ -60,7 +60,7 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.confirm({ select = true })
+        cmp.confirm({ select = false })
       elseif luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
       else
