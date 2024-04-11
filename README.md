@@ -147,6 +147,11 @@ Then add some programming language specific packages:
 * remove the old neovim directory `rm -rf "$HOME/.config/nvim"`
 * symlink in the dotfiles version `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/nvim" "$HOME/.config/nvim"`
 
+## Setup large language models
+
+* install oatmeal `brew install dustinblackman/tap/oatmeal`
+* use ollama to install some good models: `ollama run dolphine-mixtral`
+
 # Setup MacOS
 ## Install keyboard launch agent
 ## Set global performance things
