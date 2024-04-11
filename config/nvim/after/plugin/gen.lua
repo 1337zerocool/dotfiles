@@ -51,4 +51,3 @@ gen.prompts = {
 }
 
 vim.keymap.set({ 'n', 'v' }, '<leader>cg', '<cmd>Gen<cr>')
-

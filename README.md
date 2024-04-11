@@ -126,8 +126,15 @@ Then add some programming language specific packages:
 * symlink in the dotfiles version `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/git" "$HOME/.config/git"`
 
 ## Github
+IOU: symlink this after updates
+
+## Bundler
+IOU directory and symlink to ~/.bundle
 ## Rubocop
-* symlink dircolors config dir `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/rubocop" "$HOME/.config/rubocop"`
+* symlink rubocop config dir `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/rubocop" "$HOME/.config/rubocop"`
+
+## Solargraph
+* symlink solargraph config dir `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/solargraph" "$HOME/.config/solargraph"`
 
 ## Dircolors
 * symlink dircolors config dir `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/dircolors" "$HOME/.config/dircolors"`
