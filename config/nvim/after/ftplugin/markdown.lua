@@ -7,3 +7,5 @@ vim.opt.wrapmargin = 0
 vim.opt.autoindent = false
 vim.opt.cindent = false
 vim.opt.indentexpr = ''
+
+vim.cmd('TSDisable highlight')
