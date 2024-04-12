@@ -8,5 +8,5 @@ notify.setup({
   render = "compact",
   stages = "static",
   timeout = 2000,
-  level = 3,
+  level = 2,
 })
