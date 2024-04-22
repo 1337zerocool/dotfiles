@@ -1,3 +1,6 @@
+-- https://www.youtube.com/watch?v=upM6FOtdLeU
+-- notice the config for telescope that offers autocomplete
+
 local ok, noice = pcall(require, "noice")
 if not ok then
   return
