@@ -5,7 +5,7 @@ end
 
 oatmeal.setup({
   backend = "ollama",
-  model = "llama3:70b",
+  model = "llama3:8b-instruct-q4_K_M",
   close_terminal_on_quit = true,
 })
 

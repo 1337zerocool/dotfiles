@@ -23,4 +23,7 @@ neotree.setup({
   }
 })
 
-vim.keymap.set('n', '<leader>l', '<cmd>Neotree toggle<cr>', { silent = true })
+vim.keymap.set({'n', 'v'}, '<leader>l', '<cmd>Neotree toggle<cr>', { silent = true })
+
+--vim.keymap.set({'n', 'v'}, '<leader>l', '<cmd>Neotree float<cr>', { silent = true })
+
