@@ -15,7 +15,8 @@ local plugins = {
   'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
   'Marskey/telescope-sg',                        -- AST Grep for telescope: search on code structure
   'nvim-neo-tree/neo-tree.nvim',                 -- A 'tree' file explorer for the sidebar
-  'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
+  -- 'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
   {
     'nvim-neotest/neotest',                      -- run related tests
