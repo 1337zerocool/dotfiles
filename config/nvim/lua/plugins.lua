@@ -1,4 +1,3 @@
--- consider catppucino.nvim for a color scheme
 -- consider moving each plugin to it's own file and then requiring them all
 local plugins = {
   'stevearc/overseer.nvim',                      -- Task running library
@@ -15,8 +14,7 @@ local plugins = {
   'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
   'Marskey/telescope-sg',                        -- AST Grep for telescope: search on code structure
   'nvim-neo-tree/neo-tree.nvim',                 -- A 'tree' file explorer for the sidebar
-  -- 'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+   "catppuccin/nvim",                            -- a surprisingly colorful theme
   'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
   {
     'nvim-neotest/neotest',                      -- run related tests

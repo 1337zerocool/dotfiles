@@ -4,10 +4,10 @@ if not ok then
 end
 
 color.setup({
-  flavour = "Macchiato", -- latte, frappe, macchiato, mocha
+  flavour = "macchiato", -- latte, frappe, macchiato, mocha
   background = { -- :h background
     light = "latte",
-    dark = "Macchiato",
+    dark = "macchiato",
   },
   transparent_background = false, -- disables setting the background color.
   show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
