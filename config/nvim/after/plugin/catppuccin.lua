@@ -1,3 +1,4 @@
+-- This requires some updates for 'warnings'
 local ok, color = pcall(require, "catppuccin")
 if not ok then
   return
@@ -53,3 +54,8 @@ color.setup({
 })
 
 vim.cmd.colorscheme "catppuccin"
+
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg="#494D64"})
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg="#494D64" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg="#494D64" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg="#494D64" })
