@@ -33,7 +33,6 @@ local plugins = {
     end,
   },
   {
-    -- https://www.youtube.com/watch?v=VoyENLM2uto-
     'rcarriga/nvim-dap-ui',                      -- A UI for debugger access protocol
     dependencies = {
       'mfussenegger/nvim-dap',                   -- Support for debugger access protocol. Unfortunately mason is limited
