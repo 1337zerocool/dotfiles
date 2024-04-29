@@ -6,6 +6,7 @@ These are Dotfiles intended for use on a Macbook running macOS 14 or later.
 
   * [Kitty](https://github.com/kovidgoyal/kitty) terminal emulator
   * [Github](https://github.com/cutehax0r) account
+  * Nerd Font patch Cartograph font (check icloud drive)
 
 # Setup SSH
 
