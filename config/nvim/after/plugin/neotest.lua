@@ -17,7 +17,7 @@ neotest.setup({
     overseer = require("neotest.consumers.overseer"),
   },
   adapters = {
-    require("neotest-minitest")
+    neotest_minitest,
   },
 })
 
