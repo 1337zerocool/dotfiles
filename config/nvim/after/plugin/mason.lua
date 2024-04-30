@@ -23,16 +23,16 @@ local servers = {
   denols = {},
   graphql = {},
   cssls = {},
-  -- docker
+  -- docker {}
   emmet_ls = {},
   html = {},
   jsonls = {},
-  rust_analyzer = {},
-  arduino_language_server = {},
+  -- rust_analyzer = {},
+  -- arduino_language_server = {},
   gopls = {},
   tsserver = {},
+  -- rubocop = {}, gets run automatically by solargraph
   solargraph = {},
-  -- ruby_ls = {},
   lua_ls = {
     Lua = {
       workspace = {

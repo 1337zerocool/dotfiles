@@ -1,7 +1,4 @@
--- TODO LIST
--- ---------
--- https://youtu.be/-joJuscbM5w  -> no select plus enter for complete
--- copilot or codeium
+-- consider moving each plugin to it's own file and then requiring them all
 local plugins = {
   'stevearc/overseer.nvim',                      -- Task running library
   'nvim-lua/plenary.nvim',                       -- Utility library used by several plugins
@@ -17,26 +14,25 @@ local plugins = {
   'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
   'Marskey/telescope-sg',                        -- AST Grep for telescope: search on code structure
   'nvim-neo-tree/neo-tree.nvim',                 -- A 'tree' file explorer for the sidebar
-  'andersevenrud/nordic.nvim',                   -- 'Cool' colour scheme. Some additional HL groups are required for consistency
+   "catppuccin/nvim",                            -- a surprisingly colorful theme
   'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
   {
-    "nvim-neotest/neotest",                      -- run related tests
+    'nvim-neotest/neotest',                      -- run related tests
     lazy = true,
     dependencies = {
-      "nvim-neotest/nvim-nio",
-      "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "zidhuss/neotest-minitest",                -- make it work with minitest
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'zidhuss/neotest-minitest',                -- make it work with minitest
     },
     config = function()
-      require("neotest").setup({
-        adapters = { require("neotest-minitest") },
+      require('neotest').setup({
+        adapters = { require('neotest-minitest') },
       })
     end,
   },
   {
-    -- https://www.youtube.com/watch?v=VoyENLM2uto-
     'rcarriga/nvim-dap-ui',                      -- A UI for debugger access protocol
     dependencies = {
       'mfussenegger/nvim-dap',                   -- Support for debugger access protocol. Unfortunately mason is limited
@@ -46,7 +42,7 @@ local plugins = {
       'theHamsta/nvim-dap-virtual-text',         -- when using the debugger put variable values in virtual text in the source
     }
   },
-  'shellRaining/hlchunk.nvim',                  -- Visual guidelines for level of indentation
+  'shellRaining/hlchunk.nvim',                   -- Visual guidelines for level of indentation
   'nvim-lualine/lualine.nvim',                   -- Status line at bottom of windows
   'xiyaowong/virtcolumn.nvim',                   -- Mark the end of lines using ascii in color column
   'code-biscuits/nvim-biscuits',                 -- show 'opening' context at end of block as virtual text'
@@ -91,24 +87,28 @@ local plugins = {
       'hrsh7th/cmp-nvim-lsp-signature-help',     -- show method signature help whie completing
       'hrsh7th/cmp-nvim-lsp-document-symbol',    -- use document symbols as completion sources
       'hrsh7th/cmp-path',                        -- use filesystem as completion source
-      --'tzachar/cmp-ai',                          -- support completion from AI helpers
-      'zbirenbaum/copilot-cmp',                  -- copilot completion
     },
   },
-  "David-Kunz/gen.nvim",                         -- Enable self hosted AI
-  "zbirenbaum/copilot.lua"                       -- enable copilot
+  'zbirenbaum/copilot.lua',                      -- Enable github copilot
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",            -- Chat with copilot
+    branch = "canary",
+  },
+  'dustinblackman/oatmeal.nvim',                 -- Experiment with interactive AI chat
+  'rcarriga/nvim-notify',                        -- Notifications from language servers and stuff, out of the command line into windows
+  'folke/noice.nvim',                            -- Move around command line, notifications, etc. Too much stuff
 }
 local opts = {}
 
 -- Start by installing the Lazy package manager
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
     lazypath,
   })
 end

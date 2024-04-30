@@ -20,4 +20,4 @@ biscuits.setup({
 
 vim.api.nvim_set_hl(0, "BiscuitColor", { fg="#D08770" })
 -- vim.api.nvim_set_hl(0, "BiscuitColorRuby", { fg="#D08770" })
--- vim.keymap.set("n", "<leader>cb", "<cmd>lua require('nvim-biscuits').toggle_biscuits()<cr>", { silent = true})
+vim.keymap.set("n", "<leader>cb", "<cmd>lua require('nvim-biscuits').toggle_biscuits()<cr>", { silent = true})

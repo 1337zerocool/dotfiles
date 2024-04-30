@@ -1,6 +1,9 @@
-local ok, _luasnip = pcall(require, 'luasnip')
+local ok, luasnip = pcall(require, 'luasnip')
 if not ok then
   return
 end
 
--- keybinds for completion and stepping through options are set in cmp.lua
+luasnip.config.set_config({
+  region_check_events = 'InsertEnter,CursorHold',
+  delete_check_events = 'InsertLeave,TextChanged',
+})

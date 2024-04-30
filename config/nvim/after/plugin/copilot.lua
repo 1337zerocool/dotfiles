@@ -4,19 +4,20 @@ if not ok then
 end
 
 copilot.setup({
-  suggestion = {
-    enabled = false
-  },
   panel = {
-    enabled = false,
+    enabled = true,
     auto_refresh = true,
-    layout = {
-      position = "right",
-      ratio = 0.4
+  },
+  suggestion = {
+    enabled = true,
+    keymap = {
+      accept = "<S-Tab>",
     },
+    auto_trigger = true,
+    accept = true,
   },
 })
 
-vim.keymap.set('n', '<leader>cc', '<cmd>Copilot panel<cr>', { silent = true })
-vim.keymap.set('n', '<leader>cd', '<cmd>Copilot disable<cr>', { silent = true })
-vim.keymap.set('n', '<leader>ce', '<cmd>Copilot enable<cr>', { silent = true })
+-- see copiliotchat.lua
+-- vim.keymap.set({ 'n', 'v' }, '<leader>ce', '<cmd>Copilot enable<cr>', { silent = true})
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cd', '<cmd>Copilot disable<cr>', { silent = true})

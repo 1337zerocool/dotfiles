@@ -3,13 +3,19 @@ if not ok then
   return
 end
 
+local okneotest, neotest = pcall(require, 'neotest.consumers.overseer')
+if not okneotest then
+  return
+end
+
+
 neotree.setup({
   window = {
     position = "right",
     width = 40,
   },
   consumers = {
-    overseer = require("neotest.consumers.overseer"),
+    overseer = neotest,
   },
   sources = {
     "filesystem",
@@ -23,5 +29,7 @@ neotree.setup({
   }
 })
 
-vim.keymap.set('n', '<leader>E', '<cmd>TroubleToggle workspace_diagnostics<cr>', { silent = true })
-vim.keymap.set('n', '<leader>l', '<cmd>Neotree toggle<cr>', { silent = true })
+vim.keymap.set({'n', 'v'}, '<leader>l', '<cmd>Neotree toggle<cr>', { silent = true })
+
+--vim.keymap.set({'n', 'v'}, '<leader>l', '<cmd>Neotree float<cr>', { silent = true })
+

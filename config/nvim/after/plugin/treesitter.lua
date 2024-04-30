@@ -12,13 +12,15 @@ treesitter.setup({
   -- the warnings for missing `modules` and `ignore_install` are noise. Ignore them
   modules = {},
   ignore_install = {},
+  indent = {
+    enable = true
+  },
   incremental_selection = {
     enable = true,
     keymaps = {
       init_selection = "<c-space>", -- set to `false` to disable one of the mappings
       node_incremental = "<c-space>",
-      node_decremental = "<M-space>",
-      scope_incremental = "<c-s-space>",
+      node_decremental = "<c-s-space>",
     },
   },
   ensure_installed = {

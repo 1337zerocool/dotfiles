@@ -2,7 +2,7 @@ vim.opt.termguicolors = true
 vim.opt.backspace = "eol,start,indent"
 vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.autoread = true
-vim.opt.completeopt = "menu,noinsert,menuone,noselect"
+vim.opt.completeopt = "menu,preview,noinsert,menuone,noselect"
 vim.opt.hidden = true
 vim.opt.history = 1000
 vim.opt.mouse = "a"
@@ -77,11 +77,6 @@ vim.fn.sign_define("DiagnosticSignError" , { text = "", texthl="DiagnosticSig
 vim.fn.sign_define("DiagnosticSignWarn" , { text = "", texthl="DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo" , { text = "", texthl="DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint" , { text = "", texthl="DiagnosticSignHint" })
-
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg="#434C5E"})
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg="#434C5E" })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg="#434C5E" })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg="#434C5E" })
 
 vim.diagnostic.config({
   virtual_text = { prefix = "●", }, -- set to false to disable virtual text
