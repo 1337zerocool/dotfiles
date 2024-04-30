@@ -23,7 +23,6 @@ local servers = {
   denols = {},
   graphql = {},
   cssls = {},
-  -- docker
   emmet_ls = {},
   html = {},
   jsonls = {},
