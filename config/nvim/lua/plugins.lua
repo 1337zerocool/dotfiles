@@ -42,7 +42,7 @@ local plugins = {
       'theHamsta/nvim-dap-virtual-text',         -- when using the debugger put variable values in virtual text in the source
     }
   },
-  'shellRaining/hlchunk.nvim',                  -- Visual guidelines for level of indentation
+  'shellRaining/hlchunk.nvim',                   -- Visual guidelines for level of indentation
   'nvim-lualine/lualine.nvim',                   -- Status line at bottom of windows
   'xiyaowong/virtcolumn.nvim',                   -- Mark the end of lines using ascii in color column
   'code-biscuits/nvim-biscuits',                 -- show 'opening' context at end of block as virtual text'
@@ -90,6 +90,10 @@ local plugins = {
     },
   },
   'zbirenbaum/copilot.lua',                      -- Enable github copilot
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",            -- Chat with copilot
+    branch = "canary",
+  },
   'dustinblackman/oatmeal.nvim',                 -- Experiment with interactive AI chat
   'rcarriga/nvim-notify',                        -- Notifications from language servers and stuff, out of the command line into windows
   'folke/noice.nvim',                            -- Move around command line, notifications, etc. Too much stuff

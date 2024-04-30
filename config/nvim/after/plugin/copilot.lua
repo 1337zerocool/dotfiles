@@ -18,6 +18,6 @@ copilot.setup({
   },
 })
 
-vim.keymap.set({ 'n', 'v' }, '<leader>cc', '<cmd>Copilot panel<cr>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>ce', '<cmd>Copilot enable<cr>', { silent = true})
-vim.keymap.set({ 'n', 'v' }, '<leader>cd', '<cmd>Copilot disable<cr>', { silent = true})
+-- see copiliotchat.lua
+-- vim.keymap.set({ 'n', 'v' }, '<leader>ce', '<cmd>Copilot enable<cr>', { silent = true})
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cd', '<cmd>Copilot disable<cr>', { silent = true})
