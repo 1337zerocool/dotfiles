@@ -13,9 +13,24 @@ if not ok_select then
   return
 end
 
+local ok_prompt, prompts = pcall(require, 'CopilotChat.prompts')
+if not ok_prompt then
+  return
+end
+
+-- look in https://github.com/deathbeam/dotfiles/blob/master/nvim/.config/nvim/lua/config/copilot.lua#L14
 
 copilotchat.setup({
-  -- look in https://github.com/deathbeam/dotfiles/blob/master/nvim/.config/nvim/lua/config/copilot.lua#L14
+  debug = false,
+  system_prompt = prompts.COPILOT_INSTRUCTIONS,
+  model = 'gpt-3.5-turbo',
+  temperature = 0.1,
+  auto_insert_mode = true,
+  clear_chat_on_new_prompt = true,
+  context = 'buffers',
+  selection = function(source)
+    return select.visual(source) or select.line(source)
+  end,
 })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>cc', '<cmd>CopilotChat<cr>', { silent = true })
