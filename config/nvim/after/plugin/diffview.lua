@@ -1,8 +1,3 @@
--- local ok, diffview = pcall(require, 'diffview')
--- if not ok then
---   return
--- end
-
 local ok_lib, diffviewlib = pcall(require, 'diffview.lib')
 if not ok_lib then
   return
@@ -15,6 +10,3 @@ vim.keymap.set('n', '<leader>ga', function()
     vim.cmd('DiffviewClose')
   end
 end, { silent = true, desc = "Vieg the git diff for all files in the workspace" })
-
--- add binding to show history of current file in gitsigns
--- add binding to show history of project in telescope

@@ -63,6 +63,7 @@ vim.keymap.set({ "n", "v" }, "<leader>k", "<cmd>Telescope keymaps<cr>", { silent
 vim.keymap.set({ "n", "v" }, "<leader>m", "<cmd>Telescope telescope-alternate alternate_file<cr>", { silent = true, desc = "Switch between alternate files (e.g. test and code)" })
 vim.keymap.set({ "n", "v" }, "<leader>'", "<cmd>Telescope ast_grep<cr>", { silent = true, desc = "Search for AST nodes in the current buffer" })
 vim.keymap.set({ "n", "v" }, "<leader>gf", "<cmd>Telescope git_bcommits<cr>", { silent = true, desc="Browse the git commit history of the current file" })
+vim.keymap.set({ "n", "v" }, "<leader>gl", "<cmd>Telescope git_commits<cr>", { silent = true, desc="Browse the git commit history of the current workspace" })
 vim.keymap.set({ "n", "v" }, "<leader>dl", "<cmd>Telescope dap list_breakpoints<cr>", { silent = true, desc = "Search breakpoints setup in the debugger" })
 vim.keymap.set({ "n", "v" }, "<leader>s", "<cmd>Telescope lsp_document_symbols<cr>", { silent = true, desc = "Search for symbols in the current document" })
 vim.keymap.set({ "n", "v" }, "<leader>S", "<cmd>Telescope lsp_workspace_symbols<cr>", { silent = true, desc = "Search for symbols in any file in the current workspace" })
