@@ -47,19 +47,14 @@ vim.opt.showcmd = true
 vim.opt.showmode = false
 vim.opt.signcolumn = "yes:1"
 vim.opt.wildignorecase = true
+vim.api.nvim_set_hl(0, "VirtColumn", { fg="#3B4252" })
+vim.opt.colorcolumn = "100"
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
-vim.opt.foldenable = false
-vim.opt.foldlevel = 2
-vim.opt.foldmethod="expr"
-vim.opt.foldexpr="nvim_treesitter#foldexpr()"
-vim.opt.foldminlines = 1
-vim.opt.foldcolumn = "auto"
 vim.opt.list = true
-vim.opt.listchars = {
-  -- space = "·",
+vim.opt.listchars = { -- space = "·",
   nbsp = "○",
   tab = "→ ",
   eol = "↵",
@@ -67,10 +62,6 @@ vim.opt.listchars = {
   extends = "⇀",
   precedes = "↼"
 }
-vim.g.virtcolumn_char = "▕"
-vim.g.virtcolumn_priority = 10
-vim.api.nvim_set_hl(0, "VirtColumn", { fg="#3B4252" })
-vim.opt.colorcolumn = "100"
 
 vim.fn.sign_define("DiagnosticSignError" , { text = "", texthl="DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn" , { text = "", texthl="DiagnosticSignWarn" })
@@ -82,6 +73,14 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
+vim.opt.foldenable = false
+vim.opt.foldlevel = 2
+vim.opt.foldmethod="expr"
+vim.opt.foldexpr="nvim_treesitter#foldexpr()"
+vim.opt.foldminlines = 1
+vim.opt.foldcolumn = "0"
+vim.g.virtcolumn_char = "▕"
+vim.g.virtcolumn_priority = 10
 -- have foldcolumn settings to arrow right and arrow down.  
 -- have lines down to bottom of fold
 -- have some kind of fold end marker

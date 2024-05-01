@@ -14,7 +14,7 @@ vim.keymap.set('n', '<leader>ga', function()
   else
     vim.cmd('DiffviewClose')
   end
-end)
+end, { silent = true, desc = "Vieg the git diff for all files in the workspace" })
 
 -- add binding to show history of current file in gitsigns
 -- add binding to show history of project in telescope
