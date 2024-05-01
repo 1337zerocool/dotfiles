@@ -40,6 +40,7 @@ color.setup({
   custom_highlights = function(colors)
     return {
       NonText = { fg = colors.surface0 }, -- dimming listchars
+      Folded = { fg = colors.overlay1, bg = colors.base }, -- foldcolumn
     }
   end,
   default_integrations = true,

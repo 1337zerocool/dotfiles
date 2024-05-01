@@ -97,7 +97,6 @@ local plugins = {
   'rcarriga/nvim-notify',                        -- Notifications from language servers and stuff, out of the command line into windows
   'folke/noice.nvim',                            -- Move around command line, notifications, etc. Too much stuff
   'Bekaboo/dropbar.nvim',                        -- A little bar that gives context on where you are
-  'echasnovski/mini.animate',                    -- adds some animation, hopefully making the cursor easy to track
 }
 local opts = {}
 

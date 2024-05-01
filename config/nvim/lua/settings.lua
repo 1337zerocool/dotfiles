@@ -56,7 +56,7 @@ vim.opt.foldlevel = 2
 vim.opt.foldmethod="expr"
 vim.opt.foldexpr="nvim_treesitter#foldexpr()"
 vim.opt.foldminlines = 1
-vim.opt.foldcolumn = "0"
+vim.opt.foldcolumn = "auto"
 vim.opt.list = true
 vim.opt.listchars = {
   -- space = "·",
@@ -67,7 +67,6 @@ vim.opt.listchars = {
   extends = "⇀",
   precedes = "↼"
 }
-
 vim.g.virtcolumn_char = "▕"
 vim.g.virtcolumn_priority = 10
 vim.api.nvim_set_hl(0, "VirtColumn", { fg="#3B4252" })
@@ -82,3 +81,19 @@ vim.diagnostic.config({
   virtual_text = { prefix = "●", }, -- set to false to disable virtual text
   severity_sort = true,
 })
+
+-- have foldcolumn settings to arrow right and arrow down.  
+-- have lines down to bottom of fold
+-- have some kind of fold end marker
+-- get rid of silly icon at left side of thing
+-- want to show number of columns with dashed lines for 80 columns then the icon
+-- see https://essais.co/better-folding-in-neovim/
+function _G.CustomFoldText()
+  return  vim.fn.getline(vim.v.foldstart) .. ' … ' .. vim.fn.getline(vim.v.foldend):gsub("^%s*", "")
+end
+vim.opt.foldtext = 'v:lua.CustomFoldText()'
+vim.opt.fillchars = {
+  fold = " ",
+  foldopen = "▾",
+  foldclose = "▸"
+}
