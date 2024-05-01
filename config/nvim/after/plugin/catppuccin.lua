@@ -45,14 +45,23 @@ color.setup({
   default_integrations = true,
   integrations = {
     cmp = true,
+    dap = true,
+    dap_ui = true,
+    -- mason = false,
     gitsigns = true,
-    nvimtree = true,
+    neotree = false,
+    neotest = false,
     treesitter = true,
-    notify = false,
-    mini = {
+    telescope = {
       enabled = true,
-      indentscope_color = "",
     },
+    lsp_trouble = false,
+    noice = false,
+    dropbar = {
+      enabled = true,
+      color_mode = false,
+    },
+    notify = false,
     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
 })

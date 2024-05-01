@@ -1,5 +1,4 @@
 -- consider moving each plugin to it's own file and then requiring them all
--- consider https://github.com/Bekaboo/dropbar.nvim
 local plugins = {
   'stevearc/overseer.nvim',                      -- Task running library
   'nvim-lua/plenary.nvim',                       -- Utility library used by several plugins
@@ -98,6 +97,7 @@ local plugins = {
   'dustinblackman/oatmeal.nvim',                 -- Experiment with interactive AI chat
   'rcarriga/nvim-notify',                        -- Notifications from language servers and stuff, out of the command line into windows
   'folke/noice.nvim',                            -- Move around command line, notifications, etc. Too much stuff
+  'Bekaboo/dropbar.nvim'                         -- A little bar that gives context on where you are
 }
 local opts = {}
 
