@@ -23,7 +23,7 @@ color.setup({
   no_underline = false, -- Force no underline
   styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
     comments = { "italic" }, -- Change the style of comments
-    conditionals = { "italic" },
+    conditionals = {},
     loops = {},
     functions = {},
     keywords = {},
@@ -34,7 +34,7 @@ color.setup({
     properties = {},
     types = {},
     operators = {},
-    --  miscs = {}, -- Uncomment to turn off hard-coded styles
+    -- miscs = {}, -- Uncomment to turn off hard-coded styles
   },
   color_overrides = {},
   custom_highlights = function(colors)
