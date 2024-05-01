@@ -23,9 +23,9 @@ end
 copilotchat.setup({
   debug = false,
   system_prompt = prompts.COPILOT_INSTRUCTIONS,
-  model = 'gpt-3.5-turbo',
+  model = 'gpt-4',
   temperature = 0.1,
-  auto_insert_mode = true,
+  auto_insert_mode = false,
   clear_chat_on_new_prompt = true,
   context = 'buffers',
   selection = function(source)
@@ -33,7 +33,5 @@ copilotchat.setup({
   end,
 })
 
-vim.keymap.set({ 'n', 'v' }, '<leader>cc', '<cmd>CopilotChat<cr>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>ca', function()
-  actions.pick(actions.prompt_actions({ selection = select.visual, }))
-end, { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>cc', '<cmd>CopilotChatToggle<cr>', { silent = true, desc="Toggle Copilot chat window" })
+vim.keymap.set({ 'n', 'v' }, '<leader>ca', function() actions.pick(actions.prompt_actions({ selection = select.visual, })) end, { silent = true, desc="Copilot code actions list" })

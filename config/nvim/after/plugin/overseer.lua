@@ -37,7 +37,5 @@ overseer.setup({
   },
   actions = {},
 })
-vim.keymap.set('n', '<leader>a', '<cmd>OverseerRun<cr>', { silent = true })
-vim.keymap.set('n', '<leader>A', '<cmd>OverseerToggle<cr>', { silent = true })
-vim.keymap.set('v', '<leader>a', '<cmd>OverseerRun<cr>', { silent = true })
-vim.keymap.set('v', '<leader>T', '<cmd>OverseerToggle<cr>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>a', '<cmd>OverseerRun<cr>', { silent = true, desc="Run an task action" })
+vim.keymap.set({ 'n', 'v' }, '<leader>A', '<cmd>OverseerToggle<cr>', { silent = true, desc="Toggle the task action list" })

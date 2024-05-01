@@ -1,4 +1,5 @@
 -- consider moving each plugin to it's own file and then requiring them all
+-- consider https://github.com/Bekaboo/dropbar.nvim
 local plugins = {
   'stevearc/overseer.nvim',                      -- Task running library
   'nvim-lua/plenary.nvim',                       -- Utility library used by several plugins

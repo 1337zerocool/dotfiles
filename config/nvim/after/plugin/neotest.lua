@@ -8,37 +8,26 @@ if not ok_minitest then
   return
 end
 
+local ok_overseer, overseer = pcall(require, 'neotest.consumers.overseer')
+if not ok_overseer then
+  return
+end
+
+
 neotest.setup({
   overseer = {
     enabled = true,
     force_default = true,
   },
   consumers = {
-    overseer = require("neotest.consumers.overseer"),
+    overseer = overseer,
   },
   adapters = {
     neotest_minitest,
   },
 })
 
-vim.keymap.set("n", "<leader>T", "<cmd>lua require('neotest').summary.toggle()<cr>", { silent = true})
-vim.keymap.set("n", "<leader>t", "<cmd>lua require('neotest').overseer.run({})<cr>", { silent = true})
-
--- lua require('neotest').overseer.run({})
-
--- lua require("neotest").watch.toggle(vim.fn.expand("%"))
--- lua require("neotest").output.open({ enter = true })
--- lua require("neotest").output_panel.toggle()
--- lua require("neotest").output_panel.clear()
--- lua require("neotest").run.run({vim.fn.expand("%"), strategy = "dap"})
--- lua require("neotest").run.run({vim.fn.expand("%"))
--- lua require("neotest").run.run_last()
--- lua require("neotest").run.run_last({ strategy = "dap" })
--- lua require("neotest").watch.toggle(vim.fn.expand("%"))
--- lua require("neotest").summary.open()
--- `run_marked`({args})
--- `clear_marked`({args})
---
---  nnoremap <silent>[n <cmd>lua require("neotest").jump.prev({ status = "failed" })<CR>
---  nnoremap <silent>]n <cmd>lua require("neotest").jump.next({ status = "failed" })<CR>
-
+vim.keymap.set({ 'n','v' }, "<leader>T", neotest.summary.toggle, { silent = true, desc="Toggle test summary" })
+vim.keymap.set({ 'n','v' }, "<leader>t", neotest.overseer.run, { silent = true, desc="Run tests" })
+-- vim.keymap.set({ 'n','v' }, "]t", neotest.jump.next({ status = 'failed' }) { silent = true, desc="Jump to next failing test" })
+-- vim.keymap.set({ 'n','v' }, "[t", neotest.jump.prev({ status = 'failed' }), { silent = true, desc="Jump to previous failing test" })

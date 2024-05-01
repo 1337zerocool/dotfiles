@@ -95,9 +95,9 @@ treesitter.setup({
 
 
 -- setup keymaps for ;,ft to repeat ts moves too
-vim.keymap.set({ 'n', 'x', 'o' }, ';', treesitter_move.repeat_last_move_next)
-vim.keymap.set({ 'n', 'x', 'o' }, ',', treesitter_move.repeat_last_move_previous)
-vim.keymap.set({ 'n', 'x', 'o' }, 'f', treesitter_move.builtin_f)
-vim.keymap.set({ 'n', 'x', 'o' }, 'F', treesitter_move.builtin_F)
-vim.keymap.set({ 'n', 'x', 'o' }, 't', treesitter_move.builtin_t)
-vim.keymap.set({ 'n', 'x', 'o' }, 'T', treesitter_move.builtin_T)
+vim.keymap.set({ 'n', 'x', 'o' }, ';', treesitter_move.repeat_last_move_next, { silent = true, desc = "Repeat last move foward" })
+vim.keymap.set({ 'n', 'x', 'o' }, ',', treesitter_move.repeat_last_move_previous, { silent = true, desc = "Repeat last move backward" })
+vim.keymap.set({ 'n', 'x', 'o' }, 'f', treesitter_move.builtin_f, { silent = true, desc = "Move forward to next character" })
+vim.keymap.set({ 'n', 'x', 'o' }, 'F', treesitter_move.builtin_F, { silent = true, desc = "Move backward to next character"})
+vim.keymap.set({ 'n', 'x', 'o' }, 't', treesitter_move.builtin_t, { silent = true, desc = "Move forward to before next character" })
+vim.keymap.set({ 'n', 'x', 'o' }, 'T', treesitter_move.builtin_T, { silent = true, desc = "Move backward to before next character" })

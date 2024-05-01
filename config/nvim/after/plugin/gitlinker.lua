@@ -7,7 +7,5 @@ gitlinker.setup({
   highlight_duration = 0,
 })
 
-vim.api.nvim_set_keymap('n', '<leader>gl', '<cmd>GitLink<CR>', { silent = true })
-vim.api.nvim_set_keymap('v', '<leader>gl', '<cmd>GitLink<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gL', '<cmd>GitLink!<CR>', { silent = true })
-vim.api.nvim_set_keymap('v', '<leader>gL', '<cmd>GitLink!<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>gl', '<cmd>GitLink<CR>', { silent = true, desc = "Copy the link to the current file or selection on github.com"})
+vim.keymap.set({ 'n', 'v' }, '<leader>gL', '<cmd>GitLink!<CR>', { silent = true, desc = "Open the link for the current file or selection on github.com in the browser"})

@@ -47,7 +47,7 @@ dap_vt.setup({
   virt_lines = false,
   virt_text_win_col = nil,
   virt_text_pos = vim.fn.has 'nvim-0.10' == 1 and 'inline' or 'eol',
-  display_callback = function(variable, buf, stackframe, node, options)
+  display_callback = function(variable, _buf, _stackframe, _node, options)
     if options.virt_text_pos == 'inline' then
       return ' → ' .. variable.value
     else
@@ -56,16 +56,17 @@ dap_vt.setup({
   end,
 })
 
-vim.keymap.set("n", "<leader>D", dapui.toggle, { silent = true }) -- not using <leader d> because it gets lagged by everything
-vim.keymap.set("n", "<leader>dd", dap.continue, { silent = true })
-vim.keymap.set("n", "<leader>dc", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Condition: '))<cr>", { silent = true })
-vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { silent = true })
-vim.keymap.set("n", "<leader>do", dap.step_over, { silent = true })
-vim.keymap.set("n", "<leader>di", dap.step_into, { silent = true })
-vim.keymap.set("n", "<leader>dt", dap.step_out, { silent = true })
-vim.keymap.set("n", "<leader>dk", dap.up, { silent = true })
-vim.keymap.set("n", "<leader>dj", dap.down, { silent = true })
-vim.keymap.set("n", "<leader>dx", dap.terminate, { silent = true })
-vim.keymap.set("n", "<leader>dr", dap.repl.toggle, { silent = true })
+-- Using capital D to toggle so that lowercase d can be the interact with debugger commands without lag
+vim.keymap.set({ "n", "v" }, "<leader>D", dapui.toggle, { silent = true, desc = "Toggle debugger UI" })
+vim.keymap.set({ "n", "v" }, "<leader>dd", dap.continue, { silent = true, desc = "Debugger continue" })
+vim.keymap.set({ "n", "v" }, "<leader>dc", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Condition: '))<cr>", { silent = true, desc = "Debugger conditional breakpoint" })
+vim.keymap.set({ "n", "v" }, "<leader>db", dap.toggle_breakpoint, { silent = true, desc = "Debugger toggle breakpoint" })
+vim.keymap.set({ "n", "v" }, "<leader>do", dap.step_over, { silent = true, desc = "Debugger step over" })
+vim.keymap.set({ "n", "v" }, "<leader>di", dap.step_into, { silent = true, desc = "Debugger step into" })
+vim.keymap.set({ "n", "v" }, "<leader>dt", dap.step_out, { silent = true, desc = "Debugger step out" })
+vim.keymap.set({ "n", "v" }, "<leader>dk", dap.up, { silent = true, desc = "Debugger go up call stack" })
+vim.keymap.set({ "n", "v" }, "<leader>dj", dap.down, { silent = true, desc = "Debugger go down call stack" })
+vim.keymap.set({ "n", "v" }, "<leader>dx", dap.terminate, { silent = true, desc = "Debugger quit" })
+vim.keymap.set({ "n", "v" }, "<leader>dr", dap.repl.toggle, { silent = true, desc = "Debugger toggle REPL"})
 
 -- there is additional config in telescope to show breakpoints
