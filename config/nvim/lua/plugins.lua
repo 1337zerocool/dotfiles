@@ -14,8 +14,7 @@ local plugins = {
   'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
   'Marskey/telescope-sg',                        -- AST Grep for telescope: search on code structure
   'nvim-neo-tree/neo-tree.nvim',                 -- A 'tree' file explorer for the sidebar
-   "catppuccin/nvim",                            -- a surprisingly colorful theme
-  'anuvyklack/pretty-fold.nvim',                 -- Customize the display of folded text
+  'catppuccin/nvim',                             -- a surprisingly colorful theme
   {
     'nvim-neotest/neotest',                      -- run related tests
     lazy = true,
@@ -97,7 +96,8 @@ local plugins = {
   'dustinblackman/oatmeal.nvim',                 -- Experiment with interactive AI chat
   'rcarriga/nvim-notify',                        -- Notifications from language servers and stuff, out of the command line into windows
   'folke/noice.nvim',                            -- Move around command line, notifications, etc. Too much stuff
-  'Bekaboo/dropbar.nvim'                         -- A little bar that gives context on where you are
+  'Bekaboo/dropbar.nvim',                        -- A little bar that gives context on where you are
+  'echasnovski/mini.animate',                    -- adds some animation, hopefully making the cursor easy to track
 }
 local opts = {}
 
