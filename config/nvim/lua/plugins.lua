@@ -12,7 +12,6 @@ local plugins = {
   'stevearc/dressing.nvim',                      -- Provides a nicer UI selection system for telescope et al.
   'nvim-telescope/telescope.nvim',               -- Fuzzy finder UI for several features
   'debugloop/telescope-undo.nvim',               -- Use Telescope to search the undo history for current file
-  'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
   'Marskey/telescope-sg',                        -- AST Grep for telescope: search on code structure
   'nvim-neo-tree/neo-tree.nvim',                 -- A 'tree' file explorer for the sidebar
   'catppuccin/nvim',                             -- a surprisingly colorful theme
@@ -97,6 +96,7 @@ local plugins = {
   'dustinblackman/oatmeal.nvim',                 -- Experiment with interactive AI chat
   'rcarriga/nvim-notify',                        -- Notifications from language servers and stuff, out of the command line into windows
   'folke/noice.nvim',                            -- Move around command line, notifications, etc. Too much stuff
+  'rgroli/other.nvim',                           -- alternate file jumper
   -- 'Bekaboo/dropbar.nvim',                        -- A little bar that gives context on where you are
 }
 local opts = {}

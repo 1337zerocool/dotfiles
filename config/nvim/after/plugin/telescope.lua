@@ -1,5 +1,5 @@
-local setup, telescope = pcall(require, "telescope")
-if not setup then
+local ok, telescope = pcall(require, "telescope")
+if not ok then
   return
 end
 
@@ -22,37 +22,16 @@ telescope.setup({
       override_file_sorter = true,
       case_mode = "smart_case",
     },
-    ["telescope-alternate"] = {
-      mappings = {
-        -- Ruby command line app
-        { pattern = "lib/(.*).rb", targets = {
-          { template =  "test/[1]_test.rb", label = "Test", enable_new = true },
-          { template =  "sig/[1].rbs", label = "Sig", enable_new = true },
-        } },
-
-        { pattern = "test/(.*)_test.rb", targets = {
-          { template =  "lib/[1].rb", label = "Code", enable_new = true },
-          { template =  "sig/[1].rbs", label = "Sig", enable_new = true },
-        } },
-
-        { pattern = "sig/(.*).rbs", targets = {
-          { template =  "test/[1]_test.rb", label = "Test", enable_new = true },
-          { template =  "lib/[1].rb", label = "Code", enable_new = true },
-        } },
-
-      },
-      open_only_one_with = "current_pane",
-      -- presets = { "rails" },
-    },
   },
 })
-
--- these need some protection to ensure tehy exist
+--
+-- these need some protection to ensure they exist
 telescope.load_extension("ast_grep")
 telescope.load_extension("undo")
 telescope.load_extension("fzf")
-telescope.load_extension("telescope-alternate")
 telescope.load_extension('dap')
+
+
 
 vim.keymap.set({ "n", "v" }, "<leader><leader>", "<cmd>Telescope find_files<cr>", { silent = true, desc = "Fuzzy find and open files by name" })
 vim.keymap.set({ "n", "v" }, "<leader>/", "<cmd>Telescope live_grep<cr>", { silent = true, desc = "Fuzzy find and open files by searching their content" })
@@ -60,7 +39,6 @@ vim.keymap.set({ "n", "v" }, "<leader>b", "<cmd>Telescope buffers<cr>", { silent
 vim.keymap.set({ "n", "v" }, "<leader>?", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { silent = true, desc = "Fuzzy search the current buffer" })
 vim.keymap.set({ "n", "v" }, "<leader>gu", "<cmd>Telescope undo<cr>", { silent = true, desc = "Browse and restore undo history" })
 vim.keymap.set({ "n", "v" }, "<leader>k", "<cmd>Telescope keymaps<cr>", { silent = true, desc = "Browse and search keyboard bindings (keymaps)" })
-vim.keymap.set({ "n", "v" }, "<leader>m", "<cmd>Telescope telescope-alternate alternate_file<cr>", { silent = true, desc = "Switch between alternate files (e.g. test and code)" })
 vim.keymap.set({ "n", "v" }, "<leader>'", "<cmd>Telescope ast_grep<cr>", { silent = true, desc = "Search for AST nodes in the current buffer" })
 vim.keymap.set({ "n", "v" }, "<leader>gf", "<cmd>Telescope git_bcommits<cr>", { silent = true, desc="Browse the git commit history of the current file" })
 vim.keymap.set({ "n", "v" }, "<leader>gl", "<cmd>Telescope git_commits<cr>", { silent = true, desc="Browse the git commit history of the current workspace" })
