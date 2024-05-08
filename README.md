@@ -164,6 +164,9 @@ IOU directory and symlink to ~/.bundle
 
 # Setup MacOS
 ## Install keyboard launch agent
+* Create the launch agents directory `mkdir -p $HOME/Library/LaunchAgents`
+* Symlink in the keyboard config change `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/LaunchAgents/com.local.keyRemapping.plist" "$HOME/Library/LaunchAgents/com.local.keyRemapping.plist"`
+* Enable keyboard bindings change `launchctl load $HOME/Library/LaunchAgents/com.local.keyRemapping.plist`
 ## Set global performance things
 
 ## MacOS Software
