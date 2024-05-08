@@ -127,6 +127,8 @@ Then add some programming language specific packages:
 * symlink in the dotfiles version `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/git" "$HOME/.config/git"`
 
 ## Github
+* remove default github config `rm -rf "$HOME/.config/gh"`
+* symlink in the dotfiles version `ln -s "$HOME/src/github.com/cutehax0r/dotfiles/config/gh" "$HOME/.config/gh"`
 IOU: symlink this after updates
 
 ## Bundler
