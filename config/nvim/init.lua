@@ -1,5 +1,2 @@
-require('settings')
-require('disable')
-require('filetypes')
-require('keymaps')
-require('plugins')
+-- This will require some work when moving to Neovim 0.10
+require("plugin-manager")
