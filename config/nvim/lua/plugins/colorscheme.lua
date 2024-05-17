@@ -1,4 +1,5 @@
--- see: https://github.com/catppuccin/nvim
+-- There are many integrations and options. See here for details
+-- https://github.com/catppuccin/nvim
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
