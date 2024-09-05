@@ -1,3 +1,4 @@
 vim.loader.enable()
--- This will require some work when moving to Neovim 0.10
+require("settings")
+require("keymaps")
 require("plugin-manager")

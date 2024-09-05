@@ -1,4 +1,3 @@
-
 -- Displays git diff status in the sign column and blaming on lines.
 -- https://github.com/lewis6991/gitsigns.nvim
 local gitsigns = {
