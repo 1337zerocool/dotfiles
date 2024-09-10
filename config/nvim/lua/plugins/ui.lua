@@ -14,6 +14,7 @@
 --    'folke/trouble.nvim',             -- Improved diagnostics
 --    'onsails/lspkind.nvim',		-- LSPKind
 
+
 -- Hard requirement for neotree: A UI component library
 -- https://github.com/MunifTanjim/nui.nvim
 local nui = {

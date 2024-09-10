@@ -43,6 +43,8 @@ local telescope = {
     "Marskey/telescope-sg",
   },
   opts = {
+    -- add extensions = {},
+    -- add [telescope-alternate] = {}
     defaults = {
       layout_strategy = "vertical",
       sorting_strategy = "ascending",
@@ -54,6 +56,29 @@ local telescope = {
       },
     },
   },
+  keys = {
+    { "<leader><leader>", "<cmd>Telescope find_files<cr>", desc = "Telescope: open files by path or name" },
+    { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Telescope: open files by content" },
+    { "<leader>'", "<cmd>Telescope ast_grep<cr>", desc = "Telescope: open files matching an AST (abstract syntax tree) pattern" },
+    { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Telescope: switch buffers" },
+    { "<leader>?", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Telescope: find in the current buffer" },
+    { "<leader>k", "<cmd>Telescope keymaps<cr>", desc = "Telescope: keymaps" },
+    { "<leader>m", "<cmd>Telescope telescope-alternate alternate_file<cr>", desc = "Telescope: jump to matching or alternate file" },
+    { "<leader>u", "<cmd>Telescope undo<cr>", desc = "Telescope: undo history" },
+    { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Telescope: command history" },
+    { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "Telescope: git commit history for current file (buffer)" },
+    { "<leader>gl", "<cmd>Telescope git_commits<cr>", desc = "Telescope: git commit history for current workspace" },
+    -- dap breakpoints
+    -- lsp document symbols
+    -- lsp workspace symbols
+    -- lsp diagnostics
+  },
+
+  -- config = function(_, opts)
+  --   local t = require('telescope)
+  --   t.setup(opts)
+  --   t.load_extension('foo')
+  -- end,
 }
 
 return { plenary, fzf, telescope, telescope_undo, telescope_alternate, telescope_undo }
