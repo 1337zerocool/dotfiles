@@ -22,6 +22,19 @@ local gitlinker = {
 -- https://github.com/rktjmp/paperplanes.nvim
 local paperplanes = {
   "rktjmp/paperplanes.nvim",
+  cmd = "PP",
+  opts = {
+    register = "+",
+    provider = "gist",
+    provider_options = {
+      command = "gh",
+    },
+    notifier = vim.notify or print,
+  },
+  keys = {
+    { "<leader>gg", "<cmd>PP<cr>", mode = { "n" }, desc = "Git Gist: create a github gist with the current buffer and put the link on the clipboard" },
+    { "<leader>gg", "<cmd>'<,'>PP<cr>", mode = { "v" }, desc = "Git Gist: create a github gist with the selection and open it in the browser" },
+  }
 }
 
 -- Shows what's changed in a source repository. Diff files side-by-side, browse history of changes
@@ -29,6 +42,10 @@ local paperplanes = {
 -- https://github.com/sindrets/diffview.nvim
 local diffview = {
   "sindrets/diffview.nvim",
+  keys = {
+    -- Todo, make this a toggle
+    { "<leader>gd", "<cmd>DiffviewOpen<cr>", mode = { "n" }, desc = "Git diff the current buffer" }
+  }
 }
 
 return { gitsigns, gitlinker, paperplanes, diffview }
