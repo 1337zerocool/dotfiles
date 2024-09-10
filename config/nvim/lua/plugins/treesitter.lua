@@ -87,8 +87,15 @@ local textobjects = {
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },
-
-
+  -- this is probably busted
+  keys = {
+    { ';', function() require("nvim-treesitter.textobjects.repeatable_move").repeat_last_move_next() end, mode = { 'n', 'x', 'o' }, desc = 'repeat last move forward' },
+    { ',', function() require("nvim-treesitter.textobjects.repeatable_move").repeat_last_move_previous() end, mode = { 'n', 'x', 'o' }, desc = 'repeat last move forward' },
+    { 'f', function() require("nvim-treesitter.textobjects.repeatable_move").builtin_f() end, mode = { 'n', 'x', 'o' }, desc = 'forward to next character' },
+    { 'F', function() require("nvim-treesitter.textobjects.repeatable_move").builtin_F() end, mode = { 'n', 'x', 'o' }, desc = 'backward to previous character' },
+    { 't', function() require("nvim-treesitter.textobjects.repeatable_move").builtin_t() end, mode = { 'n', 'x', 'o' }, desc = 'forward until just before next character' },
+    { 'T', function() require("nvim-treesitter.textobjects.repeatable_move").builtin_T() end, mode = { 'n', 'x', 'o' }, desc = 'backward until just before next character' },
+  }
 }
 
 return { treesitter, textobjects }
