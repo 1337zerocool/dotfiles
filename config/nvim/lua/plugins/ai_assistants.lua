@@ -2,24 +2,24 @@
 -- used specifically to do curl requests to copilot
 -- https://github.com/nvim-lua/plenary.nvim
 local plenary = {
-	"nvim-lua/plenary.nvim"
+  "nvim-lua/plenary.nvim"
 }
 
 -- A lua rewrite of the standard github.com copilot plugin
 -- https://github.com/zbirenbaum/copilot.lua
 local copilot = {
-	"zbirenbaum/copilot.lua",
-	event = "InsertEnter",
+  "zbirenbaum/copilot.lua",
+  event = "InsertEnter",
 }
 
 -- Enables interactive chat with copilot
 -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
 local copilot_chat = {
-	"CopilotC-Nvim/CopilotChat.nvim",
-	dependencies = {
-		"zbirenbaum/copilot.lua",
-		"nvim-lua/plenary.nvim",
-	}
+  "CopilotC-Nvim/CopilotChat.nvim",
+  dependencies = {
+    "zbirenbaum/copilot.lua",
+    "nvim-lua/plenary.nvim",
+  }
 }
 
 -- Interactive chat with locally hosted large language models. Something running
@@ -31,7 +31,15 @@ local copilot_chat = {
 -- into vims termianl window
 -- https://github.com/dustinblackman/oatmeal
 local oatmeal = {
-	"dustinblackman/oatmeal.nvim",
+  "dustinblackman/oatmeal.nvim",
+  cmd = { "Oatmeal" }, -- documentaiton has a { "Oatmeal" }
+  opts = {
+    backend = "ollama",
+    model = "phind-codellama:latest",
+  },
+  keys = {
+    { "<leader>`", "<cmd>Oatmeal<cr>", mode = { "n", "v", "x" }, desc = "Start an AI chat session" },
+  },
 }
 
 return { copilot, copilot_chat, oatmeal }
