@@ -1,6 +1,5 @@
 -- Enable automatic insertion of mathing quotes and brackets
 -- https://github.com/windwp/nvim-autopairs
-
 local autopairs = {
 	"windwp/nvim-autopairs",
 	event = "InsertEnter",
@@ -16,4 +15,11 @@ local endwise = {
 	},
 }
 
-return { autopairs, endwise }
+-- Operators for wrapping text with brackets, quotes, etc.
+-- https://github.com/machakann/vim-sandwich
+local sandwich = {
+  "machakann/vim-sandwich",
+  event = "InsertEnter",
+}
+
+return { autopairs, endwise, sandwich }

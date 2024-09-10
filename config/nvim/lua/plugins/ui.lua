@@ -10,7 +10,6 @@
 --    'code-biscuits/nvim-biscuits',    -- show 'opening' context at end of block as virtual text'
 --    'folke/zen-mode.nvim',            -- Zooms and focuses a single window
 --    'folke/twilight.nvim',            -- Dims text outside of some small context around the current scope
---    'machakann/vim-sandwich',         -- Wrap text objects in brackets, quotes, tags, etc.
 --    'folke/trouble.nvim',             -- Improved diagnostics
 --    'onsails/lspkind.nvim',		-- LSPKind
 
