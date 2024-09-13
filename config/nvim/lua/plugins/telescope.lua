@@ -68,10 +68,12 @@ local telescope = {
     { "<leader>:", "<cmd>Telescope command_history<cr>",  mode = { "n", "v" }, desc = "Telescope: command history" },
     { "<leader>gf", "<cmd>Telescope git_bcommits<cr>",  mode = { "n", "v" }, desc = "Telescope: git commit history for current file (buffer)" },
     { "<leader>gh", "<cmd>Telescope git_commits<cr>",  mode = { "n", "v" }, desc = "Telescope: git commit history for current workspace" },
+    -- vim.keymap.set('n', 'z=', function() require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor({})) end, { silent = true, desc = "Toggle spellcheck" })
     -- dap breakpoints
     -- lsp document symbols
     -- lsp workspace symbols
     -- lsp diagnostics
+
   },
 
   -- config = function(_, opts)
