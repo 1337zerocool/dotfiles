@@ -3,7 +3,6 @@ copilot.lua
 copilotchat.lua
 dap.lua
 diffview.lua
-gitsigns.lua
 lspsaga.lua
 luasnip.lua
 mason.lua

@@ -40,6 +40,15 @@ local copilot_chat = {
   dependencies = {
     "zbirenbaum/copilot.lua",
     "nvim-lua/plenary.nvim",
+  },
+  keys = {
+    { "<leader>cc", "<cmd>CopilotChatToggle<cr>",  mode = { "n", "v" }, desc = "Copilot: enable github copilot" },
+    { "<leader>ca", function() local actions = require("CopilotChat.actions"); actions.pick(actions.prompt_actions({ selection = require("CopilotChat.select").visual, })) end, mode = {"n", "v"}, desc="Copilot code actions list" },
+  },
+  opts = {
+    model = 'gpt-4o',
+    auto_insert_mode = true,
+    context = 'buffers',
   }
 }
 

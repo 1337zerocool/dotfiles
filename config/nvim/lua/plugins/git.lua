@@ -57,8 +57,7 @@ local paperplanes = {
 local diffview = {
   "sindrets/diffview.nvim",
   keys = {
-    -- Todo, make this a toggle
-    { "<leader>gd", "<cmd>DiffviewOpen<cr>", mode = { "n" }, desc = "Git diff the current buffer" }
+    { "<leader>gd", function() if next(require('diffview.lib').views) == nil then vim.cmd('DiffviewOpen') else vim.cmd('DiffviewClose') end end, mode = { "n" }, desc = "Git diff the current buffer" }
   }
 }
 
