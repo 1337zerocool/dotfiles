@@ -10,6 +10,27 @@ local plenary = {
 local copilot = {
   "zbirenbaum/copilot.lua",
   event = "InsertEnter",
+  cmd = "Copilot",
+  keys = {
+    { "<leader>ce", "<cmd>Copilot enable<cr>",  mode = { "n", "v" }, desc = "Copilot: enable github copilot" },
+    { "<leader>cd", "<cmd>Copilot disable<cr>",  mode = { "n", "v" }, desc = "Copilot: disable github copilot" },
+  },
+  config = function()
+    require('copilot').setup({
+      panel = {
+        enabled = true,
+        auto_refresh = true,
+      },
+      suggestion = {
+        enabled = true,
+        keymap = {
+          accept = "<S-Tab>",
+        },
+        auto_trigger = true,
+        accept = true,
+      },
+    })
+  end
 }
 
 -- Enables interactive chat with copilot

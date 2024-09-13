@@ -1,8 +1,46 @@
 -- Nice UI improvements
---    "stevearc/dressing.nvim",         -- Provides a nicer UI selection system for telescope et al.
---    "Bekaboo/dropbar.nvim",           -- A little bar that gives context on where you are
---    "folke/trouble.nvim",             -- Improved diagnostics
---    "onsails/lspkind.nvim",		-- LSPKind
+
+-- pretty graphics in your LSP powered UIs
+-- https://github.com/onsails/lspkind.nvim
+local lspkind = {
+  -- This probably goes in the lsp config
+  -- "onsails/lspkind.nvim"
+}
+
+-- Improved diagnostics display
+-- https://github.com/folke/trouble.nvim
+local trouble = {
+-- Just so you remember, the default virtual text for errors is in settings.lua,
+-- if you use e to show line diagnostic with sata you'll need to change the document_diagnostics and workspace_diagnostics above.
+-- also, references are provided by lspsaga in a window
+  "folke/trouble.nvim",
+  cmd = "Trouble",
+  keys = {
+    { "<leader>E", "<cmd>Trouble diagnostics toggle<cr>",  mode = { "n", "v" }, desc = "Show all diagnostics in any file in the worspace in a window" },
+    { "<leader>R", "<cmd>Trouble lsp_references toggle<cr>",  mode = { "n", "v" }, desc = "Show references in any file in the workspace" },
+  },
+  opts = {
+    mode = 'document_diagnostics',
+    height = 8,
+  }
+}
+
+
+-- IDE-like bread crumbs
+-- https://github.com/Bekaboo/dropbar.nvim
+local dropbar =  {
+      "Bekaboo/dropbar.nvim",
+      dependencies = {
+      'nvim-telescope/telescope-fzf-native.nvim'
+    }
+}
+
+-- Provides improved UI selection for telescope et al
+-- https://github.com/stevearc/dressing.nvim
+local dressing = {
+  "stevearc/dressing.nvim",
+  opts = {},
+}
 
 -- Notifications from language servers and stuff, out of the command line into windows
 -- https://github.com/rcarriga/nvim-notify
@@ -268,4 +306,4 @@ local neotree = {
   -- lua vim.api.nvim_set_hl(0, 'NeotreeNormal', { bg = "#24273a" })
 }
 
-return { noice, notify, nui, plenary, web_dev_icons, neotree, zenmode, twilight, biscuits, virtual_column, hlchunk, lualine }
+return { trouble, dropbar, dressing, noice, notify, nui, plenary, web_dev_icons, neotree, zenmode, twilight, biscuits, virtual_column, hlchunk, lualine }
