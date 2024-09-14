@@ -1,8 +1,5 @@
 cmp.lua
-copilot.lua
-copilotchat.lua
 dap.lua
-diffview.lua
 lspsaga.lua
 luasnip.lua
 mason.lua
@@ -18,7 +15,6 @@ overseer.lua
 
   'stevearc/overseer.nvim',                      -- Task running library
   'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
-  'Marskey/telescope-sg',                        -- AST Grep for telescope: search on code structure
   'catppuccin/nvim',                             -- a surprisingly colorful theme
     'nvim-neotest/neotest',                      -- run related tests
       'nvim-neotest/nvim-nio',
@@ -32,9 +28,6 @@ overseer.lua
       'suketa/nvim-dap-ruby',                    -- dap config for ruby -- might be better to do this manually. see dap.lua for notes
       'nvim-telescope/telescope-dap.nvim',       -- explore breakpoints, variables, frames, and debugger command in telescope
       'theHamsta/nvim-dap-virtual-text',         -- when using the debugger put variable values in virtual text in the source
-  'lewis6991/gitsigns.nvim',                     -- Show git additions, changes, and deletions in the signcolumn and inline
-  'sindrets/diffview.nvim',                      -- A better way to navigate git changes
-    'nvim-treesitter/nvim-treesitter',           -- Builds ASTs from current document to power other plugins
   'nvim-treesitter/nvim-treesitter-textobjects', -- Use treesitter to create new text objects
   'onsails/lspkind.nvim',
     'neovim/nvim-lspconfig',                     -- A basic configuration for LSP to start from
@@ -49,5 +42,3 @@ overseer.lua
       'hrsh7th/cmp-nvim-lsp-signature-help',     -- show method signature help whie completing
       'hrsh7th/cmp-nvim-lsp-document-symbol',    -- use document symbols as completion sources
       'hrsh7th/cmp-path',                        -- use filesystem as completion source
-  'zbirenbaum/copilot.lua',                      -- Enable github copilot
-"CopilotC-Nvim/CopilotChat.nvim",            -- Chat with copilot

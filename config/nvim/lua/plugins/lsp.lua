@@ -16,7 +16,7 @@
 -- Live updating LSP diagnostics
 -- https://github.com/onsails/diaglist.nvim
 local diaglist = {
-	"onsails/diaglist.nvim",
+  "onsails/diaglist.nvim",
 }
 
 return { diaglist }
