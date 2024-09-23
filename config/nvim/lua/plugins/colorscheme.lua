@@ -40,7 +40,20 @@ return {
     default_integrations = true,
     -- https://github.com/catppuccin/nvim#integrations
     integrations = {
+      cmp = true,
+      dap = true,
+      dap_ui = true,
+      diffview = true,
+      gitsigns = true,
+      mason = true,
+      neotest = true,
       neotree = true,
+      noice = true,
+      notify = true,
+      overseer = true,
+      telescope = { enabled = true },
+      treesitter = true,
+      lsp_trouble = true,
     }
   },
   config = LazySafeSetup("catppuccin", function()

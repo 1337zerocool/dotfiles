@@ -1,4 +1,6 @@
 -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+-- consider disabling vim plugin manager with
+-- vim.go.loadplugins = false
 
 -- Setup some options for Lazy plugin loader
 local options = {

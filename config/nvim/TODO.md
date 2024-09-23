@@ -5,17 +5,13 @@ luasnip.lua
 mason.lua
 neodev.lua
 neotest.lua
-oatmeal.lua
-overseer.lua
 
 
 
 
 
 
-  'stevearc/overseer.nvim',                      -- Task running library
   'otavioschwanck/telescope-alternate.nvim',     -- quickly jump between and create alternate files
-  'catppuccin/nvim',                             -- a surprisingly colorful theme
     'nvim-neotest/neotest',                      -- run related tests
       'nvim-neotest/nvim-nio',
       'nvim-lua/plenary.nvim',

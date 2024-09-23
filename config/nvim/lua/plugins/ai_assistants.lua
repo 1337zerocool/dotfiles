@@ -24,6 +24,7 @@ local copilot = {
       suggestion = {
         enabled = true,
         keymap = {
+          -- consider off by default and a <leader>cc to suggest, and then something else to accept
           accept = "<S-Tab>",
         },
         auto_trigger = true,
