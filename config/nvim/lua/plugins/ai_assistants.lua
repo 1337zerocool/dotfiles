@@ -18,13 +18,12 @@ local copilot = {
   config = function()
     require('copilot').setup({
       panel = {
-        enabled = true,
+        enabled = false, -- integrating with cmp instead
         auto_refresh = true,
       },
       suggestion = {
-        enabled = true,
+        enabled = false, -- integrating with cmp instead
         keymap = {
-          -- consider off by default and a <leader>cc to suggest, and then something else to accept
           accept = "<S-Tab>",
         },
         auto_trigger = true,

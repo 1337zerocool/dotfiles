@@ -6,12 +6,21 @@
 -- https://github.com/onsails/lspkind.nvim
 local lspkind = {
   'onsails/lspkind.nvim',
+  opts = {
+    preset = 'codicons',
+    symbol_map = {
+      Copilot = "",
+    }
+  }
 }
 
 -- add copilot as a completion source
 -- https://github.com/zbirenbaum/copilot-cmp
 local copilot_cmp = {
   "zbirenbaum/copilot-cmp",
+  config = function()
+    require("copilot_cmp").setup()
+  end
 }
 
 -- An auto-completion system that integrates with LSP, treesitter, buffers, and other sources
@@ -46,26 +55,43 @@ local cmp = {
         expandable_indicator = true,
         fields = { 'abbr', 'kind', 'menu' },
         format = lspkind.cmp_format({
-          mode = 'symbol',
           maxwidth = 50,
-          ellipsis_char = '…',
-        })
+          mode = "symbol",
+          ellipsis_char = "…",
+          show_labelDetails = true,
+          -- before = function (entry, vim_item)
+          --   return vim_item
+          -- end
+        }),
       },
 
       mapping = cmp.mapping.preset.insert({
-        -- tab for next /shift-tab to complete?
-        ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<Tab>'] = cmp.mapping(function(fallback)
+        ['<C-e>'] = cmp.mapping.close(),
+
+        ['<CR>'] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = false,
+        }),
+
+        ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.confirm({ select = false })
-          elseif luasnip.expand_or_locally_jumpable() then
+            cmp.select_next_item()
+          elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           else
             fallback()
           end
-        end, { 'i', 's' }),
+        end, {"i", "s"}),
+
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, {"i", "s"}),
       }),
 
       window = {
@@ -83,9 +109,9 @@ local cmp = {
 
       sources = cmp.config.sources({
         { name = "copilot", group_index = 2 },
-        { name = 'nvim_lsp', group_index = 2 },
-        { name = 'nvim_lsp_document_symbol', group_index = 2 },
-        { name = 'nvim_lsp_signature_help', group_index = 2 },
+        -- { name = 'nvim_lsp', group_index = 2 },
+        -- { name = 'nvim_lsp_document_symbol', group_index = 2 },
+        -- { name = 'nvim_lsp_signature_help', group_index = 2 },
         { name = 'lausnip', group_index = 1 },
         { name = 'path', group_index = 2 },
         { name = 'treesitter', group_index = 2 },
