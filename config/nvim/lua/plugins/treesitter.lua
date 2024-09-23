@@ -87,15 +87,15 @@ local textobjects = {
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },
-  -- this is probably busted
-  keys = {
-    { ';', function() require("nvim-treesitter.textobjects.repeatable_move").repeat_last_move_next() end, mode = { 'n', 'x', 'o' }, desc = 'repeat last move forward' },
-    { ',', function() require("nvim-treesitter.textobjects.repeatable_move").repeat_last_move_previous() end, mode = { 'n', 'x', 'o' }, desc = 'repeat last move forward' },
-    { 'f', function() require("nvim-treesitter.textobjects.repeatable_move").builtin_f() end, mode = { 'n', 'x', 'o' }, desc = 'forward to next character' },
-    { 'F', function() require("nvim-treesitter.textobjects.repeatable_move").builtin_F() end, mode = { 'n', 'x', 'o' }, desc = 'backward to previous character' },
-    { 't', function() require("nvim-treesitter.textobjects.repeatable_move").builtin_t() end, mode = { 'n', 'x', 'o' }, desc = 'forward until just before next character' },
-    { 'T', function() require("nvim-treesitter.textobjects.repeatable_move").builtin_T() end, mode = { 'n', 'x', 'o' }, desc = 'backward until just before next character' },
-  }
+  config = function()
+    local tsr = require("nvim-treesitter.textobjects.repeatable_move")
+    vim.keymap.set({ 'n', 'x', 'o' }, ";", tsr.repeat_last_move_next, { desc = 'repeat last move forward' })
+    vim.keymap.set({ 'n', 'x', 'o' }, ",", tsr.repeat_last_move_previous, { desc = 'repeat last move backward' })
+    vim.keymap.set({ 'n', 'x', 'o' }, "f", tsr.builtin_f_expr, { expr = true, desc = 'forward to next character (repeatable)' })
+    vim.keymap.set({ 'n', 'x', 'o' }, "F", tsr.builtin_F_expr, { expr = true, desc = 'backword to next character (repeatable)' })
+    vim.keymap.set({ 'n', 'x', 'o' }, "t", tsr.builtin_t_expr, { expr = true, desc = 'forward to until just before next character (repeatable)' })
+    vim.keymap.set({ 'n', 'x', 'o' }, "T", tsr.builtin_T_expr, { expr = true, desc = 'backword to until just before next character (repeatable)' })
+  end,
 }
 
 return { treesitter, textobjects }

@@ -1,12 +1,5 @@
 -- Nice UI improvements
 
--- pretty graphics in your LSP powered UIs
--- https://github.com/onsails/lspkind.nvim
-local lspkind = {
-  -- This probably goes in the lsp config
-  -- "onsails/lspkind.nvim"
-}
-
 -- Improved diagnostics display
 -- https://github.com/folke/trouble.nvim
 local trouble = {

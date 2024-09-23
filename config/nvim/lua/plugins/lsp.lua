@@ -13,6 +13,10 @@
 --      },
 --    },
 
+    -- 'neovim/nvim-lspconfig',                     -- A basic configuration for LSP to start from
+        -- 'williamboman/mason.nvim',               -- Manages the installation of LSPs, Linters, formatting, etc.
+      -- 'williamboman/mason-lspconfig.nvim',       -- makes it easier to use mason with lspconfig
+
 -- Live updating LSP diagnostics
 -- https://github.com/onsails/diaglist.nvim
 local diaglist = {

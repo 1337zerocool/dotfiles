@@ -1,3 +1,12 @@
+-- 'nvim-neotest/neotest',                      -- run related tests
+-- 'nvim-neotest/nvim-nio',
+-- 'nvim-lua/plenary.nvim',
+-- 'antoinemadec/FixCursorHold.nvim',
+-- 'nvim-treesitter/nvim-treesitter',
+-- 'zidhuss/neotest-minitest',                -- make it work with minitest
+--
+--
+--
 -- Hard requirement for Neotest: a library for asyncronus programming
 -- https://github.com/nvim-neotest/nvim-nio
 local nvio = {

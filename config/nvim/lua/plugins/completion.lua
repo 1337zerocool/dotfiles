@@ -109,15 +109,23 @@ local cmp = {
 
       sources = cmp.config.sources({
         { name = "copilot", group_index = 2 },
-        -- { name = 'nvim_lsp', group_index = 2 },
-        -- { name = 'nvim_lsp_document_symbol', group_index = 2 },
-        -- { name = 'nvim_lsp_signature_help', group_index = 2 },
+        { name = 'nvim_lsp', group_index = 2 },
+        { name = 'nvim_lsp_document_symbol', group_index = 2 },
+        { name = 'nvim_lsp_signature_help', group_index = 2 },
         { name = 'lausnip', group_index = 1 },
         { name = 'path', group_index = 2 },
         { name = 'treesitter', group_index = 2 },
       }),
 
     })
+
+    -- should probalby pretty load these - see mason config
+    -- local capabilities = cmplsp.default_capabilities()
+    -- lspconfig['lua_ls'].setup { capabilities = capabilities }
+    -- lspconfig['gopls'].setup { capabilities = capabilities }
+    -- lspconfig['solargraph'].setup({})
+    -- lspconfig['tsserver'].setup { capabilities = capabilities }
+
   end,
 }
 
