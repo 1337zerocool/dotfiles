@@ -43,6 +43,7 @@ return {
       cmp = true,
       dap = true,
       dap_ui = true,
+      dropbar = { enabled = true, color_mode = false },
       diffview = true,
       gitsigns = true,
       mason = true,

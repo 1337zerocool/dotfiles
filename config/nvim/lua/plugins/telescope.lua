@@ -42,20 +42,40 @@ local telescope = {
     "otavioschwanck/telescope-alternate",
     "Marskey/telescope-sg",
   },
-  opts = {
-    -- add extensions = {},
-    -- add [telescope-alternate] = {}
-    defaults = {
-      layout_strategy = "vertical",
-      sorting_strategy = "ascending",
-      layout_config = {
-        vertical = {
-          mirror = true,
-          prompt_position = "top",
+  config = function()
+    local telescope = require('telescope')
+    telescope.setup({
+      -- add [telescope-alternate] = {}
+
+      defaults = {
+        layout_strategy = "vertical",
+        sorting_strategy = "ascending",
+        layout_config = {
+          vertical = {
+            mirror = true,
+            prompt_position = "top",
+          },
         },
       },
-    },
-  },
+
+      extensions = {
+        ast_grep = {},
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
+        },
+      }
+
+    })
+    telescope.load_extension("ast_grep")
+      telescope.load_extension("undo")
+      telescope.load_extension("fzf")
+      telescope.load_extension("telescope-alternate")
+      -- telescope.load_extension('dap')
+
+  end,
   keys = {
     { "<leader><leader>", "<cmd>Telescope find_files<cr>", mode = { "n", "v" }, desc = "Telescope: open files by path or name" },
     { "<leader>/", "<cmd>Telescope live_grep<cr>", mode = { "n", "v" },  desc = "Telescope: open files by content" },
@@ -68,7 +88,7 @@ local telescope = {
     { "<leader>:", "<cmd>Telescope command_history<cr>",  mode = { "n", "v" }, desc = "Telescope: command history" },
     { "<leader>gf", "<cmd>Telescope git_bcommits<cr>",  mode = { "n", "v" }, desc = "Telescope: git commit history for current file (buffer)" },
     { "<leader>gh", "<cmd>Telescope git_commits<cr>",  mode = { "n", "v" }, desc = "Telescope: git commit history for current workspace" },
-    -- vim.keymap.set('n', 'z=', function() require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor({})) end, { silent = true, desc = "Toggle spellcheck" })
+    { "z=", function() require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor({})) end, mode = { "n", "v" }, desc = "Show spell check suggestions" },
     -- dap breakpoints
     -- lsp document symbols
     -- lsp workspace symbols
