@@ -1,10 +1,6 @@
---  --        'hrsh7th/cmp-nvim-lsp',                    -- use lsp as a completion source
---  --        'hrsh7th/cmp-nvim-lsp-signature-help',     -- show method signature help whie completing
---  --        'hrsh7th/cmp-nvim-lsp-document-symbol',    -- use document symbols as completion sources
-
 -- Add some nice pictograms to the completion menu
 -- https://github.com/onsails/lspkind.nvim
-local lspkind = {
+local cmp_lspkind = {
   'onsails/lspkind.nvim',
   opts = {
     preset = 'codicons',
@@ -23,6 +19,25 @@ local copilot_cmp = {
   end
 }
 
+-- Use the LSP as a completion source
+-- https://github.com/hrsh7th/cmp-nvim-lsp
+local cmp_lsp = {
+  'hrsh7th/cmp-nvim-lsp',
+}
+
+-- Use text/document symbols as a completion source
+-- https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol
+local cmp_document_symbol = {
+  'hrsh7th/cmp-nvim-lsp-document-symbol'
+}
+
+-- Display signatures for methods with the current parameter highlighted
+-- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help
+local cmp_signature_help = {
+  'hrsh7th/cmp-nvim-lsp-signature-help'
+}
+
+
 -- An auto-completion system that integrates with LSP, treesitter, buffers, and other sources
 -- through extensions. It requires a snippet system to work properly.
 -- https://github.com/hrsh7th/nvim-cmp
@@ -31,6 +46,9 @@ local cmp = {
   event = "InsertEnter",
   dependencies = {
     "zbirenbaum/copilot-cmp",
+    'hrsh7th/cmp-nvim-lsp-document-symbol',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
+    'hrsh7th/cmp-nvim-lsp',
     "onsails/lspkind.nvim",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
@@ -81,7 +99,7 @@ local cmp = {
           else
             fallback()
           end
-        end, {"i", "s"}),
+        end, { "i", "s" }),
 
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
@@ -91,7 +109,7 @@ local cmp = {
           else
             fallback()
           end
-        end, {"i", "s"}),
+        end, { "i", "s" }),
       }),
 
       window = {
@@ -108,13 +126,13 @@ local cmp = {
       },
 
       sources = cmp.config.sources({
-        { name = "copilot", group_index = 2 },
-        { name = 'nvim_lsp', group_index = 2 },
+        { name = "copilot",                  group_index = 2 },
+        { name = 'nvim_lsp',                 group_index = 2 },
         { name = 'nvim_lsp_document_symbol', group_index = 2 },
-        { name = 'nvim_lsp_signature_help', group_index = 2 },
-        { name = 'lausnip', group_index = 1 },
-        { name = 'path', group_index = 2 },
-        { name = 'treesitter', group_index = 2 },
+        { name = 'nvim_lsp_signature_help',  group_index = 2 },
+        { name = 'lausnip',                  group_index = 1 },
+        { name = 'path',                     group_index = 2 },
+        { name = 'treesitter',               group_index = 2 },
       }),
 
     })
@@ -125,7 +143,6 @@ local cmp = {
     -- lspconfig['gopls'].setup { capabilities = capabilities }
     -- lspconfig['solargraph'].setup({})
     -- lspconfig['tsserver'].setup { capabilities = capabilities }
-
   end,
 }
 
@@ -150,4 +167,4 @@ local cmp_path = {
   event = "InsertEnter",
 }
 
-return { lspkind, copilot_cmp, cmp, luasnip, cmp_luasnip, cmp_path }
+return { cmp_lsp, cmp_document_symbol, cmp_signature_help, cmp_lspkind, copilot_cmp, cmp, luasnip, cmp_luasnip, cmp_path }
