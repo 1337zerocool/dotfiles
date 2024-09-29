@@ -90,6 +90,7 @@ local mason = {
       gopls = {},
       ruby_lsp = {},
       solargraph = {},
+      ts_ls = {},
       lua_ls = {
         Lua = {
           workspace = {

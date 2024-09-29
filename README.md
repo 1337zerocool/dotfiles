@@ -81,10 +81,10 @@ brew install cmake coreutils fzf gawk gh git grep gsed jq graphviz btop neovim o
 Then add some programming language specific packages:
 
 # Setup Ruby
-* Setup ruby version manager `brew install churby ruby-install`
+* Setup ruby version manager `brew install chruby ruby-install`
 * Source Chruby to continue with the next steps `source /opt/homebrew/opt/chruby/share/chruby/chruby.sh`
-* install a current ruby version: `ruby-install 3.3.0`
-* switch ruby for the current session: `chruby 3.3.0`
+* install a current ruby version: `ruby-install 3.3.5`
+* switch ruby for the current session: `chruby 3.3.5`
 * Setup common gems `gem install rake pry sorbet minitest rspec rubocop-sorbet rubocop rails mocha factory_bot neovim solargraph tapioca byebug yard`
 * Setup documentation for gems with `yard gems`
 

@@ -1,5 +1,4 @@
 neodev.lua == replaced by lazydev https://github.com/folke/lazydev.nvim
-mason.lua
 luasnip.lua
 dap.lua
 neotest.lua
