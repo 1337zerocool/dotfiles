@@ -7,7 +7,7 @@ local overseer = {
     { "<leader>A", "<cmd>OverseerToggle<cr>", mode = { "n", "v" }, desc = "Overseer: toggle task list" },
   },
   opts = {
-    strategy = "terminal",
+    -- strategy = "terminal",
     templates = { "builtin" },
     auto_detect_success_color = true,
     dap = true,
