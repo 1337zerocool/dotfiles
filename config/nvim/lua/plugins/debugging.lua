@@ -18,7 +18,10 @@ local dap = {
   "mfussenegger/nvim-dap",
   dependencies = {
     "suketa/nvim-dap-ruby"
-  }
+  },
+  config = function()
+    require("dap-ruby").setup()
+  end
 }
 
 -- Hard requirement for Neotest: a library for asyncronus programming
@@ -35,6 +38,22 @@ local dap_ui = {
   dependencies = {
     "nvim-neotest/nvim-nio",
     "mfussenegger/nvim-dap",
+  },
+  config = function()
+    require('dapui').setup()
+  end,
+  keys = {
+    { "<leader>D", function() require("dapui").toggle() end, mode = { "v", "n"}, desc = "Debugger: toggle UI" },
+    { "<leader>dd", "<cmd>DapContinue<cr>", mode = { "v", "n"}, desc = "Debugger: Continue debugging" },
+    { "<leader>dc", function() require('dap').set_breakpoint(vim.fn.input('Condition: ')) end, mode = { "v", "n"}, desc = "Debugger: Set conditional breakpoint" },
+    { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", mode = { "v", "n"}, desc = "Debugger: Toggle breakpoint" },
+    { "<leader>do", "<cmd>DapStepOver<cr>", mode = { "v", "n"}, desc = "Debugger: Step over" },
+    { "<leader>di", "<cmd>DapStepInto<cr>", mode = { "v", "n"}, desc = "Debugger: Step into" },
+    { "<leader>du", "<cmd>DapStepOut<cr>", mode = { "v", "n"}, desc = "Debugger: Step out/up" },
+    { "<leader>dk", function() require('dap').up() end, mode = { "v", "n"}, desc = "Debugger: Jump up callstack" },
+    { "<leader>dj", function() require('dap').down() end, mode = { "v", "n"}, desc = "Debugger: Jump down callstack" },
+    { "<leader>dx", function() require('dap').down() end, mode = { "v", "n"}, desc = "Debugger: Terminate execution" },
+    { "<leader>dr", function() require('dap').repl.toggle() end, mode = { "v", "n"}, desc = "Debugger: Start REPL" },
   }
 }
 
@@ -48,6 +67,28 @@ local telescope_dap = {
 -- https://github.com/theHamsta/nvim-dap-virtual-text
 local dap_virtual_text = {
   "theHamsta/nvim-dap-virtual-text",
+  opts = {
+    enabled = true,
+    enabled_commands = true,
+    highlight_changed_variables = true,
+    highlight_new_as_changed = false,
+    show_stop_reason = true,
+    commented = false,
+    only_first_definition = true,
+    all_references = false,
+    clear_on_continue = false,
+    all_frames = false,
+    virt_lines = false,
+    virt_text_win_col = nil,
+    virt_text_pos = vim.fn.has 'nvim-0.10' == 1 and 'inline' or 'eol',
+    display_callback = function(variable, _buf, _stackframe, _node, options)
+      if options.virt_text_pos == 'inline' then
+        return ' → ' .. variable.value
+      else
+        return variable.name .. ' → ' .. variable.value
+      end
+    end,
+  }
 }
 
-return { nvio, dap, dap_ui, dap_ruby, dap_virtual_text }
+return { nvio, dap, dap_ui, dap_ruby, telescope_dap, dap_virtual_text }
