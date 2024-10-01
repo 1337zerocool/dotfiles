@@ -21,6 +21,51 @@ local dap = {
   },
   config = function()
     require("dap-ruby").setup()
+    local dap = require("dap")
+    dap.set_log_level("TRACE")
+    dap.configurations.ruby = {
+      {
+        type = "ruby",
+        name = "Do it",
+        request = "attach",
+        command = "bundle",
+        args = { "exec", "rdbg", "-c", "bundle", "exec", "exe/fooapp" },
+        port = 38698,
+        server = "127.0.0.1",
+        env = {
+          ["RUBYOPT"] = "-rdebug/open_nonstop",
+        },
+        localfs = true,
+      },
+      {
+        type = "ruby",
+        name = "Do it 2",
+        request = "attach",
+        command = "bundle",
+        commandArgs = { "exec", "rdbg", "-c", "bundle", "exec", "exe/fooapp" },
+        port = 38698,
+        server = "127.0.0.1",
+        env = {
+          ["RUBYOPT"] = "-rdebug/open_nonstop",
+        },
+        localfs = true,
+
+      }
+    }
+
+    ---  https://www.reddit.com/r/ruby/comments/1ctwtrd/debugging_ruby_in_neovim/
+    -- doing this does start the debugger properly. seems like it's missing a bundle exec in the
+    -- config though because the 'requires' fail
+    -- require("dap").continue()
+    -- vim.fn.setenv("RUBYOPT", "-rdebug/open_nonstop")
+    -- require("dap").run({ type = "ruby", name = "RunIt", request = "attach", command = "bundle", args = { "exec" }, script = "${file}", port = 38698, server = "127.0.0.1", localfs = true, waiting = 100, })
+    -- https://www.pudn.com/Download/item/id/1726358848734809.html
+    -- https://gorails.com/episodes/better-debugging-with-the-ruby-debug-gem
+    -- rdbg -c  bundle exec exe/fooapp
+    -- https://github.com/kaka-ruto/nvim-ruby-debugger/blob/master/lua/nvim-ruby-debugger/configurations.lua
+    -- probably going to have to make your own plugin or something
+    -- For the one above, then add some configurations:
+
   end
 }
 
@@ -61,6 +106,9 @@ local dap_ui = {
 -- https://github.com/nvim-telescope/telescope-dap.nvim
 local telescope_dap = {
   "nvim-telescope/telescope-dap.nvim",
+  config = function()
+    require('telescope').load_extension('dap')
+  end
 }
 
 -- Adds information in the debugger (like variable values) to buffers as virtual text
