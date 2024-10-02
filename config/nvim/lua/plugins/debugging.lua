@@ -26,10 +26,10 @@ local dap = {
     dap.configurations.ruby = {
       {
         type = "ruby",
-        name = "Do it",
+        name = "Application",
         request = "attach",
         command = "bundle",
-        args = { "exec", "rdbg", "-c", "bundle", "exec", "exe/fooapp" },
+        args = { "exec", "rdbg", "--command", "--", "exe/fooapp" },
         port = 38698,
         server = "127.0.0.1",
         env = {
@@ -39,17 +39,30 @@ local dap = {
       },
       {
         type = "ruby",
-        name = "Do it 2",
+        name = "Minitest (broken)",
         request = "attach",
         command = "bundle",
-        commandArgs = { "exec", "rdbg", "-c", "bundle", "exec", "exe/fooapp" },
+        commandArgs = { "exec", "rdbg", "--open", "-command", "--", "rake", "test", vim.fn.expand("%:p") },
+        port = 1234,
+        server = "127.0.0.1",
+        env = {
+          ["RUBYOPT"] = "-rdebug/open_nonstop",
+          ["RUBY_DEBUG_PORT"] = "38698",
+        },
+        localfs = true,
+      },
+      {
+        type = "ruby",
+        name = "working config - do not edit",
+        request = "attach",
+        command = "bundle",
+        args = { "exec", "rdbg", "-c", "bundle", "exec", "exe/fooapp" },
         port = 38698,
         server = "127.0.0.1",
         env = {
           ["RUBYOPT"] = "-rdebug/open_nonstop",
         },
         localfs = true,
-
       }
     }
 
