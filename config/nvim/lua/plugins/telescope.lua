@@ -88,6 +88,7 @@ local telescope = {
     { "<leader>:", "<cmd>Telescope command_history<cr>",  mode = { "n", "v" }, desc = "Telescope: command history" },
     { "<leader>gf", "<cmd>Telescope git_bcommits<cr>",  mode = { "n", "v" }, desc = "Telescope: git commit history for current file (buffer)" },
     { "<leader>gh", "<cmd>Telescope git_commits<cr>",  mode = { "n", "v" }, desc = "Telescope: git commit history for current workspace" },
+    { "<leader>s", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",  mode = { "n", "v" }, desc = "Telescope: search LSP symbols (dynamic may be slow)" },
     { "z=", function() require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor({})) end, mode = { "n", "v" }, desc = "Show spell check suggestions" },
     -- dap breakpoints
     -- lsp document symbols

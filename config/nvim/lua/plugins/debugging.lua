@@ -26,15 +26,27 @@ local dap = {
     dap.configurations.ruby = {
       {
         type = "ruby",
-        name = "Application",
+        name = "This File",
         request = "attach",
         command = "bundle",
-        args = { "exec", "rdbg", "--command", "--", "exe/fooapp" },
+        -- --nonstop doesn't seem to work. neither does setting env
+        -- commandArgs = function()…end seems to work.  could make this exe/fooapp call a
+        -- vim.fn.input
+        args = { "exec", "rdbg", "--open", "--command", "--", "${file}" },
         port = 38698,
         server = "127.0.0.1",
-        env = {
-          ["RUBYOPT"] = "-rdebug/open_nonstop",
-        },
+        localfs = true,
+      },
+      {
+        type = "ruby",
+        name = "Choose from exe/",
+        request = "attach",
+        command = "bundle",
+        -- commandArgs = function()…end seems to work.  could make this exe/fooapp call a
+        -- vim.fn.input
+        args = { "exec", "rdbg", "--command", "--", "${file}" },
+        port = 38698,
+        server = "127.0.0.1",
         localfs = true,
       },
       {
@@ -53,7 +65,7 @@ local dap = {
       },
       {
         type = "ruby",
-        name = "working config - do not edit",
+        name = "Working version, do not edit",
         request = "attach",
         command = "bundle",
         args = { "exec", "rdbg", "-c", "bundle", "exec", "exe/fooapp" },
@@ -66,6 +78,7 @@ local dap = {
       }
     }
 
+    ---  https://github.com/suketa/nvim-dap-ruby
     ---  https://www.reddit.com/r/ruby/comments/1ctwtrd/debugging_ruby_in_neovim/
     -- doing this does start the debugger properly. seems like it's missing a bundle exec in the
     -- config though because the 'requires' fail
