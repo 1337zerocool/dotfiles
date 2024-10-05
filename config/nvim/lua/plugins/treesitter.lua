@@ -31,7 +31,7 @@ local treesitter = {
     },
     indent = {
       enable = true,
-    },  
+    },
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -76,12 +76,15 @@ local treesitter = {
     }
   },
   priority = 100,
-  config = LazySafeSetup("nvim-treesitter.configs", function() end)
+  config = LazySafeSetup("nvim-treesitter.configs", function()
+    vim.wo.foldlevel = 99
+    vim.wo.foldmethod = 'expr'
+    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+  end)
 }
 
 -- Extends text objects by using treesitter for scopes, classes, methods, etc.
 -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-
 local textobjects = {
   "nvim-treesitter/nvim-treesitter-textobjects",
   dependencies = {

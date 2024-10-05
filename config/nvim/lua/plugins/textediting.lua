@@ -13,6 +13,11 @@ local endwise = {
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },
+  config = function()
+    require('nvim-treesitter.configs').setup({
+      endwise = { enable = true },
+    })
+  end,
 }
 
 -- Operators for wrapping text with brackets, quotes, etc.

@@ -81,7 +81,7 @@ vim.opt.gdefault = false				-- don't enable 'g' flag by default for :substitute
 -- vim.opt.guioptions = "egmrLT"				-- special options for gui vim
 -- vim.opt.guitablabel = ""				-- text to use in label of gui tab pages line
 -- vim.opt.guitabtooltip = ""				-- tooltip to use in gui tab pages line
--- vim.opt.helpfile = "$VIMRUNTIME/doc/help.txt"		-- path to help files
+vim.opt.helpfile = "$VIMRUNTIME/doc/help.txt"		-- path to help files
 -- vim.opt.helpheight = 20					-- default hight for :help
 vim.opt.helplang = ""					-- default language for :help
 vim.opt.hidden = true					-- allow buffers to exist even if there are no windows for them
@@ -303,12 +303,22 @@ vim.opt.wrapscan = true					-- searches wrap around to the top of the file
 -- vim.opt.writedelay = 0				-- how long to wait to flush writes
 
 -- This is stuff that doesn't have a nice config option. Maybe it goes somewhere else?
-vim.fn.sign_define("DiagnosticSignError" , { text = "", texthl="DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignError" , { text = "󰚑", texthl="DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn" , { text = "", texthl="DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo" , { text = "", texthl="DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint" , { text = "", texthl="DiagnosticSignHint" })
+-- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.Opts
 vim.diagnostic.config({
-  virtual_text = { prefix = "●", }, -- set to false to disable virtual text
+  signs = true,
+  underline = false,
+  update_in_insert = false,
+  float = {
+    scope = "line",
+    severity_sort = true,
+    header = "Diagnostics",
+    source = true,
+  },
+  virtual_text = false, -- { prefix = "● ", }, -- set to false to disable virtual text
   severity_sort = true,
 })
 

@@ -38,13 +38,14 @@ local lspsaga = {
     })
     -- can't use lazy to do keymaps for some reason
     vim.keymap.set({ "n", "v" }, "gd", "<cmd>Lspsaga goto_definition<cr>", { silent = true, desc = "Go to definition" })
-    vim.keymap.set({ "n", "v" }, "K", "<cmd>Lspsaga hover_doc<cr>", { silent = true, desc = "Show documentation" })
+    vim.keymap.set({ "n", "v" }, "K", "<cmd>Lspsaga hover_doc<cr>", { silent = true, desc = "Show hover documentation" })
     vim.keymap.set({ "n", "v" }, "<leader>o", "<cmd>Lspsaga outline<cr>", { silent = true, desc = "Show outline of the code" })
     vim.keymap.set({ "n", "v" }, "<leader>r", "<cmd>Lspsaga finder<cr>", { silent = true, desc = "Show references" })
     vim.keymap.set({ "n", "v" }, "<leader>p", "<cmd>Lspsaga peek_definition<cr>", { silent = true, desc = "Peek definition" })
     vim.keymap.set({ "n", "v" }, "<leader>=", vim.lsp.buf.format, { silent = true, desc = "Format the current buffer" })
-    vim.keymap.set({ "n", "v" }, "]e", vim.diagnostic.goto_next, { silent = true, desc = "Go to next diagnostic" })
-    vim.keymap.set({ "n", "v" }, "[e", vim.diagnostic.goto_prev, { silent = true, desc = "Go to previous diagnostic" })
+    vim.keymap.set({ "n", "v" }, "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", { silent = true, desc = "Go to next diagnostic" })
+    vim.keymap.set({ "n", "v" }, "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { silent = true, desc = "Go to previous diagnostic" })
+    vim.keymap.set({ "n", "v" }, "<leader>x", "<cmd>Lspsaga code_action<cr>", { silent = true, desc = "Code Actions" })
   end,
 }
 
@@ -81,6 +82,8 @@ local mason = {
     local lspcfg = require("mason-lspconfig")
     local cmp = require("cmp_nvim_lsp")
 
+    -- maybe interesting:
+    -- https://www.reddit.com/r/ruby/comments/1c06zr9/neovim_and_lsp_in_2024/
     local servers = {
       html = {},
       denols = {},
@@ -88,8 +91,28 @@ local mason = {
       emmet_ls = {},
       jsonls = {},
       gopls = {},
-      ruby_lsp = {},
-      solargraph = {},
+      ruby_lsp = {
+        mason = true,
+        single_file_support = true,
+        filetypes = { "ruby", "erb" },
+        init_options = {
+          rubyVersionManager = "chruby",
+          enabledFeatures = {
+            diagnostics = true,
+            hover = true,
+            completion = true,
+          },
+          formatter = "auto",
+          linters = { "rubocop" },
+        },
+      },
+      sorbet = {
+        cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
+        init_options = {
+          -- highlightUntyped = true,
+        },
+      },
+      -- solargraph = {},
       ts_ls = {},
       lua_ls = {
         Lua = {
