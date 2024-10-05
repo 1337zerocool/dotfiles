@@ -37,8 +37,8 @@ local neotest = {
     "zidhuss/neotest-minitest",
   },
   keys = {
-    { "<leader>t", "<cmd>Neotest run<cr>", mode = { "n", "v" }, desc = "Show spell check suggestions" },
-    { "<leader>T", "<cmd>Neotest summary<cr>", mode = { "n", "v" }, desc = "Show spell check suggestions" },
+    { "<leader>t", "<cmd>Neotest run<cr>", mode = { "n", "v" }, desc = "Testing: Run a test" },
+    { "<leader>T", "<cmd>Neotest summary<cr>", mode = { "n", "v" }, desc = "Testing: Show test sidebar" },
   },
   config = function()
     require('neotest').setup({

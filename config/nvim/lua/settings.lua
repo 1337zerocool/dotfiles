@@ -318,7 +318,8 @@ vim.diagnostic.config({
     header = "Diagnostics",
     source = true,
   },
-  virtual_text = false, -- { prefix = "● ", }, -- set to false to disable virtual text
+  -- disabled by lspsaga
+  virtual_text = { prefix = "● ", },
   severity_sort = true,
 })
 
