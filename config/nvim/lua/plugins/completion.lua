@@ -10,15 +10,6 @@ local cmp_lspkind = {
   }
 }
 
--- add copilot as a completion source
--- https://github.com/zbirenbaum/copilot-cmp
-local copilot_cmp = {
-  "zbirenbaum/copilot-cmp",
-  config = function()
-    require("copilot_cmp").setup()
-  end
-}
-
 -- Use the LSP as a completion source
 -- https://github.com/hrsh7th/cmp-nvim-lsp
 local cmp_lsp = {
@@ -57,6 +48,19 @@ local cmp = {
     local cmp = require('cmp')
     local luasnip = require('luasnip')
     local lspkind = require('lspkind')
+    local cmp_enabled = true
+    vim.api.nvim_create_user_command("CmpToggle", function()
+      if cmp_enabled then
+        require("cmp").setup.buffer({ enabled = false })
+        cmp_enabled = false
+      else
+        require("cmp").setup.buffer({ enabled = true })
+        cmp_enabled = true
+      end
+    end, {})
+
+
+    vim.keymap.set({"n", "v"}, "<leader>cm", "<cmd>CmpToggle<cr>", {desc = "Disable the autocomplete menu"})
 
     cmp.setup({
       experimental = {
@@ -126,23 +130,15 @@ local cmp = {
       },
 
       sources = cmp.config.sources({
-        { name = "copilot",                  group_index = 2 },
         { name = 'nvim_lsp',                 group_index = 2 },
         { name = 'nvim_lsp_document_symbol', group_index = 2 },
         { name = 'nvim_lsp_signature_help',  group_index = 2 },
-        { name = 'lausnip',                  group_index = 1 },
+        { name = 'lausnip',                  group_index = 2 },
         { name = 'path',                     group_index = 2 },
         { name = 'treesitter',               group_index = 2 },
       }),
 
     })
-
-    -- should probalby pretty load these - see mason config
-    -- local capabilities = cmplsp.default_capabilities()
-    -- lspconfig['lua_ls'].setup { capabilities = capabilities }
-    -- lspconfig['gopls'].setup { capabilities = capabilities }
-    -- lspconfig['solargraph'].setup({})
-    -- lspconfig['tsserver'].setup { capabilities = capabilities }
   end,
 }
 
@@ -167,4 +163,4 @@ local cmp_path = {
   event = "InsertEnter",
 }
 
-return { cmp_lsp, cmp_document_symbol, cmp_signature_help, cmp_lspkind, copilot_cmp, cmp, luasnip, cmp_luasnip, cmp_path }
+return { cmp_lsp, cmp_document_symbol, cmp_signature_help, cmp_lspkind, cmp, luasnip, cmp_luasnip, cmp_path }

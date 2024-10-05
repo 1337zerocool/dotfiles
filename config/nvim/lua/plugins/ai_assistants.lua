@@ -22,9 +22,9 @@ local copilot = {
         auto_refresh = true,
       },
       suggestion = {
-        enabled = false, -- integrating with cmp instead
+        enabled = true, -- integrating with cmp instead
         keymap = {
-          accept = "<S-Tab>",
+          accept = "<C-a>",
         },
         auto_trigger = true,
         accept = true,
