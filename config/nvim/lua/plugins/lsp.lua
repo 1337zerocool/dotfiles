@@ -84,22 +84,10 @@ local mason = {
   },
   config = function()
     local mason = require("mason")
-    local mason_lspconfig = require("mason-lspconfig")
-    local cmp = require("cmp_nvim_lsp")
-
     mason.setup()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = cmp.default_capabilities(capabilities)
 
-
-
-    local on_attach = function(_, bufnr)
-      vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-        vim.lsp.buf.format()
-      end, { desc = "Format current buffer with LSP" })
-    end
-
-    mason_lspconfig.setup({
+    local mason_lsp = require("mason-lspconfig")
+    mason_lsp.setup({
       ensure_installed = {
         "html",
         "denols",
@@ -114,6 +102,19 @@ local mason = {
         "lua_ls",
       }
     })
+
+
+    local cmp = require("cmp_nvim_lsp")
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = cmp.default_capabilities(capabilities)
+
+
+
+    local on_attach = function(_, bufnr)
+      vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+        vim.lsp.buf.format()
+      end, { desc = "Format current buffer with LSP" })
+    end
 
     -- https://github.com/astral-sh/ruff-lsp/issues/78
     -- https://neovim.discourse.group/t/how-to-config-multiple-lsp-for-document-hover/3093/2
@@ -150,93 +151,93 @@ local mason = {
     -- 
     local cfg = require("lspconfig")
 
-    cfg['ruby_lsp'].setup({
+    cfg.ruby_lsp.setup({
       enabled = true,
       capabilities = capabilities,
-      on_attach = function(client, buffer)
-        print("hello from rubylsp")
-
-        -- client.server_capabilities.codeActionProvider = false
-        -- client.server_capabilities.codeLensProvider = false
-        -- client.server_capabilities.completionProvider = false
-        -- client.server_capabilities.definitionProvider = false
-        -- client.server_capabilities.diagnosticProvider = false
-        -- client.server_capabilities.documentFormattingProvider = false
-        -- client.server_capabilities.documentHighlightProvider = false
-        -- client.server_capabilities.documentLinkProvider = false
-        -- client.server_capabilities.documentOnTypeFormattingProvider = false
-        -- client.server_capabilities.documentRangeFormattingProvider = false
-        -- client.server_capabilities.documentSymbolProvider = false
-        -- client.server_capabilities.experimental = false
-        -- client.server_capabilities.foldingRangeProvider = false
-        -- client.server_capabilities.hoverProvider = false
-        -- client.server_capabilities.inlayHintProvider = false
-        -- client.server_capabilities.selectionRangeProvider = false
-        -- client.server_capabilities.semanticTokensProvider = false
-        -- client.server_capabilities.signatureHelpProvider = false
-
-      end,
+      on_attach = on_attach,
+      -- https://shopify.github.io/ruby-lsp/editors.html#Neovim
+      init_options = {
+        enabledFeatures = {
+          codeActions = true, -- good
+          codeLens = true,    -- good
+          completion = false, -- not bad
+          definition = false,
+          diagnostics = true,
+          documentHighlights = false,
+          documentLink = false,
+          documentSymbols = true,  -- good
+          foldingRanges = false,
+          formatting = false,
+          hover = true,
+          inlayHint = false,
+          onTypeFormatting = false,
+          selectionRanges = false,
+          semanticHighlighting = false,
+          signatureHelp = false,
+          typeHierarchy = false,
+          workspaceSymbol = true,
+        },
+        featuresConfiguration = {
+          inlayHints = {
+            implicitHashValue = true,
+            implicitRescue = true,
+          },
+        },
+        indexing = {
+          excludedPatterns = { "*.rbs" },
+          includedPatterns = { "*.rb" },
+          excludedGems = { "bundler" },
+          excludedMagicComments = { "compiled: true" },
+        },
+        formatter = 'auto',
+        linters = { 'rubocop' },
+      },
       filetypes = { "ruby", "erb" },
     })
 
-    cfg['sorbet'].setup({
-      enabled = true,
+    cfg.sorbet.setup({
+      enabled = false,
       capabilities = capabilities,
-      on_attach = function(client, buffer)
-        print("hello from sorbet")
-
-        -- client.server_capabilities.codeActionProvider = false
-        -- client.server_capabilities.codeLensProvider = false
-        -- client.server_capabilities.completionProvider = false
-        -- client.server_capabilities.definitionProvider = false
-        -- client.server_capabilities.diagnosticProvider = false
-        -- client.server_capabilities.documentFormattingProvider = false
-        -- client.server_capabilities.documentHighlightProvider = false
-        -- client.server_capabilities.documentLinkProvider = false
-        -- client.server_capabilities.documentOnTypeFormattingProvider = false
-        -- client.server_capabilities.documentRangeFormattingProvider = false
-        -- client.server_capabilities.documentSymbolProvider = false
-        -- client.server_capabilities.experimental = false
-        -- client.server_capabilities.foldingRangeProvider = false
-        -- client.server_capabilities.hoverProvider = false
-        -- client.server_capabilities.inlayHintProvider = false
-        -- client.server_capabilities.selectionRangeProvider = false
-        -- client.server_capabilities.semanticTokensProvider = false
-        -- client.server_capabilities.signatureHelpProvider = false
-
-      end,
+      on_attach = on_attach,
+      settings = {
+        solargraph = {
+          hover = false,
+          diagnostics = true,
+        }
+      },
       filetypes = { "ruby", "erb" },
       -- needs the init to highlight and do nudges
     })
 
-    cfg['solargraph'].setup({
+    cfg.solargraph.setup({
       enabled = true,
-      on_attach = function(client, _)
-        print("hello from solargraph")
-
-        -- client.server_capabilities.codeActionProvider = false
-        -- client.server_capabilities.codeLensProvider = false
-        -- client.server_capabilities.completionProvider = false
-        -- client.server_capabilities.definitionProvider = false
-        -- client.server_capabilities.diagnosticProvider = false
-        -- client.server_capabilities.documentFormattingProvider = false
-        -- client.server_capabilities.documentHighlightProvider = false
-        -- client.server_capabilities.documentLinkProvider = false
-        -- client.server_capabilities.documentOnTypeFormattingProvider = false
-        -- client.server_capabilities.documentRangeFormattingProvider = false
-        -- client.server_capabilities.documentSymbolProvider = false
-        -- client.server_capabilities.experimental = false
-        -- client.server_capabilities.foldingRangeProvider = false
-        -- client.server_capabilities.hoverProvider = false
-        -- client.server_capabilities.inlayHintProvider = false
-        -- client.server_capabilities.selectionRangeProvider = false
-        -- client.server_capabilities.semanticTokensProvider = false
-        -- client.server_capabilities.signatureHelpProvider = false
-        --
-      end,
+      on_attach = on_attach,
+      settings = {
+        solargraph = {
+          codeActions = false,
+          codeLens = false,
+          completion = false,
+          definition = false,
+          diagnostics = false,
+          documentHighlights = false,
+          documentLink = false,
+          documentSymbols = false,
+          foldingRanges = false,
+          formatting = false,
+          hover = true,
+          inlayHint = false,
+          onTypeFormatting = false,
+          selectionRanges = false,
+          semanticHighlighting = false,
+          signatureHelp = false,
+          typeHierarchy = false,
+          workspaceSymbol = true,
+        },
+      },
       filetypes = { "ruby", "erb" },
     })
- 
+
+
     cfg.html.setup({ enabled = true, capabilities = capabilities, on_attach = on_attach, })
 
     cfg.denols.setup({ enabled = true, capabilities = capabilities, on_attach = on_attach, })
