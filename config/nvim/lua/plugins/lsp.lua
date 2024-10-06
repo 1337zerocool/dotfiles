@@ -84,21 +84,178 @@ local mason = {
   },
   config = function()
     local mason = require("mason")
-    local lspcfg = require("mason-lspconfig")
+    local mason_lspconfig = require("mason-lspconfig")
     local cmp = require("cmp_nvim_lsp")
 
-    local servers = {
-      html = {},
-      denols = {},
-      cssls = {},
-      emmet_ls = {},
-      jsonls = {},
-      gopls = {},
-      ruby_lsp = {},
-      sorbet = { },
-      solargraph = {},
-      ts_ls = {},
-      lua_ls = {
+    mason.setup()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = cmp.default_capabilities(capabilities)
+
+
+
+    local on_attach = function(_, bufnr)
+      vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+        vim.lsp.buf.format()
+      end, { desc = "Format current buffer with LSP" })
+    end
+
+    mason_lspconfig.setup({
+      ensure_installed = {
+        "html",
+        "denols",
+        "cssls",
+        "emmet_ls",
+        "jsonls",
+        "gopls",
+        "ruby_lsp",
+        "sorbet",
+        "solargraph",
+        "ts_ls",
+        "lua_ls",
+      }
+    })
+
+    -- https://github.com/astral-sh/ruff-lsp/issues/78
+    -- https://neovim.discourse.group/t/how-to-config-multiple-lsp-for-document-hover/3093/2
+    --
+    -- Figuring out how to configure things:
+    -- lua =vim.lsp.get_active_clients()[1].name
+    -- lua =vim.lsp.get_active_clients()[1].server_capabilities
+    -- check NoiceAll
+    -- then write a custom on-attach
+    -- lspconfig['foo'].setup({
+    --   enabled = true,
+    --   filetypes = { "foo" },
+    --   on_attach = function(client, _)
+    --     client.server_capabilities.codeActionProvider = false
+    --     client.server_capabilities.codeLensProvider = false
+    --     client.server_capabilities.completionProvider = false
+    --     client.server_capabilities.definitionProvider = false
+    --     client.server_capabilities.diagnosticProvider = false
+    --     client.server_capabilities.documentFormattingProvider = false
+    --     client.server_capabilities.documentHighlightProvider = false
+    --     client.server_capabilities.documentLinkProvider = false
+    --     client.server_capabilities.documentOnTypeFormattingProvider = false
+    --     client.server_capabilities.documentRangeFormattingProvider = false
+    --     client.server_capabilities.documentSymbolProvider = false
+    --     client.server_capabilities.experimental = false
+    --     client.server_capabilities.foldingRangeProvider = false
+    --     client.server_capabilities.hoverProvider = false
+    --     client.server_capabilities.inlayHintProvider = false
+    --     client.server_capabilities.selectionRangeProvider = false
+    --     client.server_capabilities.semanticTokensProvider = false
+    --     client.server_capabilities.signatureHelpProvider = false
+    --   end,
+    -- })
+    -- 
+    local cfg = require("lspconfig")
+
+    cfg['ruby_lsp'].setup({
+      enabled = true,
+      capabilities = capabilities,
+      on_attach = function(client, buffer)
+        print("hello from rubylsp")
+
+        -- client.server_capabilities.codeActionProvider = false
+        -- client.server_capabilities.codeLensProvider = false
+        -- client.server_capabilities.completionProvider = false
+        -- client.server_capabilities.definitionProvider = false
+        -- client.server_capabilities.diagnosticProvider = false
+        -- client.server_capabilities.documentFormattingProvider = false
+        -- client.server_capabilities.documentHighlightProvider = false
+        -- client.server_capabilities.documentLinkProvider = false
+        -- client.server_capabilities.documentOnTypeFormattingProvider = false
+        -- client.server_capabilities.documentRangeFormattingProvider = false
+        -- client.server_capabilities.documentSymbolProvider = false
+        -- client.server_capabilities.experimental = false
+        -- client.server_capabilities.foldingRangeProvider = false
+        -- client.server_capabilities.hoverProvider = false
+        -- client.server_capabilities.inlayHintProvider = false
+        -- client.server_capabilities.selectionRangeProvider = false
+        -- client.server_capabilities.semanticTokensProvider = false
+        -- client.server_capabilities.signatureHelpProvider = false
+
+      end,
+      filetypes = { "ruby", "erb" },
+    })
+
+    cfg['sorbet'].setup({
+      enabled = true,
+      capabilities = capabilities,
+      on_attach = function(client, buffer)
+        print("hello from sorbet")
+
+        -- client.server_capabilities.codeActionProvider = false
+        -- client.server_capabilities.codeLensProvider = false
+        -- client.server_capabilities.completionProvider = false
+        -- client.server_capabilities.definitionProvider = false
+        -- client.server_capabilities.diagnosticProvider = false
+        -- client.server_capabilities.documentFormattingProvider = false
+        -- client.server_capabilities.documentHighlightProvider = false
+        -- client.server_capabilities.documentLinkProvider = false
+        -- client.server_capabilities.documentOnTypeFormattingProvider = false
+        -- client.server_capabilities.documentRangeFormattingProvider = false
+        -- client.server_capabilities.documentSymbolProvider = false
+        -- client.server_capabilities.experimental = false
+        -- client.server_capabilities.foldingRangeProvider = false
+        -- client.server_capabilities.hoverProvider = false
+        -- client.server_capabilities.inlayHintProvider = false
+        -- client.server_capabilities.selectionRangeProvider = false
+        -- client.server_capabilities.semanticTokensProvider = false
+        -- client.server_capabilities.signatureHelpProvider = false
+
+      end,
+      filetypes = { "ruby", "erb" },
+      -- needs the init to highlight and do nudges
+    })
+
+    cfg['solargraph'].setup({
+      enabled = true,
+      on_attach = function(client, _)
+        print("hello from solargraph")
+
+        -- client.server_capabilities.codeActionProvider = false
+        -- client.server_capabilities.codeLensProvider = false
+        -- client.server_capabilities.completionProvider = false
+        -- client.server_capabilities.definitionProvider = false
+        -- client.server_capabilities.diagnosticProvider = false
+        -- client.server_capabilities.documentFormattingProvider = false
+        -- client.server_capabilities.documentHighlightProvider = false
+        -- client.server_capabilities.documentLinkProvider = false
+        -- client.server_capabilities.documentOnTypeFormattingProvider = false
+        -- client.server_capabilities.documentRangeFormattingProvider = false
+        -- client.server_capabilities.documentSymbolProvider = false
+        -- client.server_capabilities.experimental = false
+        -- client.server_capabilities.foldingRangeProvider = false
+        -- client.server_capabilities.hoverProvider = false
+        -- client.server_capabilities.inlayHintProvider = false
+        -- client.server_capabilities.selectionRangeProvider = false
+        -- client.server_capabilities.semanticTokensProvider = false
+        -- client.server_capabilities.signatureHelpProvider = false
+        --
+      end,
+      filetypes = { "ruby", "erb" },
+    })
+ 
+    cfg.html.setup({ enabled = true, capabilities = capabilities, on_attach = on_attach, })
+
+    cfg.denols.setup({ enabled = true, capabilities = capabilities, on_attach = on_attach, })
+
+    cfg.cssls.setup({ enabled = true, capabilities = capabilities, on_attach = on_attach, })
+
+    cfg.emmet_ls.setup({ enabled = true, capabilities = capabilities, on_attach = on_attach, })
+
+    cfg.jsonls.setup({ enabled = true, capabilities = capabilities, on_attach = on_attach, })
+
+    cfg.gopls.setup({ enabled = true, capabilities = capabilities, on_attach = on_attach, })
+
+    cfg.ts_ls.setup({ enabled = true, capabilities = capabilities, on_attach = on_attach, })
+
+    cfg.lua_ls.setup({
+      enabled = true,
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
         Lua = {
           workspace = {
             checkThirdParty = false,
@@ -108,30 +265,8 @@ local mason = {
           diagnostics = { globals = { "vim" }, },
         },
       },
-    }
-
-    mason.setup()
-
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = cmp.default_capabilities(capabilities)
-
-    local on_attach = function(_, bufnr)
-      vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-        vim.lsp.buf.format()
-      end, { desc = "Format current buffer with LSP" })
-    end
-
-    lspcfg.setup({ ensure_installed = vim.tbl_keys(servers) })
-    lspcfg.setup_handlers({
-      function(server_name)
-        require("lspconfig")[server_name].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = servers[server_name],
-          filetypes = (servers[server_name] or {}).filetypes,
-        })
-      end,
     })
+
   end
 }
 
