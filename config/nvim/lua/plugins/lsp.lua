@@ -168,7 +168,7 @@ local mason = {
           documentSymbols = true,  -- good
           foldingRanges = false,
           formatting = false,
-          hover = true,
+          hover = false,
           inlayHint = false,
           onTypeFormatting = false,
           selectionRanges = false,
@@ -199,14 +199,11 @@ local mason = {
       enabled = false,
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = {
-        solargraph = {
-          hover = false,
-          diagnostics = true,
-        }
+      -- figure out how to disable definitions
+      init_options = {
+        highlightUntyped = false,
       },
       filetypes = { "ruby", "erb" },
-      -- needs the init to highlight and do nudges
     })
 
     cfg.solargraph.setup({
@@ -224,7 +221,7 @@ local mason = {
           documentSymbols = false,
           foldingRanges = false,
           formatting = false,
-          hover = true,
+          hover = false,
           inlayHint = false,
           onTypeFormatting = false,
           selectionRanges = false,
