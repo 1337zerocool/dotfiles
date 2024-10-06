@@ -87,71 +87,16 @@ local mason = {
     local lspcfg = require("mason-lspconfig")
     local cmp = require("cmp_nvim_lsp")
 
-    -- maybe interesting:
-    -- https://www.reddit.com/r/ruby/comments/1c06zr9/neovim_and_lsp_in_2024/
-    -- https://github.com/mariochavez/lazyvim-config/blob/main/lua/plugins/ror.lua
     local servers = {
-      ruby_lsp = {
-        -- https://github.com/Shopify/ruby-lsp/blob/bc51df52ae5a1c532869b7750e4238203e6df0c2/jekyll/editors.markdown?plain=1#L48
-        -- does everything by default
-        -- except document symbols, workplace symbols, and hoverdoc
-      },
-      solargraph = {
-        -- https://github.com/castwide/solargraph/blob/master/lib/solargraph/language_server/message/initialize.rb#L28
-        -- https://github.com/luong-komorebi/neovim-dotfiles/blob/1e813e010d9bb21f83cd43f2a5b13bbfe7047711/lua/config/lang_config.lua#L118
-        -- https://github.com/williamboman/mason.nvim/issues/1292
-        -- adds only document and workplace symbols
-      },
-      sorbet = {
-        -- adds only highlight untyped and maybe code actions, particularly on errors
-        -- and hoverdoc
-        -- https://github.com/sodiumjoe/dotfiles/blob/master/neovim/lua/sodium/plugins.lua
-      },
       html = {},
       denols = {},
       cssls = {},
       emmet_ls = {},
       jsonls = {},
       gopls = {},
-      -- https://github.com/Shopify/ruby-lsp/blob/bc51df52ae5a1c532869b7750e4238203e6df0c2/vscode/package.json#L375
-      -- ruby_lsp = {
-      --   mason = false,
-      --   single_file_support = true,
-      --   filetypes = { "ruby", "erb" },
-      --   -- https://shopify.github.io/ruby-lsp/editors.html
-      --   init_options = {
-      --     rubyVersionManager = "chruby",
-      --     enabledFeatures = {
-      --       diagnostics = true,
-      --       hover = false,
-      --       completion = true,
-      --     },
-      --     formatter = "auto",
-      --     linters = { "rubocop" },
-      --   },
-      -- },
-      -- sorbet = {
-      --   cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
-      --   init_options = {
-      --     highlightUntyped = true,
-      --     enabledFeatures = {
-      --       hover = false,
-      --     }
-      --
-      --   },
-      -- },
-      -- solargraph = {
-      --   -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/solargraph.lua
-      --   autoformat = false,
-      --   formatting = false,
-      --   completion = true,
-      --   diagnostic = false,
-      --   folding = true,
-      --   references = false,
-      --   rename = true,
-      --   symbols = true,
-      --   hover = false,
-      -- },
+      ruby_lsp = {},
+      sorbet = { },
+      solargraph = {},
       ts_ls = {},
       lua_ls = {
         Lua = {
@@ -164,7 +109,6 @@ local mason = {
         },
       },
     }
-
 
     mason.setup()
 

@@ -24,7 +24,7 @@ local copilot = {
       suggestion = {
         enabled = true, -- integrating with cmp instead
         keymap = {
-          accept = "<C-a>",
+          accept = "<C-space>",
         },
         auto_trigger = true,
         accept = true,
