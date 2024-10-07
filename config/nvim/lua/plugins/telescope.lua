@@ -92,7 +92,7 @@ local telescope = {
     { "<leader>S", "<cmd>Telescope lsp_document_symbols<cr>",  mode = { "n", "v" }, desc = "Telescope: search LSP symbols (dynamic may be slow)" },
     { "z=", function() require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor({})) end, mode = { "n", "v" }, desc = "Show spell check suggestions" },
     -- replaced by trouble
-    { "<leader>E", "<cmd>Telescope diagnostics<cr>",  mode = { "n", "v" }, desc = "Telescope: search diagnostic messages for the workspace" },
+    -- { "<leader>E", "<cmd>Telescope diagnostics<cr>",  mode = { "n", "v" }, desc = "Telescope: search diagnostic messages for the workspace" },
     -- dap breakpoints
 
   },

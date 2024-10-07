@@ -169,13 +169,13 @@ local mason = {
           foldingRanges = false,
           formatting = false,
           hover = false,
-          inlayHint = false,
-          onTypeFormatting = false,
+          inlayHint = true,
+          onTypeFormatting = true,
           selectionRanges = false,
-          semanticHighlighting = false,
+          semanticHighlighting = true,
           signatureHelp = false,
           typeHierarchy = false,
-          workspaceSymbol = true,
+          workspaceSymbol = false,
         },
         featuresConfiguration = {
           inlayHints = {
@@ -195,13 +195,38 @@ local mason = {
       filetypes = { "ruby", "erb" },
     })
 
+    -- get this doing hover
+    -- poisoning the document symbols list
     cfg.sorbet.setup({
-      enabled = false,
+      enabled = true,
       capabilities = capabilities,
       on_attach = on_attach,
       -- figure out how to disable definitions
+      --
+      settings = {
+        sorbet = {
+          codeActions = false,
+          codeLens = false,
+          completion = false,
+          definition = false,
+          diagnostics = false,
+          documentHighlights = false,
+          documentLink = false,
+          documentSymbols = false,
+          foldingRanges = false,
+          formatting = false,
+          hover = true,
+          inlayHint = false,
+          onTypeFormatting = false,
+          selectionRanges = false,
+          semanticHighlighting = false,
+          signatureHelp = false,
+          typeHierarchy = false,
+          workspaceSymbol = false,
+        },
+      },
       init_options = {
-        highlightUntyped = false,
+        highlightUntyped = true,
       },
       filetypes = { "ruby", "erb" },
     })
