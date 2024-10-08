@@ -116,10 +116,9 @@ local mason = {
       end, { desc = "Format current buffer with LSP" })
     end
 
+    -- Some notes on workign with multiple LSPS that provide help
     -- https://github.com/astral-sh/ruff-lsp/issues/78
     -- https://neovim.discourse.group/t/how-to-config-multiple-lsp-for-document-hover/3093/2
-    --
-    -- Figuring out how to configure things:
     -- lua =vim.lsp.get_active_clients()[1].name
     -- lua =vim.lsp.get_active_clients()[1].server_capabilities
     -- check NoiceAll
@@ -128,23 +127,6 @@ local mason = {
     --   enabled = true,
     --   filetypes = { "foo" },
     --   on_attach = function(client, _)
-    --     client.server_capabilities.codeActionProvider = false
-    --     client.server_capabilities.codeLensProvider = false
-    --     client.server_capabilities.completionProvider = false
-    --     client.server_capabilities.definitionProvider = false
-    --     client.server_capabilities.diagnosticProvider = false
-    --     client.server_capabilities.documentFormattingProvider = false
-    --     client.server_capabilities.documentHighlightProvider = false
-    --     client.server_capabilities.documentLinkProvider = false
-    --     client.server_capabilities.documentOnTypeFormattingProvider = false
-    --     client.server_capabilities.documentRangeFormattingProvider = false
-    --     client.server_capabilities.documentSymbolProvider = false
-    --     client.server_capabilities.experimental = false
-    --     client.server_capabilities.foldingRangeProvider = false
-    --     client.server_capabilities.hoverProvider = false
-    --     client.server_capabilities.inlayHintProvider = false
-    --     client.server_capabilities.selectionRangeProvider = false
-    --     client.server_capabilities.semanticTokensProvider = false
     --     client.server_capabilities.signatureHelpProvider = false
     --   end,
     -- })

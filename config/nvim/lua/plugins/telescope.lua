@@ -73,7 +73,7 @@ local telescope = {
       telescope.load_extension("undo")
       telescope.load_extension("fzf")
       telescope.load_extension("telescope-alternate")
-      -- telescope.load_extension('dap')
+      telescope.load_extension('dap')
 
   end,
   keys = {
@@ -93,15 +93,9 @@ local telescope = {
     { "z=", function() require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor({})) end, mode = { "n", "v" }, desc = "Show spell check suggestions" },
     -- replaced by trouble
     -- { "<leader>E", "<cmd>Telescope diagnostics<cr>",  mode = { "n", "v" }, desc = "Telescope: search diagnostic messages for the workspace" },
-    -- dap breakpoints
+    { "<leader>d?", "<cmd>Telescope dap list_breakpoints<cr>", mode = { "n", "v" }, desc = "Telescope: Search configured breakpoints" },
 
   },
-
-  -- config = function(_, opts)
-  --   local t = require('telescope)
-  --   t.setup(opts)
-  --   t.load_extension('foo')
-  -- end,
 }
 
 return { plenary, fzf, telescope, telescope_undo, telescope_alternate, telescope_undo }
