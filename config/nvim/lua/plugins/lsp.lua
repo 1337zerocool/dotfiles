@@ -201,6 +201,7 @@ local mason = {
       on_attach = function(client, _)
         client.server_capabilities.definitionProvider = false
         client.server_capabilities.workspaceSymbolProvider = false
+        client.server_capabilities.completionProvider = false
       end,
       -- figure out how to disable definitions
       -- make it stop poluting the workspace symbols list
