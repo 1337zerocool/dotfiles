@@ -200,31 +200,11 @@ local mason = {
     cfg.sorbet.setup({
       enabled = true,
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = function(client, _)
+        client.server_capabilities.definitionProvider = false
+      end,
       -- figure out how to disable definitions
-      --
-      settings = {
-        sorbet = {
-          codeActions = false,
-          codeLens = false,
-          completion = false,
-          definition = false,
-          diagnostics = false,
-          documentHighlights = false,
-          documentLink = false,
-          documentSymbols = false,
-          foldingRanges = false,
-          formatting = false,
-          hover = true,
-          inlayHint = false,
-          onTypeFormatting = false,
-          selectionRanges = false,
-          semanticHighlighting = false,
-          signatureHelp = false,
-          typeHierarchy = false,
-          workspaceSymbol = false,
-        },
-      },
+      -- make it stop poluting the workspace symbols list
       init_options = {
         highlightUntyped = true,
       },
