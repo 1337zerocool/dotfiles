@@ -195,13 +195,12 @@ local mason = {
       filetypes = { "ruby", "erb" },
     })
 
-    -- get this doing hover
-    -- poisoning the document symbols list
     cfg.sorbet.setup({
       enabled = true,
       capabilities = capabilities,
       on_attach = function(client, _)
         client.server_capabilities.definitionProvider = false
+        client.server_capabilities.workspaceSymbolProvider = false
       end,
       -- figure out how to disable definitions
       -- make it stop poluting the workspace symbols list
