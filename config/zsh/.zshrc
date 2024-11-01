@@ -145,8 +145,8 @@ source "/opt/homebrew/share/zsh-fast-syntax-highlighting/fast-syntax-highlightin
 source "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
-# Shift+tab = execute it the current suggestion
-bindkey '^[[Z' autosuggest-execute
+# Control+space = execute the current suggestion
+bindkey '^ ' autosuggest-execute
 
 # Some configuration for the completion engine
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -176,10 +176,16 @@ test -r "/opt/homebrew/bin/brew" && eval "$(/opt/homebrew/bin/brew shellenv)"
 test -r "$HOME/.config/dircolors/nord.dircolors" && eval $(gdircolors "$HOME/.config/dircolors/nord.dircolors")
 
 # And Chruby
-test -r "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh" && source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
-test -r "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh" && source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
-chruby $(chruby | tail -n1 | cut -d'-' -f2)
+# test -r "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh" && source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
+# test -r "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh" && source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
+# chruby $(chruby | tail -n1 | cut -d'-' -f2)
 
+# Setup dev
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+chruby $(chruby | tail -n1 | cut -d'-' -f2)
+nvm use 18
 # Add Rust
 test -r "$HOME/.cargo/env" && source "$HOME/.cargo/env"
 
