@@ -185,7 +185,7 @@ test -r "$HOME/.config/dircolors/nord.dircolors" && eval $(gdircolors "$HOME/.co
 [[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
 [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
 chruby $(chruby | tail -n1 | cut -d'-' -f2)
-nvm use 18
+nvm use stable
 # Add Rust
 test -r "$HOME/.cargo/env" && source "$HOME/.cargo/env"
 

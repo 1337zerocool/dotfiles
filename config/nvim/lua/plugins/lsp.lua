@@ -95,9 +95,9 @@ local mason = {
         "emmet_ls",
         "jsonls",
         "gopls",
-        "ruby_lsp",
-        "sorbet",
-        "solargraph",
+        -- "ruby_lsp",
+        -- "sorbet",
+        -- "solargraph",
         "ts_ls",
         "lua_ls",
       }
@@ -133,94 +133,94 @@ local mason = {
     -- 
     local cfg = require("lspconfig")
 
-    cfg.ruby_lsp.setup({
-      enabled = true,
-      capabilities = capabilities,
-      on_attach = on_attach,
-      -- https://shopify.github.io/ruby-lsp/editors.html#Neovim
-      init_options = {
-        enabledFeatures = {
-          codeActions = true, -- good
-          codeLens = true,    -- good
-          completion = false, -- not bad
-          definition = false,
-          diagnostics = true,
-          documentHighlights = false,
-          documentLink = false,
-          documentSymbols = true,  -- good
-          foldingRanges = false,
-          formatting = false,
-          hover = false,
-          inlayHint = true,
-          onTypeFormatting = true,
-          selectionRanges = false,
-          semanticHighlighting = true,
-          signatureHelp = false,
-          typeHierarchy = false,
-          workspaceSymbol = false,
-        },
-        featuresConfiguration = {
-          inlayHints = {
-            implicitHashValue = true,
-            implicitRescue = true,
-          },
-        },
-        indexing = {
-          excludedPatterns = { "*.rbs" },
-          includedPatterns = { "*.rb" },
-          excludedGems = { "bundler" },
-          excludedMagicComments = { "compiled: true" },
-        },
-        formatter = 'auto',
-        linters = { 'rubocop' },
-      },
-      filetypes = { "ruby", "erb" },
-    })
-
-    cfg.sorbet.setup({
-      enabled = true,
-      capabilities = capabilities,
-      on_attach = function(client, _)
-        client.server_capabilities.definitionProvider = false
-        client.server_capabilities.workspaceSymbolProvider = false
-        client.server_capabilities.completionProvider = false
-      end,
-      -- figure out how to disable definitions
-      -- make it stop poluting the workspace symbols list
-      init_options = {
-        highlightUntyped = true,
-      },
-      filetypes = { "ruby", "erb" },
-    })
-
-    cfg.solargraph.setup({
-      enabled = true,
-      on_attach = on_attach,
-      settings = {
-        solargraph = {
-          codeActions = false,
-          codeLens = false,
-          completion = false,
-          definition = false,
-          diagnostics = false,
-          documentHighlights = false,
-          documentLink = false,
-          documentSymbols = false,
-          foldingRanges = false,
-          formatting = false,
-          hover = false,
-          inlayHint = false,
-          onTypeFormatting = false,
-          selectionRanges = false,
-          semanticHighlighting = false,
-          signatureHelp = false,
-          typeHierarchy = false,
-          workspaceSymbol = true,
-        },
-      },
-      filetypes = { "ruby", "erb" },
-    })
-
+    -- cfg.ruby_lsp.setup({
+    --   enabled = true,
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    --   -- https://shopify.github.io/ruby-lsp/editors.html#Neovim
+    --   init_options = {
+    --     enabledFeatures = {
+    --       codeActions = true, -- good
+    --       codeLens = true,    -- good
+    --       completion = false, -- not bad
+    --       definition = false,
+    --       diagnostics = true,
+    --       documentHighlights = false,
+    --       documentLink = false,
+    --       documentSymbols = true,  -- good
+    --       foldingRanges = false,
+    --       formatting = false,
+    --       hover = false,
+    --       inlayHint = true,
+    --       onTypeFormatting = true,
+    --       selectionRanges = false,
+    --       semanticHighlighting = true,
+    --       signatureHelp = false,
+    --       typeHierarchy = false,
+    --       workspaceSymbol = false,
+    --     },
+    --     featuresConfiguration = {
+    --       inlayHints = {
+    --         implicitHashValue = true,
+    --         implicitRescue = true,
+    --       },
+    --     },
+    --     indexing = {
+    --       excludedPatterns = { "*.rbs" },
+    --       includedPatterns = { "*.rb" },
+    --       excludedGems = { "bundler" },
+    --       excludedMagicComments = { "compiled: true" },
+    --     },
+    --     formatter = 'auto',
+    --     linters = { 'rubocop' },
+    --   },
+    --   filetypes = { "ruby", "erb" },
+    -- })
+    --
+    -- cfg.sorbet.setup({
+    --   enabled = true,
+    --   capabilities = capabilities,
+    --   on_attach = function(client, _)
+    --     client.server_capabilities.definitionProvider = false
+    --     client.server_capabilities.workspaceSymbolProvider = false
+    --     client.server_capabilities.completionProvider = false
+    --   end,
+    --   -- figure out how to disable definitions
+    --   -- make it stop poluting the workspace symbols list
+    --   init_options = {
+    --     highlightUntyped = true,
+    --   },
+    --   filetypes = { "ruby", "erb" },
+    -- })
+    --
+    -- cfg.solargraph.setup({
+    --   enabled = true,
+    --   on_attach = on_attach,
+    --   settings = {
+    --     solargraph = {
+    --       codeActions = false,
+    --       codeLens = false,
+    --       completion = false,
+    --       definition = false,
+    --       diagnostics = false,
+    --       documentHighlights = false,
+    --       documentLink = false,
+    --       documentSymbols = false,
+    --       foldingRanges = false,
+    --       formatting = false,
+    --       hover = false,
+    --       inlayHint = false,
+    --       onTypeFormatting = false,
+    --       selectionRanges = false,
+    --       semanticHighlighting = false,
+    --       signatureHelp = false,
+    --       typeHierarchy = false,
+    --       workspaceSymbol = true,
+    --     },
+    --   },
+    --   filetypes = { "ruby", "erb" },
+    -- })
+    --
 
     cfg.html.setup({ enabled = true, capabilities = capabilities, on_attach = on_attach, })
 
